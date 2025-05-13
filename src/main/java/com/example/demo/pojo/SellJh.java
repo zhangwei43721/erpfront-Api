@@ -1,0 +1,46 @@
+package com.example.demo.pojo;
+
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
+import lombok.Data;
+
+/**
+ * 销售计划表
+ * @TableName t_sell_jh
+ */
+@TableName(value ="t_sell_jh")
+@Data
+public class SellJh {
+    /**
+     * 
+     */
+    @TableId(type = IdType.AUTO)
+    private Integer id;
+
+    /**
+     * 客户ID
+     */
+    private Integer custid;
+
+    /**
+     * 渠道ID
+     */
+    private Integer channelId;
+
+    /**
+     * 金额
+     */
+    private Double money;
+
+    /**
+     * 当前步骤
+     */
+    private String nowStep;
+
+    /**
+     * 员工ID
+     */
+    private Integer empId;
+}

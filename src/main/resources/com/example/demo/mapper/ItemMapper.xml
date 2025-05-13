@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mapper.ItemMapper">
+
+    <resultMap id="BaseResultMap" type="com.example.demo.pojo.Item">
+            <id property="id" column="id" />
+            <result property="itemName" column="item_name" />
+            <result property="price" column="price" />
+            <result property="itemDate" column="item_date" />
+            <result property="hotTitle" column="hot_title" />
+            <result property="facturer" column="facturer" />
+            <result property="store" column="store" />
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,item_name,price,item_date,hot_title,facturer,
+        store
+    </sql>
+</mapper>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mapper.SellJhMapper">
+
+    <resultMap id="BaseResultMap" type="com.example.demo.pojo.SellJh">
+            <id property="id" column="id" />
+            <result property="custid" column="custid" />
+            <result property="channelId" column="channel_id" />
+            <result property="money" column="money" />
+            <result property="nowStep" column="now_step" />
+            <result property="empId" column="emp_id" />
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,custid,channel_id,money,now_step,emp_id
+    </sql>
+</mapper>

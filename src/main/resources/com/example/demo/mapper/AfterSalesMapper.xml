@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mapper.AfterSalesMapper">
+
+    <resultMap id="BaseResultMap" type="com.example.demo.pojo.AfterSales">
+            <id property="id" column="id" />
+            <result property="custId" column="cust_id" />
+            <result property="question" column="question" />
+            <result property="state" column="state" />
+            <result property="record" column="record" />
+            <result property="level" column="level" />
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,cust_id,question,state,record,level
+    </sql>
+</mapper>
