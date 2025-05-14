@@ -17,13 +17,10 @@ import java.util.List;
 * @createDate 2025-05-13 16:01:20
 */
 @Service
-public class MenuServiceImpl extends ServiceImpl<MenuMapper, Menu>
-        implements MenuService {
-
+public class MenuServiceImpl extends ServiceImpl<MenuMapper, Menu> implements MenuService {
     @Override
     public List<MenuVo> queryMenuListService() {
-        // 1. 查询所有菜单数据
-        List<Menu> allMenu = this.list();
+        List<Menu> allMenu = this.list();// 查询所有菜单数据
         return buildSubmenu(allMenu, 0);
     }
 
