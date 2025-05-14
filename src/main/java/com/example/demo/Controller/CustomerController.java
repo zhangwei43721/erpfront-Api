@@ -3,10 +3,7 @@ package com.example.demo.Controller;
 import com.example.demo.pojo.Customer;
 import com.example.demo.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -26,6 +23,13 @@ public class CustomerController {
         customerService.save(customer);
         result.put("code", 200);
         return result;
+    }
+    /*处理客户信息分页查询请求*/
+    @GetMapping("/listCust")
+    public Map<String, Object> queryCustList(
+            @RequestParam(defaultValue = "1") Integer pageNum,
+            @RequestParam(defaultValue = "10") Integer pageSize) {
+        return customerService.queryCustListService(pageNum, pageSize);
     }
 
 }
