@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -61,6 +62,11 @@ public class CustomerController {
             result.put("message", "修改失败");
         }
         return result;
+    }
+    /*处理加载所有客户列表请求*/
+    @GetMapping("/listAllCust")
+    public List<Customer> listAllCust(){
+        return customerService.queryCustIdNameListService();
     }
 
 }

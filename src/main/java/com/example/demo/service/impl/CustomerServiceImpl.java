@@ -1,5 +1,6 @@
 package com.example.demo.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.example.demo.pojo.Customer;
@@ -36,6 +37,14 @@ public class CustomerServiceImpl extends ServiceImpl<CustomerMapper, Customer> i
         result.put("custlist", list);
         result.put("total", page.getTotal());
         return result;
+    }
+    @Override
+    public List<Customer> queryCustIdNameListService() {
+        QueryWrapper<Customer> wrapper=new QueryWrapper<>();
+        //指定列的投影，指定select id,cust_name
+        wrapper.select("id","cust_name");
+        List<Customer> customerList = customerMapper.selectList(wrapper);
+        return customerList;
     }
 }
 
