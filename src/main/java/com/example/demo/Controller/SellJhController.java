@@ -30,13 +30,13 @@ public class SellJhController {
         return result;
     }
 
-//    /*处理销售计划分页查询请求*/
-//    @GetMapping("/listSellJh")
-//    public Map<String, Object> querySellJhList(
-//            @RequestParam(defaultValue = "1") Integer pageNum,
-//            @RequestParam(defaultValue = "10") Integer pageSize) {
-//        return sellJhService.querySellJhListService(pageNum, pageSize);
-//    }
+    /*处理销售计划分页查询请求*/
+    @GetMapping("/sellJhList")
+    public Map<String, Object> querySellJhList(
+            @RequestParam(defaultValue = "1") Integer pageNum,
+            @RequestParam(defaultValue = "10") Integer pageSize) {
+        return sellJhService.querySellJhListService(pageNum, pageSize);
+    }
 
     /*删除销售计划*/
     @DeleteMapping("/deleteSellJh/{id}")
