@@ -3,11 +3,14 @@ package com.example.demo.service.impl;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.example.demo.dto.HisData;
+import com.example.demo.mapper.OrderMapper;
 import com.example.demo.pojo.Customer;
 import com.example.demo.service.CustomerService;
 import com.example.demo.mapper.CustomerMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.HashMap;
 import java.util.List;
@@ -25,11 +28,25 @@ public class CustomerServiceImpl extends ServiceImpl<CustomerMapper, Customer> i
     @Autowired
     private CustomerMapper customerMapper;
 
+    @Autowired
+    private OrderMapper orderMapper;
+    @Transactional
     @Override
     public Map<String, Object> queryCustListService(Integer pageNum, Integer pageSize) {
         Map<String, Object> result = new HashMap<>();
-        // 初始化分页对象
-        Page page = new Page<>(pageNum, pageSize);
+        System.out.println("==================");
+
+        // 将客户历史消费信息更新到客户信息表
+        List<HisData> hisDatas = orderMapper.queryCountHisDataMapper();
+        for (HisData hisData : hisDatas) {
+            Customer cust = new Customer();
+            cust.setId(Math.toIntExact(hisData.getCustId()));
+            cust.setHisTotal(hisData.getHisTotal());
+            customerMapper.updateById(cust);
+        }
+
+        // 创建封装分页查询参数的 Page 对象
+        Page page = new Page(pageNum, pageSize);
         System.out.println(page.getTotal());
         List list = customerMapper.selectList(page, null);
         System.out.println(page.getTotal());

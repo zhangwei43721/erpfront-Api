@@ -18,4 +18,8 @@
         id,cust_id,item_id,order_date,state,pay,
         pay_money
     </sql>
+    <!-- 顶级sql统计客户历史消费总额 -->
+    <select id="queryCountHisDataMapper" resultType="com.example.demo.dto.HisData">
+        select cust_id custId, sum(pay_money) hisTotal from t_order group by cust_id
+    </select>
 </mapper>
