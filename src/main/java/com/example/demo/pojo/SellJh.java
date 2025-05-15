@@ -43,4 +43,12 @@ public class SellJh {
      * 员工ID
      */
     private Integer empId;
+
+    @TableField(exist = false)
+    private static final long serialVersionUID = 1L;
+
+    @TableField(exist = false)
+    //扩展属性，封装客户名字
+    private String custName;
+
 }

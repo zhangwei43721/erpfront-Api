@@ -16,4 +16,9 @@
     <sql id="Base_Column_List">
         id,custid,channel_id,money,now_step,emp_id
     </sql>
+    <!--定义sql查询销售记录列表-->
+    <select id="querySellJhListMapper" resultType="com.example.demo.pojo.SellJh">
+        select sell.*,customer.cust_name custName from t_sell_jh sell inner join
+                                                       t_customer customer on sell.custid=customer.id
+    </select>
 </mapper>
