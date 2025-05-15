@@ -1,9 +1,9 @@
 package com.example.demo.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.example.demo.mapper.SellJhMapper;
 import com.example.demo.pojo.SellJh;
 import com.example.demo.service.SellJhService;
-import com.example.demo.mapper.SellJhMapper;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import org.springframework.beans.factory.annotation.Autowired;

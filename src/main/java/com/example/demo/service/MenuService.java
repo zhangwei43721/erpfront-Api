@@ -1,7 +1,7 @@
 package com.example.demo.service;
 
-import com.example.demo.pojo.Menu;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.example.demo.pojo.Menu;
 import com.example.demo.vo.MenuVo;
 
 import java.util.List;
