@@ -22,5 +22,5 @@ public interface CustomerService extends IService<Customer> {
     Map<String, Object> queryCustListService(Integer pageNum, Integer pageSize);
 
     /*查询所有客户Id和姓名*/
-    public List<Customer> queryCustIdNameListService();
+    List<Customer> queryCustIdNameListService();
 }

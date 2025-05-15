@@ -60,8 +60,7 @@ public class CustomerServiceImpl extends ServiceImpl<CustomerMapper, Customer> i
         QueryWrapper<Customer> wrapper=new QueryWrapper<>();
         //指定列的投影，指定select id,cust_name
         wrapper.select("id","cust_name");
-        List<Customer> customerList = customerMapper.selectList(wrapper);
-        return customerList;
+        return customerMapper.selectList(wrapper);
     }
 }
 

@@ -13,6 +13,6 @@ import java.util.Map;
 public interface SellJhService extends IService<SellJh> {
 
     /*定义分页查询方法*/
-    public Map<String,Object> querySellJhListService(Integer pageNum, Integer pageSize);
+    Map<String,Object> querySellJhListService(Integer pageNum, Integer pageSize);
 
 }

@@ -14,7 +14,7 @@ import java.util.List;
 public interface SellJhMapper extends BaseMapper<SellJh> {
 
     /*查询客户销售过程记录列表*/
-    public List<SellJh> querySellJhListMapper();
+    List<SellJh> querySellJhListMapper();
 }
 
 
