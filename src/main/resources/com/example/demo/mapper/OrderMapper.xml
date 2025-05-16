@@ -22,4 +22,10 @@
     <select id="queryCountHisDataMapper" resultType="com.example.demo.dto.HisData">
         select cust_id custId, sum(pay_money) hisTotal from t_order group by cust_id
     </select>
+    <select id="queryOrderListMapper" resultType="com.example.demo.pojo.Order">
+        select ord.*,customer.cust_name custName,
+               item.item_name itemName from t_customer customer
+                                                inner join t_order ord on customer.id=ord.cust_id
+                                                inner join t_item item on item.id=ord.item_id
+    </select>
 </mapper>

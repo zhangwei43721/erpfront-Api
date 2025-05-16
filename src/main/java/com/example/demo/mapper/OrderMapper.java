@@ -13,8 +13,17 @@ import java.util.List;
 * @Entity com.example.demo.pojo.Order
 */
 public interface OrderMapper extends BaseMapper<Order> {
-
+    /**
+     * 查询订单数量历史数据,方便对每个客户的消费金额进行统计
+     * @return
+     */
     List<HisData> queryCountHisDataMapper();
+
+    /**
+     * 查询订单列表
+     * @return
+     */
+    public List<Order> queryOrderListMapper();
 }
 
 

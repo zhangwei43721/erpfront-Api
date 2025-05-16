@@ -1,8 +1,10 @@
 package com.example.demo.pojo;
 
 import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 
 import java.util.Date;
@@ -33,6 +35,7 @@ public class Order {
     /**
      * 下单时间
      */
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date orderDate;
 
     /**
@@ -49,4 +52,16 @@ public class Order {
      * 支付金额
      */
     private Double payMoney;
+
+    @TableField(exist = false)
+    private static final long serialVersionUID = 1L;
+
+    @TableField(exist = false)
+    private Integer num;
+
+    @TableField(exist = false)
+    private String custName;
+
+    @TableField(exist = false)
+    private String itemName;
 }
