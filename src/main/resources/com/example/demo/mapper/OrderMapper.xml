@@ -27,5 +27,19 @@
                item.item_name itemName from t_customer customer
                                                 inner join t_order ord on customer.id=ord.cust_id
                                                 inner join t_item item on item.id=ord.item_id
+        <where>
+            <if test="id!=null">
+                ord.id=#{id}
+            </if>
+            <if test="state!=null and state!=''">
+                and state=#{state}
+            </if>
+            <if test="custName!=null and custName!=''">
+                and cust_name=#{custName}
+            </if>
+            <if test="itemName!=null and itemName!=''">
+                and item_name=#{itemName}
+            </if>
+        </where>
     </select>
 </mapper>

@@ -64,4 +64,10 @@ public class Order {
 
     @TableField(exist = false)
     private String itemName;
+
+    @TableField(exist = false)
+    private Integer pageNum=1;
+
+    @TableField(exist = false)
+    private Integer pageSize=3;
 }

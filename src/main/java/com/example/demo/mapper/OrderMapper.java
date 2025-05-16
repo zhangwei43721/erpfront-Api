@@ -19,11 +19,10 @@ public interface OrderMapper extends BaseMapper<Order> {
      */
     List<HisData> queryCountHisDataMapper();
 
-    /**
-     * 查询订单列表
-     * @return
-     */
-    public List<Order> queryOrderListMapper();
+    /*实现订单数据动态多条件分页查询
+     * order:封装动态where条件
+     * */
+    public List<Order> queryOrderListMapper(Order order);
 }
 
 

@@ -26,12 +26,12 @@ public class OrderServiceImpl extends ServiceImpl<OrderMapper, Order>
     private OrderMapper orderMapper;
 
     @Override
-    public Map<String, Object> queryOrderListService(Integer pageNum, Integer pageSize) {
+    public Map<String, Object> queryOrderListService(Integer pageNum, Integer pageSize,Order order) {
 
         //指定分页参数
         Page<Object> page = PageHelper.startPage(pageNum, pageSize);
         //查询数据库
-        List<Order> orderList = orderMapper.queryOrderListMapper();
+        List<Order> orderList = orderMapper.queryOrderListMapper(order);
 
         Map<String, Object> result=new HashMap<>();
         result.put("orderList",orderList);

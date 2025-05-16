@@ -16,11 +16,15 @@ public class OrderController {
     private OrderService orderService;
 
     /* 处理分页查询请求 */
-    @GetMapping("/listOrder")
-    public Map<String, Object> listOrders(
-            @RequestParam(defaultValue = "1") Integer pageNum,
-            @RequestParam(defaultValue = "3") Integer pageSize) {
-        return orderService.queryOrderListService(pageNum, pageSize);
+//    @GetMapping("/listOrder")
+//    public Map<String, Object> listOrders(
+//            @RequestParam(defaultValue = "1") Integer pageNum,
+//            @RequestParam(defaultValue = "3") Integer pageSize) {
+//        return orderService.queryOrderListService(pageNum, pageSize);
+//    }
+    @PostMapping("/listOrder")
+    public Map<String,Object> listOrders(@RequestBody Order order){
+        return orderService.queryOrderListService(order.getPageNum(),order.getPageSize(),order);
     }
 
     /* 添加订单 */
