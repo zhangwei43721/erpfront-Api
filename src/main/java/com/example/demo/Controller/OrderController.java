@@ -24,7 +24,7 @@ public class OrderController {
 //    }
     @PostMapping("/listOrder")
     public Map<String,Object> listOrders(@RequestBody Order order){
-        return orderService.queryOrderListService(order.getPageNum(),order.getPageSize(),order);
+        return orderService.queryOrderListService(order);
     }
 
     /* 添加订单 */
