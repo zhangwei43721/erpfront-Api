@@ -4,7 +4,15 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.example.demo.mapper.AfterSalesMapper;
 import com.example.demo.pojo.AfterSales;
 import com.example.demo.service.AfterSalesService;
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 
 /**
 * @author skyforever
@@ -14,6 +22,21 @@ import org.springframework.stereotype.Service;
 @Service
 public class AfterSalesServiceImpl extends ServiceImpl<AfterSalesMapper, AfterSales>
     implements AfterSalesService{
+    @Autowired
+    private AfterSalesMapper afterSalesMapper;
+
+    @Override
+    public Map<String, Object> queryAfterSaleListService(AfterSales afterSales) {
+        //指定分页查询参数
+        Page<Object> page = PageHelper.startPage(afterSales.getPageNum(), afterSales.getPageSize());
+        //查询数据库
+        List<AfterSales> afterSalesList = afterSalesMapper.queryAfterSaleMapper(afterSales);
+
+        Map<String, Object> result=new HashMap<>();
+        result.put("afterSalesList",afterSalesList);
+        result.put("total",page.getTotal());
+        return result;
+    }
 
 }
 

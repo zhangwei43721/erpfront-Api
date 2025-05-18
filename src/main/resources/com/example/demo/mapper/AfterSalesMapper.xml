@@ -16,4 +16,22 @@
     <sql id="Base_Column_List">
         id,cust_id,question,state,record,level
     </sql>
+    <select id="queryAfterSaleMapper" resultType="com.example.demo.pojo.AfterSales">
+        select aft.*,customer.cust_name custName from t_customer customer
+        inner join t_after_sales aft on customer.id=aft.cust_id
+        <where>
+            <if test="id!=null">
+                aft.id=#{id}
+            </if>
+            <if test="question!=null and question!=''">
+                and question=#{question}
+            </if>
+            <if test="state!=null and state!=''">
+                and state=#{state}
+            </if>
+            <if test="grade!=null and grade!=''">
+                and aft.grade=#{grade}
+            </if>
+        </where>
+    </select>
 </mapper>

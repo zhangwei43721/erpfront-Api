@@ -1,6 +1,7 @@
 package com.example.demo.pojo;
 
 import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
@@ -34,12 +35,19 @@ public class AfterSales {
     private String state;
 
     /**
-     * 记录
+     * 紧急程度
      */
-    private String record;
+    private String grade;
 
     /**
      * 级别
      */
     private Integer level;
+
+    @TableField(exist = false)
+    private String custName;
+    @TableField(exist = false)
+    private Integer pageNum=1;
+    @TableField(exist = false)
+    private Integer pageSize=3;
 }
