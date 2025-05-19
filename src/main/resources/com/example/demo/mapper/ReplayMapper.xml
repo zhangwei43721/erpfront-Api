@@ -9,9 +9,10 @@
             <result property="content" column="content" />
             <result property="redate" column="redate" />
             <result property="score" column="score" />
+            <result property="quesId" column="ques_id" />
     </resultMap>
 
     <sql id="Base_Column_List">
-        id,content,redate,score
+        id,content,redate,score,ques_id
     </sql>
 </mapper>

@@ -4,10 +4,7 @@ package com.example.demo.Controller;
 import com.example.demo.pojo.Replay;
 import com.example.demo.service.ReplayService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
 import java.util.HashMap;
@@ -40,5 +37,13 @@ public class ReplayController {
             ex.printStackTrace();
         }
         return result;
+    }
+
+    /*处理回复列表分页查询请求*/
+    @GetMapping("/listReplay")
+    public Map<String, Object> listReplay(Integer id
+            , @RequestParam(defaultValue = "1") Integer pageNum
+            , @RequestParam(defaultValue = "3") Integer pageSize) {
+        return replayService.queryReplayListService(id, pageNum, pageSize);
     }
 }

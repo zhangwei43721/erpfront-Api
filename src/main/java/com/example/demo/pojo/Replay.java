@@ -5,6 +5,8 @@ import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import java.util.Date;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 
 /**
@@ -28,10 +30,16 @@ public class Replay {
     /**
      * 反馈或评价日期时间
      */
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date redate;
 
     /**
      * 评分 (如：1-5分)
      */
     private Integer score;
+
+    /**
+     * 问题ID
+     */
+    private Integer quesId;
 }

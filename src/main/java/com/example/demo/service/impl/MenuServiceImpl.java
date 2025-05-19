@@ -1,11 +1,13 @@
 package com.example.demo.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.example.demo.mapper.MenuMapper;
 import com.example.demo.pojo.Menu;
 import com.example.demo.service.MenuService;
 import com.example.demo.vo.MenuVo;
 import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -18,6 +20,10 @@ import java.util.List;
 */
 @Service
 public class MenuServiceImpl extends ServiceImpl<MenuMapper, Menu> implements MenuService {
+
+    @Autowired
+    private MenuMapper MenuMapper;
+
     @Override
     public List<MenuVo> queryMenuListService() {
         List<Menu> allMenu = this.list();// 查询所有菜单数据
@@ -45,6 +51,20 @@ public class MenuServiceImpl extends ServiceImpl<MenuMapper, Menu> implements Me
             }
         }
         return submenuTree;
+    }
+    @Override
+    public void saveMenusService(Menu menu) {
+
+
+        QueryWrapper<Menu> wrapper=new QueryWrapper<>();
+        wrapper.select("max(component) maxv");
+        //获得component的最大值
+        Menu ms = MenuMapper.selectOne(wrapper);
+
+        //component组件属性的值，是数据库最大值加1
+        menu.setComponent(ms.getMaxv()+1);
+        MenuMapper.insert(menu);
+
     }
 }
 

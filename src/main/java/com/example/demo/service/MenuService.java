@@ -18,4 +18,7 @@ public interface MenuService extends IService<Menu> {
      * @return 菜单树结构的Vo列表
      */
     List<MenuVo> queryMenuListService();
+
+    /*添加菜单节点*/
+    public void saveMenusService(Menu menu);
 }
