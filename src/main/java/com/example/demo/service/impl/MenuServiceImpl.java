@@ -54,17 +54,13 @@ public class MenuServiceImpl extends ServiceImpl<MenuMapper, Menu> implements Me
     }
     @Override
     public void saveMenusService(Menu menu) {
-
-
         QueryWrapper<Menu> wrapper=new QueryWrapper<>();
         wrapper.select("max(component) maxv");
         //获得component的最大值
         Menu ms = MenuMapper.selectOne(wrapper);
-
         //component组件属性的值，是数据库最大值加1
         menu.setComponent(ms.getMaxv()+1);
         MenuMapper.insert(menu);
-
     }
 }
 
