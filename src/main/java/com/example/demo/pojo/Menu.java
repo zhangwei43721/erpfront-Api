@@ -33,10 +33,17 @@ public class Menu {
      * 父id
      */
     private Integer pid;
+
+    /**
+     * 排序
+     */
+    private Integer sortOrder;
+
     @TableField(exist = false)
     private static final long serialVersionUID = 1L;
 
     @TableField(exist = false)
     private Integer maxv;
+
 
 }

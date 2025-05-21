@@ -14,19 +14,19 @@ import java.util.Map;
 public class MenusController {
 
     @Autowired
-    private MenuService menusService;
+    private MenuService menuService;
 
     /*定义方法处理，加载左侧菜单节点的请求*/
     @CrossOrigin
     @RequestMapping("/listMenus")
     public List<MenuVo> listMenus(){
-        return menusService.queryMenuListService();
+        return menuService.queryMenuListService();
     }
     /*定义方法处理，加载左侧菜单节点的对应的组件下标的请求*/
     @CrossOrigin
     @RequestMapping("/compIndex")
     public Integer compIndex(Integer id){
-        Menu menus = menusService.getById(id);
+        Menu menus = menuService.getById(id);
         return menus.getComponent();
     }
 
@@ -38,7 +38,7 @@ public class MenusController {
         result.put("code",400);
         result.put("msg","操作失败......");
         try{
-            menusService.saveMenusService(menu);
+            menuService.saveMenusService(menu);
             result.put("code",200);
             result.put("msg","添加菜单节点成功.......");
         }catch (Exception ex){
@@ -46,7 +46,7 @@ public class MenusController {
         }
         return result;
     }
-    /*处理菜单节点信息的修改请求*/
+    /*处理菜单单个节点信息的修改请求*/
     @CrossOrigin
     @PutMapping("/updateMenus")
     public Map<String,Object> updateMenus(@RequestBody Menu menu){
@@ -54,9 +54,25 @@ public class MenusController {
         result.put("code",400);
         result.put("msg","操作失败......");
         try{
-            menusService.updateById(menu);
+            menuService.updateById(menu);
             result.put("code",200);
             result.put("msg","修改菜单节点成功.......");
+        }catch (Exception ex){
+            ex.printStackTrace();
+        }
+        return result;
+    }
+    /*处理菜单节点信息的修改请求*/
+    @CrossOrigin
+    @PostMapping("/updateMenusOrder")
+    public Map<String,Object> updateMenusOrder(@RequestBody List<MenuVo> menuUpdates){
+        Map<String,Object> result=new HashMap<>();
+        result.put("code",400);
+        result.put("msg","菜单顺序更新失败!");
+        try{
+            menuService.updateMenusOrder(menuUpdates);
+            result.put("code",200);
+            result.put("msg","菜单顺序更新成功!");
         }catch (Exception ex){
             ex.printStackTrace();
         }
@@ -70,7 +86,7 @@ public class MenusController {
         result.put("code",400);
         result.put("msg","操作失败......");
         try{
-            menusService.removeById(id);
+            menuService.removeById(id);
             result.put("code",200);
             result.put("msg","删除菜单节点成功.......");
         }catch (Exception ex){
@@ -78,5 +94,6 @@ public class MenusController {
         }
         return result;
     }
+
 
 }

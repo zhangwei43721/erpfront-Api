@@ -1,6 +1,7 @@
 package com.example.demo.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.example.demo.mapper.MenuMapper;
 import com.example.demo.pojo.Menu;
@@ -9,60 +10,76 @@ import com.example.demo.vo.MenuVo;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
 
-/**
-* @author skyforever
-* @description 针对表【t_menu(前端菜单表)】的数据库操作Service实现
-* @createDate 2025-05-13 16:01:20
-*/
 @Service
 public class MenuServiceImpl extends ServiceImpl<MenuMapper, Menu> implements MenuService {
 
     @Autowired
-    private MenuMapper MenuMapper;
+    private MenuMapper menuMapper;
 
     @Override
     public List<MenuVo> queryMenuListService() {
-        List<Menu> allMenu = this.list();// 查询所有菜单数据
-        return buildSubmenu(allMenu, 0);
+        QueryWrapper<Menu> queryWrapper = new QueryWrapper<>();
+        // 按 pid 升序，再按 sort_order 升序
+        queryWrapper.orderByAsc("pid", "sort_order");
+        List<Menu> allMenu = this.list(queryWrapper);
+        return buildSubmenu(allMenu, 0); // 假设根节点的 pid 为 0
     }
 
-    /**
-     * 递归构建子菜单树
-     *
-     * @param allMenu 所有菜单的列表
-     * @param parentId 当前要查找的父菜单ID
-     * @return 指定父菜单ID下的子菜单树列表
-     */
     private List<MenuVo> buildSubmenu(List<Menu> allMenu, Integer parentId) {
         List<MenuVo> submenuTree = new ArrayList<>();
-
+        // 直接从已排序的 allMenu 中筛选，它们自然保持了 sort_order 的顺序
         for (Menu menu : allMenu) {
-            // 检查当前菜单的父ID是否与传入的parentId匹配
             if (menu.getPid() != null && menu.getPid().equals(parentId)) {
                 MenuVo menuVo = new MenuVo();
-                BeanUtils.copyProperties(menu, menuVo); // 将 POJO属性 复制到 VO
-                // 递归查找当前菜单的子菜单
+                BeanUtils.copyProperties(menu, menuVo);
+                // 递归查找子菜单时，子菜单也已经是排序好的了
                 menuVo.setSubMenu(buildSubmenu(allMenu, menu.getId()));
                 submenuTree.add(menuVo);
             }
         }
         return submenuTree;
     }
+
     @Override
     public void saveMenusService(Menu menu) {
-        QueryWrapper<Menu> wrapper=new QueryWrapper<>();
+        QueryWrapper<Menu> wrapper = new QueryWrapper<>();
         wrapper.select("max(component) maxv");
-        //获得component的最大值
-        Menu ms = MenuMapper.selectOne(wrapper);
-        //component组件属性的值，是数据库最大值加1
-        menu.setComponent(ms.getMaxv()+1);
-        MenuMapper.insert(menu);
+        Menu ms = menuMapper.selectOne(wrapper);
+        menu.setComponent(ms == null || ms.getMaxv() == null ? 0 : ms.getMaxv() + 1); // 处理ms或maxv为null的情况
+
+        // 设置新菜单的 sort_order，例如排在同级最后
+        QueryWrapper<Menu> countWrapper = new QueryWrapper<>();
+        countWrapper.eq("pid", menu.getPid());
+        long count = this.count(countWrapper);
+        menu.setSortOrder((int) count);
+
+        menuMapper.insert(menu);
+    }
+
+    // 新增方法：用于处理前端拖拽后的顺序更新
+    @Transactional // 保证操作的原子性
+    @Override
+    public void updateMenusOrder(List<MenuVo> menuUpdates) { // 直接使用MenuVo作为DTO，或者创建一个专门的DTO
+        if (menuUpdates == null || menuUpdates.isEmpty()) {
+            return;
+        }
+        for (MenuVo menuUpdate : menuUpdates) {
+            if (menuUpdate.getId() == null) continue; // ID 不能为空
+
+            UpdateWrapper<Menu> updateWrapper = new UpdateWrapper<>();
+            updateWrapper.eq("id", menuUpdate.getId())
+                    .set("pid", menuUpdate.getPid())
+                    .set("sort_order", menuUpdate.getSortOrder());
+            // 如果 label 也可能在前端修改并需要同步，可以加上
+            // if (menuUpdate.getLabel() != null) {
+            //    updateWrapper.set("label", menuUpdate.getLabel());
+            // }
+            this.update(null, updateWrapper);
+        }
     }
 }
-
-
-
