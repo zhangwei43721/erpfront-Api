@@ -39,6 +39,12 @@ public class Menu {
      */
     private Integer sortOrder;
 
+    /*
+    * 图标名称
+     */
+    @TableField("icon_name")
+    private String iconName;
+
     @TableField(exist = false)
     private static final long serialVersionUID = 1L;
 

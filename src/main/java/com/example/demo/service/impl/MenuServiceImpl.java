@@ -32,12 +32,11 @@ public class MenuServiceImpl extends ServiceImpl<MenuMapper, Menu> implements Me
 
     private List<MenuVo> buildSubmenu(List<Menu> allMenu, Integer parentId) {
         List<MenuVo> submenuTree = new ArrayList<>();
-        // 直接从已排序的 allMenu 中筛选，它们自然保持了 sort_order 的顺序
         for (Menu menu : allMenu) {
             if (menu.getPid() != null && menu.getPid().equals(parentId)) {
                 MenuVo menuVo = new MenuVo();
                 BeanUtils.copyProperties(menu, menuVo);
-                // 递归查找子菜单时，子菜单也已经是排序好的了
+                menuVo.setIconName(menu.getIconName()); // 手动赋值 icon_name
                 menuVo.setSubMenu(buildSubmenu(allMenu, menu.getId()));
                 submenuTree.add(menuVo);
             }

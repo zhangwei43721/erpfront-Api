@@ -11,4 +11,5 @@ public class MenuVo {
     private Integer component;
     private List<MenuVo> subMenu;
     private Integer sortOrder;
+    private String iconName;
 }
