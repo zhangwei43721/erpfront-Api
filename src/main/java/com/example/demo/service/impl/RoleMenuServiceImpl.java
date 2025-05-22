@@ -23,12 +23,11 @@ public class RoleMenuServiceImpl extends ServiceImpl<RoleMenuMapper, RoleMenu>
     public boolean grantRoleMenus(Integer[] ids) {
         if (ids.length > 0) {
             Integer roleId = ids[0];
-            List<Integer> menuIds = new ArrayList<>();
-            menuIds.addAll(Arrays.asList(ids).subList(1, ids.length));
+            List<Integer> menuIds = new ArrayList<>(Arrays.asList(ids).subList(1, ids.length));
             // 先删除原有权限
             baseMapper.deleteByRoleId(roleId);
             // 批量插入新权限
-            if (menuIds != null && !menuIds.isEmpty()) {
+            if (!menuIds.isEmpty()) {
                 return baseMapper.batchInsert(roleId, menuIds) > 0;
             }
             return true;
