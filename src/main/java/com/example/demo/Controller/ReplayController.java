@@ -43,7 +43,7 @@ public class ReplayController {
     @GetMapping("/listReplay")
     public Map<String, Object> listReplay(Integer id
             , @RequestParam(defaultValue = "1") Integer pageNum
-            , @RequestParam(defaultValue = "3") Integer pageSize) {
+            , @RequestParam(defaultValue = "10") Integer pageSize) {
         return replayService.queryReplayListService(id, pageNum, pageSize);
     }
 }

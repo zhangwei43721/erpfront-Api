@@ -19,7 +19,7 @@ public class RolerController {
     @GetMapping("/rolerList")
     public Map<String,Object> rolerList(
             @RequestParam(defaultValue = "1") Integer pageNum
-            , @RequestParam(defaultValue = "3") Integer pageSize){
+            , @RequestParam(defaultValue = "10") Integer pageSize){
         return rolerService.queryRolePageListService(pageNum,pageSize);
     }
 
