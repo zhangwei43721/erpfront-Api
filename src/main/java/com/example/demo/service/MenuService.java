@@ -20,7 +20,7 @@ public interface MenuService extends IService<Menu> {
     List<MenuVo> queryMenuListService();
 
     /*添加菜单节点*/
-    public void saveMenusService(Menu menu);
+    void saveMenusService(Menu menu);
 
     /*更新菜单顺序*/
     void updateMenusOrder(List<MenuVo> menuUpdates); // 新增

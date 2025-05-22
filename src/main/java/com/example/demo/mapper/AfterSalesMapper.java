@@ -14,7 +14,7 @@ import java.util.List;
 public interface AfterSalesMapper extends BaseMapper<AfterSales> {
 
     /*实现售后数据多条件分页查询*/
-    public List<AfterSales> queryAfterSaleMapper(AfterSales afterSales);
+    List<AfterSales> queryAfterSaleMapper(AfterSales afterSales);
 }
 
 

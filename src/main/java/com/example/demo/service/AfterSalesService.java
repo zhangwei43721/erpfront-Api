@@ -12,7 +12,7 @@ import java.util.Map;
 */
 public interface AfterSalesService extends IService<AfterSales> {
     /*实现客户投诉信息分页查询*/
-    public Map<String,Object> queryAfterSaleListService(AfterSales afterSales);
+    Map<String,Object> queryAfterSaleListService(AfterSales afterSales);
 
 
 }

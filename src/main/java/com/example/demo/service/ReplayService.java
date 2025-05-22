@@ -13,6 +13,6 @@ import java.util.Map;
 public interface ReplayService extends IService<Replay> {
 
     /*根据投诉id。查询投诉回复列表*/
-    public Map<String,Object> queryReplayListService(Integer id
+    Map<String,Object> queryReplayListService(Integer id
             , Integer pageNum, Integer pageSize);
 }
