@@ -5,11 +5,11 @@
 <mapper namespace="com.example.demo.mapper.ReplayMapper">
 
     <resultMap id="BaseResultMap" type="com.example.demo.pojo.Replay">
-            <id property="id" column="id" />
-            <result property="content" column="content" />
-            <result property="redate" column="redate" />
-            <result property="score" column="score" />
-            <result property="quesId" column="ques_id" />
+        <id property="id" column="id"/>
+        <result property="content" column="content"/>
+        <result property="redate" column="redate"/>
+        <result property="score" column="score"/>
+        <result property="quesId" column="ques_id"/>
     </resultMap>
 
     <sql id="Base_Column_List">

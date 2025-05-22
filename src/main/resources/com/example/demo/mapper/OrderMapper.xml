@@ -5,13 +5,13 @@
 <mapper namespace="com.example.demo.mapper.OrderMapper">
 
     <resultMap id="BaseResultMap" type="com.example.demo.pojo.Order">
-            <id property="id" column="id" />
-            <result property="custId" column="cust_id" />
-            <result property="itemId" column="item_id" />
-            <result property="orderDate" column="order_date" />
-            <result property="state" column="state" />
-            <result property="pay" column="pay" />
-            <result property="payMoney" column="pay_money" />
+        <id property="id" column="id"/>
+        <result property="custId" column="cust_id"/>
+        <result property="itemId" column="item_id"/>
+        <result property="orderDate" column="order_date"/>
+        <result property="state" column="state"/>
+        <result property="pay" column="pay"/>
+        <result property="payMoney" column="pay_money"/>
     </resultMap>
 
     <sql id="Base_Column_List">
@@ -20,13 +20,15 @@
     </sql>
     <!-- 顶级sql统计客户历史消费总额 -->
     <select id="queryCountHisDataMapper" resultType="com.example.demo.dto.HisData">
-        select cust_id custId, sum(pay_money) hisTotal from t_order group by cust_id
+        select cust_id custId, sum(pay_money) hisTotal
+        from t_order
+        group by cust_id
     </select>
     <select id="queryOrderListMapper" resultType="com.example.demo.pojo.Order">
         select ord.*,customer.cust_name custName,
-               item.item_name itemName from t_customer customer
-                                                inner join t_order ord on customer.id=ord.cust_id
-                                                inner join t_item item on item.id=ord.item_id
+        item.item_name itemName from t_customer customer
+        inner join t_order ord on customer.id=ord.cust_id
+        inner join t_item item on item.id=ord.item_id
         <where>
             <if test="id!=null">
                 ord.id=#{id}

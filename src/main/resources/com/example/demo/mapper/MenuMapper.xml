@@ -5,11 +5,11 @@
 <mapper namespace="com.example.demo.mapper.MenuMapper">
 
     <resultMap id="BaseResultMap" type="com.example.demo.pojo.Menu">
-            <id property="id" column="id" />
-            <result property="label" column="label" />
-            <result property="component" column="component" />
-            <result property="pid" column="pid" />
-            <result property="icon_name" column="icon_name"/>
+        <id property="id" column="id"/>
+        <result property="label" column="label"/>
+        <result property="component" column="component"/>
+        <result property="pid" column="pid"/>
+        <result property="icon_name" column="icon_name"/>
     </resultMap>
 
     <sql id="Base_Column_List">

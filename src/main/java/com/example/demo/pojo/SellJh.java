@@ -8,45 +8,39 @@ import lombok.Data;
 
 /**
  * 销售计划表
+ *
  * @TableName t_sell_jh
  */
-@TableName(value ="t_sell_jh")
+@TableName(value = "t_sell_jh")
 @Data
 public class SellJh {
+    @TableField(exist = false)
+    private static final long serialVersionUID = 1L;
     /**
-     * 
+     *
      */
     @TableId(type = IdType.AUTO)
     private Integer id;
-
     /**
      * 客户ID
      */
     private Integer custid;
-
     /**
      * 渠道ID
      */
     private Integer channelId;
-
     /**
      * 金额
      */
     private Double money;
-
     /**
      * 当前步骤
      */
     private String nowStep;
-
     /**
      * 员工ID
      */
     private Integer empId;
-
-    @TableField(exist = false)
-    private static final long serialVersionUID = 1L;
-
     @TableField(exist = false)
     //扩展属性，封装客户名字
     private String custName;

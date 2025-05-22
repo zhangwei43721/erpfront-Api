@@ -11,51 +11,44 @@ import java.util.Date;
 
 /**
  * 订单表
+ *
  * @TableName t_order
  */
-@TableName(value ="t_order")
+@TableName(value = "t_order")
 @Data
 public class Order {
+    @TableField(exist = false)
+    private static final long serialVersionUID = 1L;
     /**
-     * 
+     *
      */
     @TableId(type = IdType.AUTO)
     private Integer id;
-
     /**
      * 客户ID
      */
     private Integer custId;
-
     /**
      * 商品ID
      */
     private Integer itemId;
-
     /**
      * 下单时间
      */
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date orderDate;
-
     /**
      * 状态
      */
     private String state;
-
     /**
      * 支付方式
      */
     private String pay;
-
     /**
      * 支付金额
      */
     private Double payMoney;
-
-    @TableField(exist = false)
-    private static final long serialVersionUID = 1L;
-
     @TableField(exist = false)
     private Integer num;
 
@@ -66,8 +59,8 @@ public class Order {
     private String itemName;
 
     @TableField(exist = false)
-    private Integer pageNum=1;
+    private Integer pageNum = 1;
 
     @TableField(exist = false)
-    private Integer pageSize=3;
+    private Integer pageSize = 3;
 }

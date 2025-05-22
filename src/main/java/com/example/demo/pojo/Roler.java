@@ -1,16 +1,16 @@
 package com.example.demo.pojo;
 
 import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
 /**
  * 角色信息表 (权限管理)
+ *
  * @TableName t_roler
  */
-@TableName(value ="t_roler")
+@TableName(value = "t_roler")
 @Data
 public class Roler {
     /**

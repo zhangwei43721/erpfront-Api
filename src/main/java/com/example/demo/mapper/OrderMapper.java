@@ -7,14 +7,15 @@ import com.example.demo.pojo.Order;
 import java.util.List;
 
 /**
-* @author skyforever
-* @description 针对表【t_order(订单表)】的数据库操作Mapper
-* @createDate 2025-05-13 10:05:12
-* @Entity com.example.demo.pojo.Order
-*/
+ * @author skyforever
+ * @description 针对表【t_order(订单表)】的数据库操作Mapper
+ * @createDate 2025-05-13 10:05:12
+ * @Entity com.example.demo.pojo.Order
+ */
 public interface OrderMapper extends BaseMapper<Order> {
     /**
      * 查询订单数量历史数据,方便对每个客户的消费金额进行统计
+     *
      * @return
      */
     List<HisData> queryCountHisDataMapper();

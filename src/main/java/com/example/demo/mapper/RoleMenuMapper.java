@@ -1,6 +1,7 @@
 package com.example.demo.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+
 import java.util.List;
 
 /**
@@ -13,6 +14,8 @@ import java.util.List;
  */
 public interface RoleMenuMapper extends BaseMapper<com.example.demo.pojo.RoleMenu> {
     List<Integer> getMenusByRoleId(Integer roleId);
+
     int deleteByRoleId(Integer roleId);
+
     int batchInsert(Integer roleId, List<Integer> menuIds);
 }

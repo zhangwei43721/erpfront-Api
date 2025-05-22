@@ -7,13 +7,14 @@ import lombok.Data;
 
 /**
  * 客户表
+ *
  * @TableName t_customer
  */
-@TableName(value ="t_customer")
+@TableName(value = "t_customer")
 @Data
 public class Customer {
     /**
-     * 
+     *
      */
     @TableId(type = IdType.AUTO)
     private Integer id;

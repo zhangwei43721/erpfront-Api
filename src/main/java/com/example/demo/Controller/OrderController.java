@@ -23,7 +23,7 @@ public class OrderController {
 //        return orderService.queryOrderListService(pageNum, pageSize);
 //    }
     @PostMapping("/listOrder")
-    public Map<String,Object> listOrders(@RequestBody Order order){
+    public Map<String, Object> listOrders(@RequestBody Order order) {
         return orderService.queryOrderListService(order);
     }
 

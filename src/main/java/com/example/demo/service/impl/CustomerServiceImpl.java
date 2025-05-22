@@ -17,10 +17,10 @@ import java.util.List;
 import java.util.Map;
 
 /**
-* @author skyforever
-* @description 针对表【t_customer(客户表)】的数据库操作Service实现
-* @createDate 2025-05-13 10:05:12
-*/
+ * @author skyforever
+ * @description 针对表【t_customer(客户表)】的数据库操作Service实现
+ * @createDate 2025-05-13 10:05:12
+ */
 @Service
 public class CustomerServiceImpl extends ServiceImpl<CustomerMapper, Customer> implements CustomerService {
 
@@ -30,6 +30,7 @@ public class CustomerServiceImpl extends ServiceImpl<CustomerMapper, Customer> i
 
     @Autowired
     private OrderMapper orderMapper;
+
     @Transactional
     @Override
     public Map<String, Object> queryCustListService(Integer pageNum, Integer pageSize) {
@@ -55,11 +56,12 @@ public class CustomerServiceImpl extends ServiceImpl<CustomerMapper, Customer> i
         result.put("total", page.getTotal());
         return result;
     }
+
     @Override
     public List<Customer> queryCustIdNameListService() {
-        QueryWrapper<Customer> wrapper=new QueryWrapper<>();
+        QueryWrapper<Customer> wrapper = new QueryWrapper<>();
         //指定列的投影，指定select id,cust_name
-        wrapper.select("id","cust_name");
+        wrapper.select("id", "cust_name");
         return customerMapper.selectList(wrapper);
     }
 }

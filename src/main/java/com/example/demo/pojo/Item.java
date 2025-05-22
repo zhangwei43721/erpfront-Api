@@ -9,13 +9,14 @@ import java.util.Date;
 
 /**
  * 商品表
+ *
  * @TableName t_item
  */
-@TableName(value ="t_item")
+@TableName(value = "t_item")
 @Data
 public class Item {
     /**
-     * 
+     *
      */
     @TableId(type = IdType.AUTO)
     private Integer id;

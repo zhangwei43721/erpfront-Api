@@ -15,13 +15,13 @@ import java.util.Map;
 
 
 /**
-* @author skyforever
-* @description 针对表【t_after_sales(售后服务表)】的数据库操作Service实现
-* @createDate 2025-05-13 10:05:12
-*/
+ * @author skyforever
+ * @description 针对表【t_after_sales(售后服务表)】的数据库操作Service实现
+ * @createDate 2025-05-13 10:05:12
+ */
 @Service
 public class AfterSalesServiceImpl extends ServiceImpl<AfterSalesMapper, AfterSales>
-    implements AfterSalesService{
+        implements AfterSalesService {
     @Autowired
     private AfterSalesMapper afterSalesMapper;
 
@@ -32,9 +32,9 @@ public class AfterSalesServiceImpl extends ServiceImpl<AfterSalesMapper, AfterSa
         //查询数据库
         List<AfterSales> afterSalesList = afterSalesMapper.queryAfterSaleMapper(afterSales);
 
-        Map<String, Object> result=new HashMap<>();
-        result.put("afterSalesList",afterSalesList);
-        result.put("total",page.getTotal());
+        Map<String, Object> result = new HashMap<>();
+        result.put("afterSalesList", afterSalesList);
+        result.put("total", page.getTotal());
         return result;
     }
 

@@ -26,6 +26,7 @@ public class CustomerController {
         result.put("code", 200);
         return result;
     }
+
     /*处理客户信息分页查询请求*/
     @GetMapping("/listCust")
     public Map<String, Object> queryCustList(
@@ -63,9 +64,10 @@ public class CustomerController {
         }
         return result;
     }
+
     /*处理加载所有客户列表请求*/
     @GetMapping("/listAllCust")
-    public List<Customer> listAllCust(){
+    public List<Customer> listAllCust() {
         return customerService.queryCustIdNameListService();
     }
 

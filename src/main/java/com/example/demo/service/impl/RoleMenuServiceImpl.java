@@ -7,11 +7,12 @@ import com.example.demo.service.RoleMenuService;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @Service
 public class RoleMenuServiceImpl extends ServiceImpl<RoleMenuMapper, RoleMenu>
-    implements RoleMenuService{
+        implements RoleMenuService {
 
     @Override
     public List<Integer> getMenusByRoleId(Integer roleId) {
@@ -23,9 +24,7 @@ public class RoleMenuServiceImpl extends ServiceImpl<RoleMenuMapper, RoleMenu>
         if (ids.length > 0) {
             Integer roleId = ids[0];
             List<Integer> menuIds = new ArrayList<>();
-            for(int i=1; i<ids.length; i++) {
-                menuIds.add(ids[i]);
-            }
+            menuIds.addAll(Arrays.asList(ids).subList(1, ids.length));
             // 先删除原有权限
             baseMapper.deleteByRoleId(roleId);
             // 批量插入新权限

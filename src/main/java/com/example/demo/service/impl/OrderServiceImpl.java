@@ -14,13 +14,13 @@ import java.util.List;
 import java.util.Map;
 
 /**
-* @author skyforever
-* @description 针对表【t_order(订单表)】的数据库操作Service实现
-* @createDate 2025-05-13 10:05:12
-*/
+ * @author skyforever
+ * @description 针对表【t_order(订单表)】的数据库操作Service实现
+ * @createDate 2025-05-13 10:05:12
+ */
 @Service
 public class OrderServiceImpl extends ServiceImpl<OrderMapper, Order>
-    implements OrderService{
+        implements OrderService {
 
     @Autowired
     private OrderMapper orderMapper;
@@ -33,9 +33,9 @@ public class OrderServiceImpl extends ServiceImpl<OrderMapper, Order>
         //查询数据库
         List<Order> orderList = orderMapper.queryOrderListMapper(order);
 
-        Map<String, Object> result=new HashMap<>();
-        result.put("orderList",orderList);
-        result.put("total",page.getTotal());
+        Map<String, Object> result = new HashMap<>();
+        result.put("orderList", orderList);
+        result.put("total", page.getTotal());
 
         return result;
     }

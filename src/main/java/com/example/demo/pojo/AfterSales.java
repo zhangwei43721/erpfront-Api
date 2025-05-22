@@ -8,13 +8,14 @@ import lombok.Data;
 
 /**
  * 售后服务表
+ *
  * @TableName t_after_sales
  */
-@TableName(value ="t_after_sales")
+@TableName(value = "t_after_sales")
 @Data
 public class AfterSales {
     /**
-     * 
+     *
      */
     @TableId(type = IdType.AUTO)
     private Integer id;
@@ -47,7 +48,7 @@ public class AfterSales {
     @TableField(exist = false)
     private String custName;
     @TableField(exist = false)
-    private Integer pageNum=1;
+    private Integer pageNum = 1;
     @TableField(exist = false)
-    private Integer pageSize=3;
+    private Integer pageSize = 3;
 }

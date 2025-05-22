@@ -5,9 +5,9 @@
 <mapper namespace="com.example.demo.mapper.UserRoleMapper">
 
     <resultMap id="BaseResultMap" type="com.example.demo.pojo.UserRole">
-            <id property="id" column="id" />
-            <result property="uid" column="uid" />
-            <result property="rid" column="rid" />
+        <id property="id" column="id"/>
+        <result property="uid" column="uid"/>
+        <result property="rid" column="rid"/>
     </resultMap>
 
     <sql id="Base_Column_List">

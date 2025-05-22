@@ -28,12 +28,12 @@ public class ReplayController {
         result.put("msg", "操作失败.....");
         try {
             replay.setRedate(new Date());
-            replay.setScore(ThreadLocalRandom.current().nextInt(1,6));
+            replay.setScore(ThreadLocalRandom.current().nextInt(1, 6));
             replayService.save(replay);
 
-            result.put("code",200);
-            result.put("msg","处理投诉回复成功......");
-        }catch (Exception ex){
+            result.put("code", 200);
+            result.put("msg", "处理投诉回复成功......");
+        } catch (Exception ex) {
             ex.printStackTrace();
         }
         return result;

@@ -5,13 +5,13 @@
 <mapper namespace="com.example.demo.mapper.ItemMapper">
 
     <resultMap id="BaseResultMap" type="com.example.demo.pojo.Item">
-            <id property="id" column="id" />
-            <result property="itemName" column="item_name" />
-            <result property="price" column="price" />
-            <result property="itemDate" column="item_date" />
-            <result property="hotTitle" column="hot_title" />
-            <result property="facturer" column="facturer" />
-            <result property="store" column="store" />
+        <id property="id" column="id"/>
+        <result property="itemName" column="item_name"/>
+        <result property="price" column="price"/>
+        <result property="itemDate" column="item_date"/>
+        <result property="hotTitle" column="hot_title"/>
+        <result property="facturer" column="facturer"/>
+        <result property="store" column="store"/>
     </resultMap>
 
     <sql id="Base_Column_List">

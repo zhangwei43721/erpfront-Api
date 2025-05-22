@@ -5,9 +5,9 @@
 <mapper namespace="com.example.demo.mapper.RolerMapper">
 
     <resultMap id="BaseResultMap" type="com.example.demo.pojo.Roler">
-            <id property="id" column="id" />
-            <result property="rname" column="rname" />
-            <result property="rdesc" column="rdesc" />
+        <id property="id" column="id"/>
+        <result property="rname" column="rname"/>
+        <result property="rdesc" column="rdesc"/>
     </resultMap>
 
     <sql id="Base_Column_List">

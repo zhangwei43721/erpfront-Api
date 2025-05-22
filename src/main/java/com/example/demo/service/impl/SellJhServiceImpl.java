@@ -14,31 +14,32 @@ import java.util.List;
 import java.util.Map;
 
 /**
-* @author skyforever
-* @description 针对表【t_sell_jh(销售计划表)】的数据库操作Service实现
-* @createDate 2025-05-13 10:05:12
-*/
+ * @author skyforever
+ * @description 针对表【t_sell_jh(销售计划表)】的数据库操作Service实现
+ * @createDate 2025-05-13 10:05:12
+ */
 @Service
 public class SellJhServiceImpl extends ServiceImpl<SellJhMapper, SellJh>
-    implements SellJhService{
+        implements SellJhService {
 
     @Autowired
     private SellJhMapper sellJhMapper;
+
     @Override
     public Map<String, Object> querySellJhListService(Integer pageNum, Integer pageSize) {
 
-        Map<String, Object> result=new HashMap<>();
+        Map<String, Object> result = new HashMap<>();
         //Page<SellJh> page=new Page<>(pageNum,pageSize);
         //使用PageHelper分页,指定分页查询参数
         Page<SellJh> page = PageHelper.startPage(pageNum, pageSize);
 
-        System.out.println("1---------"+page.getTotal());
+        System.out.println("1---------" + page.getTotal());
         //List<SellJh> sellJhs = sellJhMapper.selectList(page, null);
         List<SellJh> sellJhs = sellJhMapper.querySellJhListMapper();
 
-        System.out.println("2---------"+page.getTotal());
-        result.put("sellJhList",sellJhs);
-        result.put("total",page.getTotal());
+        System.out.println("2---------" + page.getTotal());
+        result.put("sellJhList", sellJhs);
+        result.put("total", page.getTotal());
         return result;
     }
 }

@@ -5,12 +5,12 @@
 <mapper namespace="com.example.demo.mapper.AfterSalesMapper">
 
     <resultMap id="BaseResultMap" type="com.example.demo.pojo.AfterSales">
-            <id property="id" column="id" />
-            <result property="custId" column="cust_id" />
-            <result property="question" column="question" />
-            <result property="state" column="state" />
-            <result property="record" column="record" />
-            <result property="level" column="level" />
+        <id property="id" column="id"/>
+        <result property="custId" column="cust_id"/>
+        <result property="question" column="question"/>
+        <result property="state" column="state"/>
+        <result property="record" column="record"/>
+        <result property="level" column="level"/>
     </resultMap>
 
     <sql id="Base_Column_List">

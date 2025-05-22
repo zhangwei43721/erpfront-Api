@@ -5,13 +5,13 @@
 <mapper namespace="com.example.demo.mapper.UserMapper">
 
     <resultMap id="BaseResultMap" type="com.example.demo.pojo.User">
-            <id property="id" column="id" />
-            <result property="uname" column="uname" />
-            <result property="upwd" column="upwd" />
-            <result property="phone" column="phone" />
-            <result property="edu" column="edu" />
-            <result property="age" column="age" />
-            <result property="title" column="title" />
+        <id property="id" column="id"/>
+        <result property="uname" column="uname"/>
+        <result property="upwd" column="upwd"/>
+        <result property="phone" column="phone"/>
+        <result property="edu" column="edu"/>
+        <result property="age" column="age"/>
+        <result property="title" column="title"/>
     </resultMap>
 
     <sql id="Base_Column_List">
