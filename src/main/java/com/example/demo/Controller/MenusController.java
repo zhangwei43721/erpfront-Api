@@ -2,102 +2,70 @@ package com.example.demo.Controller;
 
 import com.example.demo.pojo.Menu;
 import com.example.demo.service.MenuService;
+import com.example.demo.util.ResponseUtil; // 引入
 import com.example.demo.vo.MenuVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 @RestController
+@CrossOrigin
 public class MenusController {
 
     @Autowired
     private MenuService menuService;
 
     /*定义方法处理，加载左侧菜单节点的请求*/
-    @CrossOrigin
     @RequestMapping("/listMenus")
     public List<MenuVo> listMenus() {
         return menuService.queryMenuListService();
     }
 
     /*定义方法处理，加载左侧菜单节点的对应的组件下标的请求*/
-    @CrossOrigin
-    @RequestMapping("/compIndex")
-    public Integer compIndex(Integer id) {
-        Menu menus = menuService.getById(id);
-        return menus.getComponent();
+    @RequestMapping("/compIndex") // 可以用 @GetMapping
+    public Integer compIndex(@RequestParam Integer id) { // 明确使用 @RequestParam
+        Menu menu = menuService.getById(id);
+        if (menu != null) {
+            return menu.getComponent();
+        }
+        return null;
     }
 
     /*处理菜单节点信息的添加请求*/
-    @CrossOrigin
     @PostMapping("/saveMenus")
     public Map<String, Object> saveMenus(@RequestBody Menu menu) {
-        Map<String, Object> result = new HashMap<>();
-        result.put("code", 400);
-        result.put("msg", "操作失败......");
-        try {
-            menuService.saveMenusService(menu);
-            result.put("code", 200);
-            result.put("msg", "添加菜单节点成功.......");
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-        return result;
+        menuService.saveMenusService(menu);
+        return ResponseUtil.success("添加菜单节点成功.......");
     }
 
     /*处理菜单单个节点信息的修改请求*/
-    @CrossOrigin
     @PutMapping("/updateMenus")
     public Map<String, Object> updateMenus(@RequestBody Menu menu) {
-        Map<String, Object> result = new HashMap<>();
-        result.put("code", 400);
-        result.put("msg", "操作失败......");
-        try {
-            menuService.updateById(menu);
-            result.put("code", 200);
-            result.put("msg", "修改菜单节点成功.......");
-        } catch (Exception ex) {
-            ex.printStackTrace();
+        boolean updated = menuService.updateById(menu);
+        if (updated) {
+            return ResponseUtil.success("修改菜单节点成功.......");
+        } else {
+            return ResponseUtil.error(400, "操作失败......");
         }
-        return result;
     }
 
-    /*处理菜单节点信息的修改请求*/
-    @CrossOrigin
+    /*处理菜单节点信息的修改请求 (顺序)*/
     @PostMapping("/updateMenusOrder")
     public Map<String, Object> updateMenusOrder(@RequestBody List<MenuVo> menuUpdates) {
-        Map<String, Object> result = new HashMap<>();
-        result.put("code", 400);
-        result.put("msg", "菜单顺序更新失败!");
-        try {
-            menuService.updateMenusOrder(menuUpdates);
-            result.put("code", 200);
-            result.put("msg", "菜单顺序更新成功!");
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-        return result;
+        menuService.updateMenusOrder(menuUpdates);
+        return ResponseUtil.success("菜单顺序更新成功!");
     }
 
     /*处理菜单节点信息的删除请求*/
-    @CrossOrigin
     @DeleteMapping("/deleteMenus")
-    public Map<String, Object> deleteMenus(Integer id) {
-        Map<String, Object> result = new HashMap<>();
-        result.put("code", 400);
-        result.put("msg", "操作失败......");
-        try {
-            menuService.removeById(id);
-            result.put("code", 200);
-            result.put("msg", "删除菜单节点成功.......");
-        } catch (Exception ex) {
-            ex.printStackTrace();
+    public Map<String, Object> deleteMenus(@RequestParam Integer id) {
+        boolean deleted = menuService.removeById(id);
+        if (deleted) {
+            return ResponseUtil.success("删除菜单节点成功");
+        } else {
+            return ResponseUtil.error(400, "操作失败");
         }
-        return result;
     }
-
-
 }

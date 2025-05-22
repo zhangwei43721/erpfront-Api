@@ -9,9 +9,11 @@ import com.example.demo.service.ReplayService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ThreadLocalRandom;
 
 /**
  * @author skyforever
@@ -44,6 +46,12 @@ public class ReplayServiceImpl extends ServiceImpl<ReplayMapper, Replay>
         return result;
     }
 
+    @Override
+    public void saveReplayWithLogic(Replay replay) {
+        replay.setRedate(new Date());
+        replay.setScore(ThreadLocalRandom.current().nextInt(1, 6));
+        this.save(replay);
+    }
 }
 
 

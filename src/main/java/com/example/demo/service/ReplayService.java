@@ -15,4 +15,10 @@ public interface ReplayService extends IService<Replay> {
     /*根据投诉id。查询投诉回复列表*/
     Map<String, Object> queryReplayListService(Integer id
             , Integer pageNum, Integer pageSize);
+
+    /**
+     * 保存回复，包含业务逻辑（设置日期和分数）
+     * @param replay 回复对象
+     */
+    void saveReplayWithLogic(Replay replay);
 }
