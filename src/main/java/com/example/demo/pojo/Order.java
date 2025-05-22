@@ -7,6 +7,8 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 
+import java.io.Serial;
+import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -16,7 +18,9 @@ import java.util.Date;
  */
 @TableName(value = "t_order")
 @Data
-public class Order {
+public class Order implements Serializable {
+
+    @Serial
     @TableField(exist = false)
     private static final long serialVersionUID = 1L;
     /**

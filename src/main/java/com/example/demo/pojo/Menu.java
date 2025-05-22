@@ -6,6 +6,9 @@ import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
+import java.io.Serial;
+import java.io.Serializable;
+
 /**
  * 前端菜单表
  *
@@ -13,7 +16,8 @@ import lombok.Data;
  */
 @TableName(value = "t_menu")
 @Data
-public class Menu {
+public class Menu implements Serializable {
+    @Serial
     @TableField(exist = false)
     private static final long serialVersionUID = 1L;
     /**

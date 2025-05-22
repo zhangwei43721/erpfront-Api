@@ -16,7 +16,7 @@ public interface OrderMapper extends BaseMapper<Order> {
     /**
      * 查询订单数量历史数据,方便对每个客户的消费金额进行统计
      *
-     * @return
+     * @return List<HisData>
      */
     List<HisData> queryCountHisDataMapper();
 
