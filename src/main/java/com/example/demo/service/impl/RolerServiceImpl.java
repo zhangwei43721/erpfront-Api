@@ -1,12 +1,16 @@
 package com.example.demo.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.example.demo.mapper.RolerMapper;
+import com.example.demo.pojo.RoleMenu;
 import com.example.demo.pojo.Roler;
+import com.example.demo.service.RoleMenuService;
 import com.example.demo.service.RolerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.HashMap;
 import java.util.List;
@@ -24,6 +28,9 @@ public class RolerServiceImpl extends ServiceImpl<RolerMapper, Roler>
     @Autowired
     private RolerMapper rolerMapper;
 
+    @Autowired
+    private RoleMenuService roleMenuService; // 用于操作 RoleMenu
+
     @Override
     public Map<String, Object> queryRolePageListService(Integer pageNum, Integer pageSize) {
         //指定分页查询参数
@@ -35,7 +42,29 @@ public class RolerServiceImpl extends ServiceImpl<RolerMapper, Roler>
         result.put("rolerList", rolerList);
         return result;
     }
-    
+    @Override
+    @Transactional // 确保操作的原子性
+    public void deleteRolerAndMenus(Integer rolerId) {
+        // 1. （可选）检查角色是否存在
+        Roler roler = this.getById(rolerId);
+        if (roler == null) {
+            // 如果角色不存在，根据业务需求决定是静默处理还是抛异常
+            // 抛出异常会被全局异常处理器捕获
+            throw new RuntimeException("要删除的角色不存在, ID: " + rolerId);
+        }
+        // 2. 删除角色关联的菜单权限 (t_role_menu 表中的记录)
+        QueryWrapper<RoleMenu> roleMenuQueryWrapper = new QueryWrapper<>();
+        roleMenuQueryWrapper.eq("rid", rolerId);
+        roleMenuService.remove(roleMenuQueryWrapper); // 假设 RoleMenuService 继承了 IService<RoleMenu>
+
+        // 3. 删除角色本身 (t_roler 表中的记录)
+        boolean removed = this.removeById(rolerId);
+        if (!removed && roler != null) { // roler!=null 确保不是因为第一步检查前就删了
+            // 如果上面 getById 成功，但这里删除失败，可能是并发或数据库问题
+            throw new RuntimeException("删除角色信息失败, ID: " + rolerId);
+        }
+    }
+
 }
 
 
