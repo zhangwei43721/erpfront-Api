@@ -26,7 +26,6 @@ public class RolerServiceImpl extends ServiceImpl<RolerMapper, Roler>
 
     @Override
     public Map<String, Object> queryRolePageListService(Integer pageNum, Integer pageSize) {
-
         //指定分页查询参数
         Page<Roler> page = new Page<>(pageNum, pageSize);
         List<Roler> rolerList = rolerMapper.selectList(page, null);
@@ -36,6 +35,7 @@ public class RolerServiceImpl extends ServiceImpl<RolerMapper, Roler>
         result.put("rolerList", rolerList);
         return result;
     }
+    
 }
 
 

@@ -2,10 +2,10 @@ package com.example.demo.Controller;
 
 import com.example.demo.pojo.SellJh;
 import com.example.demo.service.SellJhService;
+import com.example.demo.util.ResponseUtil; // 引入工具类
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.HashMap;
 import java.util.Map;
 
 @RestController
@@ -18,16 +18,8 @@ public class SellJhController {
     /*添加销售计划*/
     @PostMapping("/saveSellJh")
     public Map<String, Object> saveSellJh(@RequestBody SellJh sellJh) {
-        Map<String, Object> result = new HashMap<>();
-        try {
-            sellJhService.save(sellJh);
-            result.put("code", 200);
-            result.put("message", "添加成功");
-        } catch (Exception e) {
-            result.put("code", 400);
-            result.put("message", "添加失败");
-        }
-        return result;
+         sellJhService.save(sellJh);
+         return ResponseUtil.success("添加成功");
     }
 
     /*处理销售计划分页查询请求*/
@@ -41,30 +33,14 @@ public class SellJhController {
     /*删除销售计划*/
     @DeleteMapping("/deleteSellJh/{id}")
     public Map<String, Object> deleteSellJh(@PathVariable Integer id) {
-        Map<String, Object> result = new HashMap<>();
-        try {
-            sellJhService.removeById(id);
-            result.put("code", 200);
-            result.put("message", "删除成功");
-        } catch (Exception e) {
-            result.put("code", 400);
-            result.put("message", "删除失败");
-        }
-        return result;
+         sellJhService.removeById(id);
+         return ResponseUtil.success("删除成功");
     }
 
     /*修改销售计划*/
     @PutMapping("/updateSellJh")
     public Map<String, Object> updateSellJh(@RequestBody SellJh sellJh) {
-        Map<String, Object> result = new HashMap<>();
-        try {
-            sellJhService.updateById(sellJh);
-            result.put("code", 200);
-            result.put("message", "修改成功");
-        } catch (Exception e) {
-            result.put("code", 400);
-            result.put("message", "修改失败");
-        }
-        return result;
+         sellJhService.updateById(sellJh);
+         return ResponseUtil.success("修改成功");
     }
 }
