@@ -13,4 +13,22 @@
     <sql id="Base_Column_List">
         id,rid,mid
     </sql>
+
+    <!-- 根据角色ID获取菜单ID列表 -->
+    <select id="getMenusByRoleId" resultType="java.lang.Integer">
+        SELECT mid FROM t_role_menu WHERE rid = #{roleId}
+    </select>
+
+    <!-- 删除角色所有权限 -->
+    <delete id="deleteByRoleId">
+        DELETE FROM t_role_menu WHERE rid = #{roleId}
+    </delete>
+
+    <!-- 批量插入角色菜单权限 -->
+    <insert id="batchInsert">
+        INSERT INTO t_role_menu(rid, mid) VALUES
+        <foreach collection="menuIds" item="mid" separator=",">
+            (#{roleId}, #{mid})
+        </foreach>
+    </insert>
 </mapper>

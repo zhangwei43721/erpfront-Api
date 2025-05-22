@@ -1,7 +1,9 @@
 package com.example.demo.service;
 
-import com.example.demo.pojo.RoleMenu;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.example.demo.pojo.RoleMenu;
+
+import java.util.List;
 
 /**
 * @author skyforever
@@ -10,4 +12,6 @@ import com.baomidou.mybatisplus.extension.service.IService;
 */
 public interface RoleMenuService extends IService<RoleMenu> {
 
+    List<Integer> getMenusByRoleId(Integer roleId);
+    boolean grantRoleMenus(Integer[] ids);
 }
