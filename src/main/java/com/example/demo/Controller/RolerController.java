@@ -1,5 +1,6 @@
 package com.example.demo.Controller;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.example.demo.pojo.Roler;
 import com.example.demo.service.RoleMenuService;
 import com.example.demo.service.RolerService;
@@ -19,6 +20,15 @@ public class RolerController {
 
     @Autowired
     private RoleMenuService roleMenuService;
+
+    /*加载所有角色信息*/
+    @GetMapping("/loadAllRoles")
+    public List<Roler> loadAllRoles(){
+        QueryWrapper<Roler> wrapper=new QueryWrapper<>();
+        wrapper.select("id","rname");
+        List<Roler> list = rolerService.list(wrapper);
+        return list;
+    }
 
     /*处理分页查询请求*/
     @GetMapping("/rolerList")
