@@ -18,4 +18,15 @@
         id,uname,upwd,phone,edu,age,
         title
     </sql>
+
+    <!--定义sql保存用户信息
+        保存数据，数据库id自增，保存数据完成后产生的自增的id，封装到方法传入的
+        user参数的id属性
+    -->
+    <insert id="saveUserMapper" parameterType="com.example.demo.pojo.User"
+            useGeneratedKeys="true" keyProperty="id">
+        insert into t_user values(null,#{uname},#{upwd},#{phone},
+                                  #{edu},#{age},#{title})
+    </insert>
+
 </mapper>

@@ -6,7 +6,7 @@ import java.util.Map;
 public class ResponseUtil {
 
     private static final String KEY_CODE = "code";
-    private static final String KEY_MESSAGE = "message"; // 统一使用 "message"
+    private static final String KEY_MESSAGE = "message";
 
     public static Map<String, Object> success(String message) {
         Map<String, Object> result = new HashMap<>();
@@ -28,7 +28,7 @@ public class ResponseUtil {
         return result;
     }
 
-    // 默认错误，可以使用 400 或 500
+    // 默认错误
     public static Map<String, Object> error(String message) {
         return error(400, message);
     }

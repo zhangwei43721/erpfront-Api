@@ -1,6 +1,7 @@
 package com.example.demo.pojo;
 
 import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -50,4 +51,8 @@ public class User {
      * 职位
      */
     private String title;
+
+    //扩展属性保存用户角色id集合
+    @TableField (exist = false)
+    private Integer[] rids;
 }

@@ -15,10 +15,9 @@ public class GlobalExceptionHandler {
 
     private static final Logger logger = LoggerFactory.getLogger(GlobalExceptionHandler.class);
 
-    @ExceptionHandler(Exception.class) // 捕获所有Exception类型的异常
+    @ExceptionHandler(Exception.class)
     public Map<String, Object> handleGlobalException(Exception e) {
-        logger.error("发生未捕获异常: ", e); // 重要：记录日志
-        // 对于前端，通常返回一个通用的错误信息
+        logger.error("发生未捕获异常: ", e); // 记录日志
         return ResponseUtil.error(500, "服务器内部错误，请稍后再试或联系管理员");
     }
 }
