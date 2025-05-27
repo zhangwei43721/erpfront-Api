@@ -23,11 +23,10 @@ public class RolerController {
 
     /*加载所有角色信息*/
     @GetMapping("/loadAllRoles")
-    public List<Roler> loadAllRoles(){
-        QueryWrapper<Roler> wrapper=new QueryWrapper<>();
-        wrapper.select("id","rname");
-        List<Roler> list = rolerService.list(wrapper);
-        return list;
+    public List<Roler> loadAllRoles() {
+        QueryWrapper<Roler> wrapper = new QueryWrapper<>();
+        wrapper.select("id", "rname");
+        return rolerService.list(wrapper);
     }
 
     /*处理分页查询请求*/

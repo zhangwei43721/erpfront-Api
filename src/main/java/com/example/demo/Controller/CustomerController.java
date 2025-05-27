@@ -2,7 +2,7 @@ package com.example.demo.Controller;
 
 import com.example.demo.pojo.Customer;
 import com.example.demo.service.CustomerService;
-import com.example.demo.util.ResponseUtil; // 引入
+import com.example.demo.util.ResponseUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

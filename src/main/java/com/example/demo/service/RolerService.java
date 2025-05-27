@@ -16,6 +16,7 @@ public interface RolerService extends IService<Roler> {
 
     /**
      * 删除角色及其关联的菜单权限
+     *
      * @param rolerId 角色ID
      * @throws RuntimeException 如果角色不存在或删除失败（可选，取决于你的错误处理策略）
      */

@@ -25,8 +25,9 @@
     -->
     <insert id="saveUserMapper" parameterType="com.example.demo.pojo.User"
             useGeneratedKeys="true" keyProperty="id">
-        insert into t_user values(null,#{uname},#{upwd},#{phone},
-                                  #{edu},#{age},#{title})
+        insert into t_user
+        values (null, #{uname}, #{upwd}, #{phone},
+                #{edu}, #{age}, #{title})
     </insert>
 
 </mapper>

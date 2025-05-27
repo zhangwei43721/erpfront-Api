@@ -12,7 +12,7 @@ import com.example.demo.pojo.User;
 public interface UserMapper extends BaseMapper<User> {
 
     /*保存用户信息*/
-    public void saveUserMapper(User user);
+    void saveUserMapper(User user);
 }
 
 

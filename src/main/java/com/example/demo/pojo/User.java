@@ -53,6 +53,6 @@ public class User {
     private String title;
 
     //扩展属性保存用户角色id集合
-    @TableField (exist = false)
+    @TableField(exist = false)
     private Integer[] rids;
 }

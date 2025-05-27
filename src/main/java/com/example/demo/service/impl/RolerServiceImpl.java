@@ -42,6 +42,7 @@ public class RolerServiceImpl extends ServiceImpl<RolerMapper, Roler>
         result.put("rolerList", rolerList);
         return result;
     }
+
     @Override
     @Transactional // 确保操作的原子性
     public void deleteRolerAndMenus(Integer rolerId) {
@@ -59,7 +60,7 @@ public class RolerServiceImpl extends ServiceImpl<RolerMapper, Roler>
 
         // 3. 删除角色本身 (t_roler 表中的记录)
         boolean removed = this.removeById(rolerId);
-        if (!removed && roler != null) { // roler!=null 确保不是因为第一步检查前就删了
+        if (!removed) { // roler!=null 确保不是因为第一步检查前就删了
             // 如果上面 getById 成功，但这里删除失败，可能是并发或数据库问题
             throw new RuntimeException("删除角色信息失败, ID: " + rolerId);
         }

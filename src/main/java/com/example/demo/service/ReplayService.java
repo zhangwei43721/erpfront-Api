@@ -18,6 +18,7 @@ public interface ReplayService extends IService<Replay> {
 
     /**
      * 保存回复，包含业务逻辑（设置日期和分数）
+     *
      * @param replay 回复对象
      */
     void saveReplayWithLogic(Replay replay);

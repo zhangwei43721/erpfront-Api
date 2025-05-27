@@ -5,11 +5,11 @@
 <mapper namespace="com.example.demo.mapper.CategoryMapper">
 
     <resultMap id="BaseResultMap" type="com.example.demo.pojo.Category">
-            <id property="id" column="id" />
-            <result property="isbn" column="isbn" />
-            <result property="cateName" column="cate_name" />
-            <result property="remark" column="remark" />
-            <result property="pid" column="pid" />
+        <id property="id" column="id"/>
+        <result property="isbn" column="isbn"/>
+        <result property="cateName" column="cate_name"/>
+        <result property="remark" column="remark"/>
+        <result property="pid" column="pid"/>
     </resultMap>
 
     <sql id="Base_Column_List">
