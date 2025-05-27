@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mapper.StoreMapper">
+
+    <resultMap id="BaseResultMap" type="com.example.demo.pojo.Store">
+            <id property="storeId" column="store_id" />
+            <result property="storeName" column="store_name" />
+            <result property="storeNum" column="store_num" />
+            <result property="storeAddress" column="store_address" />
+            <result property="concat" column="concat" />
+            <result property="phone" column="phone" />
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        store_id,store_name,store_num,store_address,concat,phone
+    </sql>
+</mapper>

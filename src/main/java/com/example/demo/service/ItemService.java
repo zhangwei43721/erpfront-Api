@@ -3,6 +3,8 @@ package com.example.demo.service;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.example.demo.pojo.Item;
 
+import java.util.List;
+
 /**
  * @author skyforever
  * @description 针对表【t_item(商品表)】的数据库操作Service
@@ -10,4 +12,6 @@ import com.example.demo.pojo.Item;
  */
 public interface ItemService extends IService<Item> {
 
+    /*商品分页查询*/
+    List<Item> queryItemListService(Integer pageNum, Integer pageSize);
 }

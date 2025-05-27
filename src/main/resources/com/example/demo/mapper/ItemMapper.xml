@@ -5,17 +5,33 @@
 <mapper namespace="com.example.demo.mapper.ItemMapper">
 
     <resultMap id="BaseResultMap" type="com.example.demo.pojo.Item">
-        <id property="id" column="id"/>
-        <result property="itemName" column="item_name"/>
-        <result property="price" column="price"/>
-        <result property="itemDate" column="item_date"/>
-        <result property="hotTitle" column="hot_title"/>
-        <result property="facturer" column="facturer"/>
-        <result property="store" column="store"/>
+            <id property="id" column="id" />
+            <result property="itemNum" column="item_num" />
+            <result property="itemName" column="item_name" />
+            <result property="typeId" column="type_id" />
+            <result property="store" column="store" />
+            <result property="brandId" column="brand_id" />
+            <result property="storeId" column="store_id" />
+            <result property="supplyId" column="supply_id" />
+            <result property="placeId" column="place_id" />
+            <result property="unitId" column="unit_id" />
+            <result property="price" column="price" />
+            <result property="sellPrice" column="sell_price" />
+            <result property="vipPrice" column="vip_price" />
+            <result property="itemDesc" column="item_desc" />
+            <result property="itemDate" column="item_date" />
+            <result property="endDate" column="end_date" />
+            <result property="hotTitle" column="hot_title" />
+            <result property="facturer" column="facturer" />
+            <result property="statue" column="statue" />
+            <result property="imgs" column="imgs"/>
+            <result property="createBy" column="create_by" />
     </resultMap>
 
     <sql id="Base_Column_List">
-        id,item_name,price,item_date,hot_title,facturer,
-        store
+        id,item_num,item_name,type_id,store,brand_id,
+        store_id,supply_id,place_id,unit_id,price,
+        sell_price,vip_price,item_desc,item_date,end_date,
+        hot_title,facturer,statue,imgs,create_by
     </sql>
 </mapper>
