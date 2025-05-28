@@ -4,11 +4,12 @@ import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
-import java.util.Date;
-import java.util.List;
-
+import com.example.demo.handler.ListStringJsonTypeHandler;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
+
+import java.util.Date;
+import java.util.List;
 
 /**
  * 商品信息表
@@ -117,6 +118,7 @@ public class Item {
      * 商品图片路径
      */
     @JsonProperty("imgs")
+    @TableField(typeHandler = ListStringJsonTypeHandler.class)
     private List<String> imgs;
 
     /**

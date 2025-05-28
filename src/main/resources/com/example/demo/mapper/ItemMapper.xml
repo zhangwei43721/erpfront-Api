@@ -24,7 +24,7 @@
             <result property="hotTitle" column="hot_title" />
             <result property="facturer" column="facturer" />
             <result property="statue" column="statue" />
-            <result property="imgs" column="imgs"/>
+            <result property="imgs" column="imgs" typeHandler="com.example.demo.handler.ListStringJsonTypeHandler"/>
             <result property="createBy" column="create_by" />
     </resultMap>
 
