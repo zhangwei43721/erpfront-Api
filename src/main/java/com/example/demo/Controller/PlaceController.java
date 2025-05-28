@@ -20,9 +20,9 @@ public class PlaceController {
 
     /*处理加载商品产地列表的请求*/
     @GetMapping("/placeList")
-    public List<Place> queryPlaceList(){
-        QueryWrapper<Place> wrapper=new QueryWrapper<>();
-        wrapper.select("place_id","place_name");
+    public List<Place> queryPlaceList() {
+        QueryWrapper<Place> wrapper = new QueryWrapper<>();
+        wrapper.select("place_id", "place_name");
         return placeService.list(wrapper);
     }
 }

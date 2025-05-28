@@ -19,10 +19,10 @@ public class UnitController {
 
     /*处理加载商品单位的列表*/
     @GetMapping("/unitList")
-    public List<Unit> queryUnitList(){
+    public List<Unit> queryUnitList() {
 
-        QueryWrapper<Unit> wrapper=new QueryWrapper<>();
-        wrapper.select("unit_id","unit_name");
+        QueryWrapper<Unit> wrapper = new QueryWrapper<>();
+        wrapper.select("unit_id", "unit_name");
         return unitService.list(wrapper);
     }
 }

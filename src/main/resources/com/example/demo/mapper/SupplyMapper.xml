@@ -5,14 +5,14 @@
 <mapper namespace="com.example.demo.mapper.SupplyMapper">
 
     <resultMap id="BaseResultMap" type="com.example.demo.pojo.Supply">
-            <id property="supplyId" column="supply_id" />
-            <result property="supplyNum" column="supply_num" />
-            <result property="supplyName" column="supply_name" />
-            <result property="supplyIntroduce" column="supply_introduce" />
-            <result property="concat" column="concat" />
-            <result property="phone" column="phone" />
-            <result property="address" column="address" />
-            <result property="isDelete" column="is_delete" />
+        <id property="supplyId" column="supply_id"/>
+        <result property="supplyNum" column="supply_num"/>
+        <result property="supplyName" column="supply_name"/>
+        <result property="supplyIntroduce" column="supply_introduce"/>
+        <result property="concat" column="concat"/>
+        <result property="phone" column="phone"/>
+        <result property="address" column="address"/>
+        <result property="isDelete" column="is_delete"/>
     </resultMap>
 
     <sql id="Base_Column_List">

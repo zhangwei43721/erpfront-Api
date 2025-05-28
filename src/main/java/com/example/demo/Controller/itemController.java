@@ -2,11 +2,11 @@ package com.example.demo.Controller;
 
 import com.example.demo.pojo.Item;
 import com.example.demo.service.ItemService;
+import com.example.demo.util.CodeUtils;
 import com.example.demo.util.ResponseUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -15,6 +15,12 @@ public class itemController {
 
     @Autowired
     private ItemService itemService;
+
+    /*处理产生商品编码的请求*/
+    @GetMapping("/getCode")
+    public String toItemCode() {
+        return CodeUtils.toItemCode();
+    }
 
     /*添加商品信息*/
     @PostMapping("/saveItem")
@@ -25,7 +31,7 @@ public class itemController {
 
     /*处理商品信息分页查询请求*/
     @GetMapping("/listItems")
-    public List<Item> queryItemList(
+    public Map<String, Object> itemList(
             @RequestParam(defaultValue = "1") Integer pageNum,
             @RequestParam(defaultValue = "10") Integer pageSize) {
         return itemService.queryItemListService(pageNum, pageSize);

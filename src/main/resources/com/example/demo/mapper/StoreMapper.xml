@@ -5,12 +5,12 @@
 <mapper namespace="com.example.demo.mapper.StoreMapper">
 
     <resultMap id="BaseResultMap" type="com.example.demo.pojo.Store">
-            <id property="storeId" column="store_id" />
-            <result property="storeName" column="store_name" />
-            <result property="storeNum" column="store_num" />
-            <result property="storeAddress" column="store_address" />
-            <result property="concat" column="concat" />
-            <result property="phone" column="phone" />
+        <id property="storeId" column="store_id"/>
+        <result property="storeName" column="store_name"/>
+        <result property="storeNum" column="store_num"/>
+        <result property="storeAddress" column="store_address"/>
+        <result property="concat" column="concat"/>
+        <result property="phone" column="phone"/>
     </resultMap>
 
     <sql id="Base_Column_List">

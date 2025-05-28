@@ -19,9 +19,9 @@ public class StoreController {
 
     /*处理加载仓库选项的请求*/
     @GetMapping("/storeList")
-    public List<Store> storeList(){
-        QueryWrapper<Store> wrapper=new QueryWrapper<>();
-        wrapper.select("store_id","store_name");
+    public List<Store> storeList() {
+        QueryWrapper<Store> wrapper = new QueryWrapper<>();
+        wrapper.select("store_id", "store_name");
         return storeService.list(wrapper);
     }
 }

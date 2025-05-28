@@ -1,8 +1,8 @@
 package com.example.demo.handler;
 
+import org.apache.ibatis.type.JdbcType;
 import org.apache.ibatis.type.MappedJdbcTypes;
 import org.apache.ibatis.type.MappedTypes;
-import org.apache.ibatis.type.JdbcType;
 
 import java.util.List;
 
@@ -12,7 +12,7 @@ import java.util.List;
 @MappedJdbcTypes(JdbcType.VARCHAR)
 @MappedTypes({List.class})
 public class ListStringJsonTypeHandler extends JsonTypeHandler<List<String>> {
-    
+
     @SuppressWarnings("unchecked")
     public ListStringJsonTypeHandler() {
         super((Class<List<String>>) (Class<?>) List.class);

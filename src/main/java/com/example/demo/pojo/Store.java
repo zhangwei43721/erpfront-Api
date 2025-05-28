@@ -1,16 +1,16 @@
 package com.example.demo.pojo;
 
 import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
 /**
  * 仓库表
+ *
  * @TableName t_store
  */
-@TableName(value ="t_store")
+@TableName(value = "t_store")
 @Data
 public class Store {
     /**

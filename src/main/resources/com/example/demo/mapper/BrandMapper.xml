@@ -5,10 +5,10 @@
 <mapper namespace="com.example.demo.mapper.BrandMapper">
 
     <resultMap id="BaseResultMap" type="com.example.demo.pojo.Brand">
-            <id property="brandId" column="brand_id" />
-            <result property="brandName" column="brand_name" />
-            <result property="brandLeter" column="brand_leter" />
-            <result property="brandDesc" column="brand_desc" />
+        <id property="brandId" column="brand_id"/>
+        <result property="brandName" column="brand_name"/>
+        <result property="brandLeter" column="brand_leter"/>
+        <result property="brandDesc" column="brand_desc"/>
     </resultMap>
 
     <sql id="Base_Column_List">

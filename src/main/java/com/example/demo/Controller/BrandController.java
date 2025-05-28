@@ -18,9 +18,9 @@ public class BrandController {
     private BrandService brandService;
 
     @GetMapping("/brandList")
-    public List<Brand> queryBrandList(){
-        QueryWrapper<Brand> wrapper=new QueryWrapper<>();
-        wrapper.select("brand_id","brand_name");
+    public List<Brand> queryBrandList() {
+        QueryWrapper<Brand> wrapper = new QueryWrapper<>();
+        wrapper.select("brand_id", "brand_name");
         return brandService.list(wrapper);
     }
 }

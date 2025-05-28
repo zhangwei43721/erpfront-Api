@@ -5,9 +5,9 @@
 <mapper namespace="com.example.demo.mapper.UnitMapper">
 
     <resultMap id="BaseResultMap" type="com.example.demo.pojo.Unit">
-            <id property="unitId" column="unit_id" />
-            <result property="unitName" column="unit_name" />
-            <result property="unitDesc" column="unit_desc" />
+        <id property="unitId" column="unit_id"/>
+        <result property="unitName" column="unit_name"/>
+        <result property="unitDesc" column="unit_desc"/>
     </resultMap>
 
     <sql id="Base_Column_List">

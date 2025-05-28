@@ -1,13 +1,13 @@
 package com.example.demo.config;
 
 import com.example.demo.handler.ListStringJsonTypeHandler;
+import jakarta.annotation.PostConstruct;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.type.JdbcType;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 
-import jakarta.annotation.PostConstruct;
 import java.util.List;
 
 /**
@@ -26,6 +26,6 @@ public class MyBatisConfig {
     @PostConstruct
     public void registerTypeHandlers() {
         sqlSessionFactory.getConfiguration().getTypeHandlerRegistry()
-            .register(List.class, JdbcType.VARCHAR, ListStringJsonTypeHandler.class);
+                .register(List.class, JdbcType.VARCHAR, ListStringJsonTypeHandler.class);
     }
 }

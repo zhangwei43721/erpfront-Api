@@ -5,11 +5,11 @@
 <mapper namespace="com.example.demo.mapper.PlaceMapper">
 
     <resultMap id="BaseResultMap" type="com.example.demo.pojo.Place">
-            <id property="placeId" column="place_id" />
-            <result property="placeName" column="place_name" />
-            <result property="placeNum" column="place_num" />
-            <result property="introduce" column="introduce" />
-            <result property="isDelete" column="is_delete" />
+        <id property="placeId" column="place_id"/>
+        <result property="placeName" column="place_name"/>
+        <result property="placeNum" column="place_num"/>
+        <result property="introduce" column="introduce"/>
+        <result property="isDelete" column="is_delete"/>
     </resultMap>
 
     <sql id="Base_Column_List">

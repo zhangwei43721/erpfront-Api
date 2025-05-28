@@ -58,7 +58,7 @@ public class JsonTypeHandler<T> extends BaseTypeHandler<T> {
         if (json == null || json.isEmpty()) {
             return null;
         }
-        
+
         try {
             return OBJECT_MAPPER.readValue(json, type);
         } catch (JsonProcessingException e) {

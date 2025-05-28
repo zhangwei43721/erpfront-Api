@@ -3,7 +3,7 @@ package com.example.demo.service;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.example.demo.pojo.Item;
 
-import java.util.List;
+import java.util.Map;
 
 /**
  * @author skyforever
@@ -13,5 +13,5 @@ import java.util.List;
 public interface ItemService extends IService<Item> {
 
     /*商品分页查询*/
-    List<Item> queryItemListService(Integer pageNum, Integer pageSize);
+    Map<String, Object> queryItemListService(Integer pageNum, Integer pageSize);
 }

@@ -20,9 +20,9 @@ public class SupplyController {
 
     /*加载供应商下拉列表框数据*/
     @GetMapping("/supplyList")
-    public List<Supply> querySupplyList(){
-        QueryWrapper<Supply> wrapper=new QueryWrapper<>();
-        wrapper.select("supply_id","supply_name");
+    public List<Supply> querySupplyList() {
+        QueryWrapper<Supply> wrapper = new QueryWrapper<>();
+        wrapper.select("supply_id", "supply_name");
         return supplyService.list(wrapper);
     }
 }
