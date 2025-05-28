@@ -57,5 +57,31 @@ public class itemController {
             return ResponseUtil.error(400, "修改失败");
         }
     }
+    /*处理商量的下架请求*/
+    @GetMapping("/downItem/{id}")
+    public Map<String, Object> downItem(@PathVariable Integer id) {
+        Item item = new Item();
+        item.setId(id);
+        item.setStatue(1); // 1表示已下架状态
+        boolean updated = itemService.updateById(item);
+        if (updated) {
+            return ResponseUtil.success("商品下架成功");
+        } else {
+            return ResponseUtil.error(400, "操作失败，请重试");
+        }
+    }
+    /*处理商品上架请求*/
+    @GetMapping("/upItem/{id}")
+    public Map<String, Object> upItem(@PathVariable Integer id) {
+        Item item = new Item();
+        item.setId(id);
+        item.setStatue(0); // 0表示已上架状态
+        boolean updated = itemService.updateById(item);
+        if (updated) {
+            return ResponseUtil.success("商品上架成功");
+        } else {
+            return ResponseUtil.error(400, "操作失败，请重试");
+        }
+    }
 
 }
