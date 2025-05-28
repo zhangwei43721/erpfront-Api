@@ -2,6 +2,7 @@ package com.example.demo.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.example.demo.pojo.Item;
+import com.example.demo.vo.ItemCond;
 
 import java.util.List;
 
@@ -14,7 +15,7 @@ import java.util.List;
 public interface ItemMapper extends BaseMapper<Item> {
 
     /*实现商品信息分页查询*/
-    List<Item> queryItemListMapper();
+    List<Item> queryItemListMapper(ItemCond itemCond);
 }
 
 

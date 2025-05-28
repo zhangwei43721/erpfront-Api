@@ -34,20 +34,26 @@
         sell_price,vip_price,item_desc,item_date,end_date,
         hot_title,facturer,statue,imgs,create_by
     </sql>
-    <select id="queryItemListMapper" resultType="com.example.demo.pojo.Item">
-        select item.*,
-               type.cate_name,
-               brand.brand_name,
-               store.store_name,
-               supply.supply_name,
-               place.place_name,
-               unit.unit_name
-        from t_item item
-                 inner join t_category type on type.id = item.type_id
-                 inner join t_brand brand on brand.brand_id = item.brand_id
-                 inner join t_store store on store.store_id = item.store_id
-                 inner join t_supply supply on supply.supply_id = item.supply_id
-                 inner join t_place place on place.place_id = item.place_id
-                 inner join t_unit unit on unit.unit_id = item.unit_id
+    <select id="queryItemListMapper" resultType="com.example.demo.pojo.Item"
+            parameterType="com.example.demo.vo.ItemCond">
+        select item.*,type.cate_name,brand.brand_name,store.store_name,
+        supply.supply_name,place.place_name,unit.unit_name from t_item item
+        inner join t_category type on type.id=item.type_id
+        inner join t_brand brand on brand.brand_id=item.brand_id
+        inner join t_store store on store.store_id=item.store_id
+        inner join t_supply supply on supply.supply_id=item.supply_id
+        inner join t_place place on place.place_id=item.place_id
+        inner join t_unit unit on unit.unit_id=item.unit_id
+        <where>
+            <if test="itemNum!=null and itemNum!=''">
+                item.item_num like concat('%', #{itemNum}, '%')
+            </if>
+            <if test="itemName!=null and itemName!=''">
+                and item.item_name like concat('%', #{itemName}, '%')
+            </if>
+            <if test="statue!=null">
+                and item.statue=#{statue}
+            </if>
+        </where>
     </select>
 </mapper>

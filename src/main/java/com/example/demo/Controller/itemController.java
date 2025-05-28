@@ -4,6 +4,7 @@ import com.example.demo.pojo.Item;
 import com.example.demo.service.ItemService;
 import com.example.demo.util.CodeUtils;
 import com.example.demo.util.ResponseUtil;
+import com.example.demo.vo.ItemCond;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -30,11 +31,9 @@ public class itemController {
     }
 
     /*处理商品信息分页查询请求*/
-    @GetMapping("/listItems")
-    public Map<String, Object> itemList(
-            @RequestParam(defaultValue = "1") Integer pageNum,
-            @RequestParam(defaultValue = "10") Integer pageSize) {
-        return itemService.queryItemListService(pageNum, pageSize);
+    @PostMapping("/itemList")
+    public Map<String,Object> itemList(@RequestBody ItemCond itemCond){
+        return itemService.queryItemListService(itemCond);
     }
 
     /*删除商品信息*/
