@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mapper.InStoreMapper">
+
+    <resultMap id="BaseResultMap" type="com.example.demo.pojo.InStore">
+            <id property="insId" column="ins_id" />
+            <result property="storeId" column="store_id" />
+            <result property="productId" column="product_id" />
+            <result property="inNum" column="in_num" />
+            <result property="createBy" column="create_by" />
+            <result property="createTime" column="create_time" />
+            <result property="isIn" column="is_in" />
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        ins_id,store_id,product_id,in_num,create_by,create_time,
+        is_in
+    </sql>
+</mapper>
