@@ -3,7 +3,6 @@ package com.example.demo.Controller;
 import com.example.demo.pojo.Replay;
 import com.example.demo.service.ReplayService;
 import com.example.demo.util.ResponseUtil;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
@@ -13,8 +12,11 @@ import java.util.Map;
 public class ReplayController {
 
 
-    @Autowired
-    private ReplayService replayService;
+    private final ReplayService replayService;
+
+    public ReplayController(ReplayService replayService) {
+        this.replayService = replayService;
+    }
 
 
     /*定义方法处理投诉回复的请求*/

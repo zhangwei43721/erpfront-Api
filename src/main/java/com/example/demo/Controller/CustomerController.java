@@ -3,7 +3,6 @@ package com.example.demo.Controller;
 import com.example.demo.pojo.Customer;
 import com.example.demo.service.CustomerService;
 import com.example.demo.util.ResponseUtil;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -13,8 +12,11 @@ import java.util.Map;
 @CrossOrigin // 如果全局配置了，可以移除
 public class CustomerController {
 
-    @Autowired
-    private CustomerService customerService;
+    private final CustomerService customerService;
+
+    public CustomerController(CustomerService customerService) {
+        this.customerService = customerService;
+    }
 
     /*添加客户信息*/
     @PostMapping("/saveCust")

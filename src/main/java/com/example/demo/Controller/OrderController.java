@@ -3,7 +3,6 @@ package com.example.demo.Controller;
 import com.example.demo.pojo.Order;
 import com.example.demo.service.OrderService;
 import com.example.demo.util.ResponseUtil;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
@@ -12,8 +11,11 @@ import java.util.Map;
 @CrossOrigin
 public class OrderController {
 
-    @Autowired
-    private OrderService orderService;
+    private final OrderService orderService;
+
+    public OrderController(OrderService orderService) {
+        this.orderService = orderService;
+    }
 
     /* 处理分页查询请求 */
     @PostMapping("/listOrder")

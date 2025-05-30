@@ -13,4 +13,7 @@ import java.util.Map;
 public interface BuyListService extends IService<BuyList> {
     /*处理采购单需要自动带入的数据*/
     Map<String,Object> queryAutoDataBuyService(Integer id);
+
+    /*实现采购单分页查询*/
+    Map<String,Object> queryBuyListService(Integer pageNum,Integer pageSize);
 }

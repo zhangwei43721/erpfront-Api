@@ -5,7 +5,6 @@ import com.example.demo.pojo.User;
 import com.example.demo.service.UserRoleService;
 import com.example.demo.service.UserService;
 import com.example.demo.util.ResponseUtil;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -14,11 +13,14 @@ import java.util.Map;
 @RestController
 @CrossOrigin
 public class UserController {
-    @Autowired
-    private UserService userService;
+    private final UserService userService;
 
-    @Autowired
-    private UserRoleService userRoleService;
+    private final UserRoleService userRoleService;
+
+    public UserController(UserService userService, UserRoleService userRoleService) {
+        this.userService = userService;
+        this.userRoleService = userRoleService;
+    }
 
 
     /*处理用户信息分页查询氢气*/
@@ -42,7 +44,7 @@ public class UserController {
         QueryWrapper wrapper = new QueryWrapper();
         wrapper.eq("uid", id);
         wrapper.select("rid");
-        List<Integer> list = userRoleService.listObjs(wrapper);
+        List list = userRoleService.listObjs(wrapper);
         return list;
     }
 

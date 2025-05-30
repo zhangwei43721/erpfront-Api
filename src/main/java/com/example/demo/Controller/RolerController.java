@@ -5,7 +5,6 @@ import com.example.demo.pojo.Roler;
 import com.example.demo.service.RoleMenuService;
 import com.example.demo.service.RolerService;
 import com.example.demo.util.ResponseUtil;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -15,11 +14,14 @@ import java.util.Map;
 @CrossOrigin
 public class RolerController {
 
-    @Autowired
-    private RolerService rolerService;
+    private final RolerService rolerService;
 
-    @Autowired
-    private RoleMenuService roleMenuService;
+    private final RoleMenuService roleMenuService;
+
+    public RolerController(RolerService rolerService, RoleMenuService roleMenuService) {
+        this.rolerService = rolerService;
+        this.roleMenuService = roleMenuService;
+    }
 
     /*加载所有角色信息*/
     @GetMapping("/loadAllRoles")

@@ -1,7 +1,9 @@
 package com.example.demo.mapper;
 
-import com.example.demo.pojo.BuyList;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.example.demo.pojo.BuyList;
+
+import java.util.List;
 
 /**
 * @author skyforever
@@ -11,6 +13,8 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 */
 public interface BuyListMapper extends BaseMapper<BuyList> {
 
+    /*实现采购单列表分页查询*/
+    List<BuyList> queryBuyListMapper();
 }
 
 

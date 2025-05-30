@@ -3,7 +3,6 @@ package com.example.demo.Controller;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.example.demo.pojo.Store;
 import com.example.demo.service.StoreService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -14,8 +13,11 @@ import java.util.List;
 @CrossOrigin
 public class StoreController {
 
-    @Autowired
-    private StoreService storeService;
+    private final StoreService storeService;
+
+    public StoreController(StoreService storeService) {
+        this.storeService = storeService;
+    }
 
     /*处理加载仓库选项的请求*/
     @GetMapping("/storeList")

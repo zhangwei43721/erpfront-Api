@@ -5,7 +5,6 @@ import com.example.demo.service.ItemService;
 import com.example.demo.util.CodeUtils;
 import com.example.demo.util.ResponseUtil;
 import com.example.demo.vo.ItemCond;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
@@ -14,8 +13,11 @@ import java.util.Map;
 @CrossOrigin
 public class itemController {
 
-    @Autowired
-    private ItemService itemService;
+    private final ItemService itemService;
+
+    public itemController(ItemService itemService) {
+        this.itemService = itemService;
+    }
 
     /*处理产生商品编码的请求*/
     @GetMapping("/getCode")

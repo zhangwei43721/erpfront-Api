@@ -3,7 +3,6 @@ package com.example.demo.Controller;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.example.demo.pojo.Unit;
 import com.example.demo.service.UnitService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -14,8 +13,11 @@ import java.util.List;
 @CrossOrigin
 public class UnitController {
 
-    @Autowired
-    private UnitService unitService;
+    private final UnitService unitService;
+
+    public UnitController(UnitService unitService) {
+        this.unitService = unitService;
+    }
 
     /*处理加载商品单位的列表*/
     @GetMapping("/unitList")

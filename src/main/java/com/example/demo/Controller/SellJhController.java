@@ -3,7 +3,6 @@ package com.example.demo.Controller;
 import com.example.demo.pojo.SellJh;
 import com.example.demo.service.SellJhService;
 import com.example.demo.util.ResponseUtil;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
@@ -12,8 +11,11 @@ import java.util.Map;
 @CrossOrigin
 public class SellJhController {
 
-    @Autowired
-    private SellJhService sellJhService;
+    private final SellJhService sellJhService;
+
+    public SellJhController(SellJhService sellJhService) {
+        this.sellJhService = sellJhService;
+    }
 
     /*添加销售计划*/
     @PostMapping("/saveSellJh")

@@ -4,7 +4,6 @@ import com.example.demo.pojo.Menu;
 import com.example.demo.service.MenuService;
 import com.example.demo.util.ResponseUtil;
 import com.example.demo.vo.MenuVo;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -14,8 +13,11 @@ import java.util.Map;
 @CrossOrigin
 public class MenusController {
 
-    @Autowired
-    private MenuService menuService;
+    private final MenuService menuService;
+
+    public MenusController(MenuService menuService) {
+        this.menuService = menuService;
+    }
 
     /*定义方法处理，加载左侧菜单节点的请求*/
     @RequestMapping("/listMenus")
