@@ -35,9 +35,9 @@ public class ItemServiceImpl extends ServiceImpl<ItemMapper, Item> implements It
         /*List<Item> items = itemMapper.queryItemListMapper();*/
         List<Item> items = itemMapper.queryItemListMapper(itemCond);
 
-        Map<String, Object> result=new HashMap<>();
-        result.put("items",items);
-        result.put("total",page.getTotal());
+        Map<String, Object> result = new HashMap<>();
+        result.put("items", items);
+        result.put("total", page.getTotal());
         return result;
     }
 }

@@ -34,7 +34,7 @@ public class itemController {
 
     /*处理商品信息分页查询请求*/
     @PostMapping("/itemList")
-    public Map<String,Object> itemList(@RequestBody ItemCond itemCond){
+    public Map<String, Object> itemList(@RequestBody ItemCond itemCond) {
         return itemService.queryItemListService(itemCond);
     }
 
@@ -59,6 +59,7 @@ public class itemController {
             return ResponseUtil.error(400, "修改失败");
         }
     }
+
     /*处理商量的下架请求*/
     @GetMapping("/downItem/{id}")
     public Map<String, Object> downItem(@PathVariable Integer id) {
@@ -72,6 +73,7 @@ public class itemController {
             return ResponseUtil.error(400, "操作失败，请重试");
         }
     }
+
     /*处理商品上架请求*/
     @GetMapping("/upItem/{id}")
     public Map<String, Object> upItem(@PathVariable Integer id) {

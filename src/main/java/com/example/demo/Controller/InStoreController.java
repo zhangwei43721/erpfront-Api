@@ -21,7 +21,7 @@ public class InStoreController {
 
     /*处理采购单入库请求*/
     @PostMapping("/buyInStore")
-    public Map<String,Object> buyInStore(@RequestBody BuyList buyList){
+    public Map<String, Object> buyInStore(@RequestBody BuyList buyList) {
         inStoreService.saveBuyOrderInStoreService(buyList);
         return ResponseUtil.success("入库成功");
     }

@@ -14,5 +14,5 @@ import java.util.Map;
 public interface ItemService extends IService<Item> {
 
     /*商品分页查询*/
-    Map<String,Object> queryItemListService(ItemCond itemCond);
+    Map<String, Object> queryItemListService(ItemCond itemCond);
 }

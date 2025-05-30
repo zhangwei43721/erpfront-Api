@@ -1,17 +1,18 @@
 package com.example.demo.pojo;
 
 import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
-import java.util.Date;
 import lombok.Data;
+
+import java.util.Date;
 
 /**
  * 入库单表(记录商品入库信息)
+ *
  * @TableName t_in_store
  */
-@TableName(value ="t_in_store")
+@TableName(value = "t_in_store")
 @Data
 public class InStore {
     /**

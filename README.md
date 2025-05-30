@@ -8,12 +8,14 @@
 ```
 
 ## 技术栈
+
 - Spring Boot
 - MyBatis Plus
 - Maven
 - Java 8+
 
 ## 功能模块
+
 1. **售后管理** (`AfterSaleController`)
 2. **客户管理** (`CustomerController`)
 3. **订单管理** (`OrderController`)
@@ -23,21 +25,24 @@
 7. **回复管理** (`ReplayController`)
 
 ## 开发环境要求
+
 1. JDK 1.8+
 2. Maven 3.5+
 3. MySQL 5.7+
 
 ## 目录说明
-| 路径 | 说明 |
-|------|------|
-| `src/main/java/com/example/demo/controller` | 控制器层 |
-| `src/main/java/com/example/demo/service` | 服务层 |
-| `src/main/java/com/example/demo/mapper` | 数据访问层 |
-| `src/main/java/com/example/demo/pojo` | 实体类 |
-| `src/main/resources/application.properties` | 配置文件 |
-| `src/main/resources/mapper` | MyBatis XML映射文件 |
+
+| 路径                                          | 说明              |
+|---------------------------------------------|-----------------|
+| `src/main/java/com/example/demo/controller` | 控制器层            |
+| `src/main/java/com/example/demo/service`    | 服务层             |
+| `src/main/java/com/example/demo/mapper`     | 数据访问层           |
+| `src/main/java/com/example/demo/pojo`       | 实体类             |
+| `src/main/resources/application.properties` | 配置文件            |
+| `src/main/resources/mapper`                 | MyBatis XML映射文件 |
 
 ## 贡献指南
+
 1. Fork本仓库
 2. 创建feature分支
 3. 提交代码

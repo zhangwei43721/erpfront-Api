@@ -7,17 +7,21 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 
+import java.io.Serial;
+import java.io.Serializable;
 import java.util.Date;
 
 /**
  * 采购单表，记录商品采购信息
+ *
  * @TableName buy_list
  */
-@TableName(value ="t_buy_list")
+@TableName(value = "t_buy_list")
 @Data
-public class BuyList {
-    public BuyList() {}
-
+public class BuyList implements Serializable {
+    @Serial
+    @TableField(exist = false)
+    private static final long serialVersionUID = 1L;
     /**
      * 采购单ID
      */
@@ -74,11 +78,10 @@ public class BuyList {
      * 是否入库：0-否，1-是
      */
     private String isIn;
-
-    @TableField(exist = false)
-    private static final long serialVersionUID = 1L;
     @TableField(exist = false)
     private String itemName;
     @TableField(exist = false)
     private String storeName;
+    public BuyList() {
+    }
 }
