@@ -29,7 +29,8 @@
     </resultMap>
 
     <sql id="Base_Column_List">
-        id,item_num,item_name,type_id,store,brand_id,
+        id
+        ,item_num,item_name,type_id,store,brand_id,
         store_id,supply_id,place_id,unit_id,price,
         sell_price,vip_price,item_desc,item_date,end_date,
         hot_title,facturer,statue,imgs,create_by

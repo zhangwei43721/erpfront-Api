@@ -82,6 +82,7 @@ public class BuyList implements Serializable {
     private String itemName;
     @TableField(exist = false)
     private String storeName;
+
     public BuyList() {
     }
 }

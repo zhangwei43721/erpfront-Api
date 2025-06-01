@@ -11,6 +11,7 @@
     </resultMap>
 
     <sql id="Base_Column_List">
-        unit_id,unit_name,unit_desc
+        unit_id
+        ,unit_name,unit_desc
     </sql>
 </mapper>

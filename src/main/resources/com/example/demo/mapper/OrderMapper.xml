@@ -15,7 +15,8 @@
     </resultMap>
 
     <sql id="Base_Column_List">
-        id,cust_id,item_id,order_date,state,pay,
+        id
+        ,cust_id,item_id,order_date,state,pay,
         pay_money
     </sql>
     <!-- 顶级sql统计客户历史消费总额 -->

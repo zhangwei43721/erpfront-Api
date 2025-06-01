@@ -13,6 +13,7 @@
     </resultMap>
 
     <sql id="Base_Column_List">
-        id,content,redate,score,ques_id
+        id
+        ,content,redate,score,ques_id
     </sql>
 </mapper>

@@ -14,6 +14,7 @@
     </resultMap>
 
     <sql id="Base_Column_List">
-        store_id,store_name,store_num,store_address,concat,phone
+        store_id
+        ,store_name,store_num,store_address,concat,phone
     </sql>
 </mapper>

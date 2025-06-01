@@ -8,7 +8,6 @@ import com.example.demo.mapper.CustomerMapper;
 import com.example.demo.mapper.OrderMapper;
 import com.example.demo.pojo.Customer;
 import com.example.demo.service.CustomerService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -25,11 +24,14 @@ import java.util.Map;
 public class CustomerServiceImpl extends ServiceImpl<CustomerMapper, Customer> implements CustomerService {
 
     // 注入CustomerMapper
-    @Autowired
-    private CustomerMapper customerMapper;
+    private final CustomerMapper customerMapper;
 
-    @Autowired
-    private OrderMapper orderMapper;
+    private final OrderMapper orderMapper;
+
+    public CustomerServiceImpl(CustomerMapper customerMapper, OrderMapper orderMapper) {
+        this.customerMapper = customerMapper;
+        this.orderMapper = orderMapper;
+    }
 
     @Transactional
     @Override

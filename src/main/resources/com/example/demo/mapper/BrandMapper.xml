@@ -12,6 +12,7 @@
     </resultMap>
 
     <sql id="Base_Column_List">
-        brand_id,brand_name,brand_leter,brand_desc
+        brand_id
+        ,brand_name,brand_leter,brand_desc
     </sql>
 </mapper>

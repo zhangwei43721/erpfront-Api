@@ -19,7 +19,8 @@
     </resultMap>
 
     <sql id="Base_Column_List">
-        buy_id,product_id,store_id,buy_num,fact_buy_num,buy_time,
+        buy_id
+        ,product_id,store_id,buy_num,fact_buy_num,buy_time,
         supply_id,place_id,buy_user,phone,is_in
     </sql>
     <!--实现采购单列表分页查询-->

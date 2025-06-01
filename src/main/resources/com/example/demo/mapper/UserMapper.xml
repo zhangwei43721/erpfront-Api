@@ -15,7 +15,8 @@
     </resultMap>
 
     <sql id="Base_Column_List">
-        id,uname,upwd,phone,edu,age,
+        id
+        ,uname,upwd,phone,edu,age,
         title
     </sql>
 

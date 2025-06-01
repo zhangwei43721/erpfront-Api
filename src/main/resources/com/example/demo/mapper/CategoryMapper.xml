@@ -13,6 +13,7 @@
     </resultMap>
 
     <sql id="Base_Column_List">
-        id,isbn,cate_name,remark,pid
+        id
+        ,isbn,cate_name,remark,pid
     </sql>
 </mapper>

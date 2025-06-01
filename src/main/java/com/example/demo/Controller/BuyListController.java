@@ -3,8 +3,18 @@ package com.example.demo.Controller;
 import com.example.demo.pojo.BuyList;
 import com.example.demo.service.BuyListService;
 import com.example.demo.util.ResponseUtil;
+import org.apache.commons.io.output.ByteArrayOutputStream;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 import java.util.Date;
 import java.util.Map;
 
@@ -51,5 +61,33 @@ public class BuyListController {
     @PostMapping("/deleteBuy/{id}")
     public Map<String, Object> deleteBuy(@PathVariable Integer id) {
         return buyListService.removeById(id) ? ResponseUtil.success("删除成功") : ResponseUtil.error("删除失败");
+    }
+
+    /*处理数据导出excel请求，下载excel文件*/
+    @GetMapping("/exportExcel")
+    public ResponseEntity exportExcel() {
+        XSSFWorkbook workbook = buyListService.exportExcelService();
+        //将workbook，excel文件对象，封装到字节数组
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        try {
+            workbook.write(baos);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        //获得字节数组中封装的文件,响应体
+        byte[] bytes = baos.toByteArray();
+        //创建HttpHeaders对象封装响应头
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_OCTET_STREAM); //响应体的类型
+        //设置下载的文件的名字
+        //headers.setContentDisposition("attachment;filename=采购单列表");
+        String name = "采购单列表.xlsx";
+        name = URLEncoder.encode(name, StandardCharsets.UTF_8);
+        System.out.println("name=" + name);
+        headers.add(HttpHeaders.CONTENT_DISPOSITION, "attachment;filename=" + name);
+
+        //创建对象，封装响应体，响应头，状态吗
+        ResponseEntity<byte[]> result = new ResponseEntity(bytes, headers, HttpStatus.CREATED);
+        return result;
     }
 }

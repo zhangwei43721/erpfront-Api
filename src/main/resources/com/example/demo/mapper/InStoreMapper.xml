@@ -15,7 +15,8 @@
     </resultMap>
 
     <sql id="Base_Column_List">
-        ins_id,store_id,product_id,in_num,create_by,create_time,
+        ins_id
+        ,store_id,product_id,in_num,create_by,create_time,
         is_in
     </sql>
 </mapper>

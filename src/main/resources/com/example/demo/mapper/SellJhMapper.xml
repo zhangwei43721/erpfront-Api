@@ -14,7 +14,8 @@
     </resultMap>
 
     <sql id="Base_Column_List">
-        id,custid,channel_id,money,now_step,emp_id
+        id
+        ,custid,channel_id,money,now_step,emp_id
     </sql>
     <!--定义sql查询销售记录列表-->
     <select id="querySellJhListMapper" resultType="com.example.demo.pojo.SellJh">

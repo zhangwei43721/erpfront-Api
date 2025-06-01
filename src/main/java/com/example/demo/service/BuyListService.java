@@ -2,6 +2,7 @@ package com.example.demo.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.example.demo.pojo.BuyList;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import java.util.Map;
 
@@ -16,4 +17,7 @@ public interface BuyListService extends IService<BuyList> {
 
     /*实现采购单分页查询*/
     Map<String, Object> queryBuyListService(Integer pageNum, Integer pageSize);
+
+    /*实现采购单数据导出到excel*/
+    XSSFWorkbook exportExcelService();
 }

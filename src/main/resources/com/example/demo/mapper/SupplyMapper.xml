@@ -16,7 +16,8 @@
     </resultMap>
 
     <sql id="Base_Column_List">
-        supply_id,supply_num,supply_name,supply_introduce,concat,phone,
+        supply_id
+        ,supply_num,supply_name,supply_introduce,concat,phone,
         address,is_delete
     </sql>
 </mapper>

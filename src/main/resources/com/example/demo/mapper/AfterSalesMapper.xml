@@ -14,7 +14,8 @@
     </resultMap>
 
     <sql id="Base_Column_List">
-        id,cust_id,question,state,record,level
+        id
+        ,cust_id,question,state,record,level
     </sql>
     <select id="queryAfterSaleMapper" resultType="com.example.demo.pojo.AfterSales">
         select aft.*,customer.cust_name custName from t_customer customer
