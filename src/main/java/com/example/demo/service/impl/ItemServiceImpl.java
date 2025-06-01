@@ -22,8 +22,11 @@ import java.util.Map;
 @Service
 public class ItemServiceImpl extends ServiceImpl<ItemMapper, Item> implements ItemService {
 
-    @Autowired
-    private ItemMapper itemMapper;
+    private final ItemMapper itemMapper;
+
+    public ItemServiceImpl(ItemMapper itemMapper) {
+        this.itemMapper = itemMapper;
+    }
 
     @Override
     /* public Map<String, Object> queryItemListService(Integer pageNum, Integer pageSize) {*/

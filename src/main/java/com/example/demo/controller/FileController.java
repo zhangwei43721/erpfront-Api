@@ -1,4 +1,4 @@
-package com.example.demo.Controller;
+package com.example.demo.controller;
 
 import org.apache.commons.io.FileUtils;
 import org.springframework.web.bind.annotation.CrossOrigin;

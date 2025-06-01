@@ -1,4 +1,4 @@
-package com.example.demo.Controller;
+package com.example.demo.controller;
 
 import com.example.demo.pojo.BuyList;
 import com.example.demo.service.BuyListService;
@@ -12,7 +12,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.Date;
@@ -87,7 +86,6 @@ public class BuyListController {
         headers.add(HttpHeaders.CONTENT_DISPOSITION, "attachment;filename=" + name);
 
         //创建对象，封装响应体，响应头，状态吗
-        ResponseEntity<byte[]> result = new ResponseEntity(bytes, headers, HttpStatus.CREATED);
-        return result;
+        return (ResponseEntity<byte[]>) new ResponseEntity(bytes, headers, HttpStatus.CREATED);
     }
 }

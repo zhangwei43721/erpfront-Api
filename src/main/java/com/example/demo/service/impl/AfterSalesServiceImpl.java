@@ -22,8 +22,11 @@ import java.util.Map;
 @Service
 public class AfterSalesServiceImpl extends ServiceImpl<AfterSalesMapper, AfterSales>
         implements AfterSalesService {
-    @Autowired
-    private AfterSalesMapper afterSalesMapper;
+    private final AfterSalesMapper afterSalesMapper;
+
+    public AfterSalesServiceImpl(AfterSalesMapper afterSalesMapper) {
+        this.afterSalesMapper = afterSalesMapper;
+    }
 
     @Override
     public Map<String, Object> queryAfterSaleListService(AfterSales afterSales) {

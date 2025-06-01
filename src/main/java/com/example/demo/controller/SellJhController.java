@@ -1,4 +1,4 @@
-package com.example.demo.Controller;
+package com.example.demo.controller;
 
 import com.example.demo.pojo.SellJh;
 import com.example.demo.service.SellJhService;

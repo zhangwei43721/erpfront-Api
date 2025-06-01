@@ -22,8 +22,11 @@ import java.util.Map;
 public class SellJhServiceImpl extends ServiceImpl<SellJhMapper, SellJh>
         implements SellJhService {
 
-    @Autowired
-    private SellJhMapper sellJhMapper;
+    private final SellJhMapper sellJhMapper;
+
+    public SellJhServiceImpl(SellJhMapper sellJhMapper) {
+        this.sellJhMapper = sellJhMapper;
+    }
 
     @Override
     public Map<String, Object> querySellJhListService(Integer pageNum, Integer pageSize) {

@@ -1,4 +1,4 @@
-package com.example.demo.Controller;
+package com.example.demo.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.example.demo.pojo.User;
@@ -44,8 +44,7 @@ public class UserController {
         QueryWrapper wrapper = new QueryWrapper();
         wrapper.eq("uid", id);
         wrapper.select("rid");
-        List list = userRoleService.listObjs(wrapper);
-        return list;
+        return userRoleService.listObjs(wrapper);
     }
 
     /*处理用户信息修改请求*/

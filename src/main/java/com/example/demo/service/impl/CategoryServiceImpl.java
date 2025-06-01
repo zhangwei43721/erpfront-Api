@@ -5,7 +5,6 @@ import com.example.demo.mapper.CategoryMapper;
 import com.example.demo.pojo.Category;
 import com.example.demo.service.CategoryService;
 import com.example.demo.vo.TreeVo;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -21,8 +20,11 @@ import java.util.Objects;
 public class CategoryServiceImpl extends ServiceImpl<CategoryMapper, Category>
         implements CategoryService {
 
-    @Autowired
-    private CategoryMapper categoryMapper;
+    private final CategoryMapper categoryMapper;
+
+    public CategoryServiceImpl(CategoryMapper categoryMapper) {
+        this.categoryMapper = categoryMapper;
+    }
 
     @Override
     public List<TreeVo> queryCategoryListService() {

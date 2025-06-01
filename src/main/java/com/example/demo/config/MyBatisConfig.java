@@ -17,8 +17,11 @@ import java.util.List;
 @MapperScan("com.example.demo.mapper")
 public class MyBatisConfig {
 
-    @Autowired
-    private SqlSessionFactory sqlSessionFactory;
+    private final SqlSessionFactory sqlSessionFactory;
+
+    public MyBatisConfig(SqlSessionFactory sqlSessionFactory) {
+        this.sqlSessionFactory = sqlSessionFactory;
+    }
 
     /**
      * 初始化时注册自定义的TypeHandler

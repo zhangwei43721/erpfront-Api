@@ -22,8 +22,11 @@ import java.util.Map;
 public class OrderServiceImpl extends ServiceImpl<OrderMapper, Order>
         implements OrderService {
 
-    @Autowired
-    private OrderMapper orderMapper;
+    private final OrderMapper orderMapper;
+
+    public OrderServiceImpl(OrderMapper orderMapper) {
+        this.orderMapper = orderMapper;
+    }
 
     @Override
     public Map<String, Object> queryOrderListService(Order order) {

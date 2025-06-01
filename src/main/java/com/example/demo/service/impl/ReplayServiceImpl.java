@@ -24,8 +24,11 @@ import java.util.concurrent.ThreadLocalRandom;
 public class ReplayServiceImpl extends ServiceImpl<ReplayMapper, Replay>
         implements ReplayService {
 
-    @Autowired
-    private ReplayMapper replayMapper;
+    private final ReplayMapper replayMapper;
+
+    public ReplayServiceImpl(ReplayMapper replayMapper) {
+        this.replayMapper = replayMapper;
+    }
 
     @Override
     public Map<String, Object> queryReplayListService(Integer id

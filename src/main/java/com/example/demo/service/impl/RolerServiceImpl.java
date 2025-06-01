@@ -25,11 +25,18 @@ import java.util.Map;
 public class RolerServiceImpl extends ServiceImpl<RolerMapper, Roler>
         implements RolerService {
 
-    @Autowired
     private RolerMapper rolerMapper;
 
+    private final RoleMenuService roleMenuService; // 用于操作 RoleMenu
+
+    public RolerServiceImpl(RoleMenuService roleMenuService) {
+        this.roleMenuService = roleMenuService;
+    }
+
     @Autowired
-    private RoleMenuService roleMenuService; // 用于操作 RoleMenu
+    public RolerServiceImpl(RolerMapper rolerMapper) {
+        this.rolerMapper = rolerMapper;
+    }
 
     @Override
     public Map<String, Object> queryRolePageListService(Integer pageNum, Integer pageSize) {
