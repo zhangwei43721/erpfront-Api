@@ -2,7 +2,7 @@ package com.example.demo.controller;
 
 import com.example.demo.pojo.Menu;
 import com.example.demo.service.MenuService;
-import com.example.demo.util.ResponseUtil;
+import com.example.demo.util.R;
 import com.example.demo.vo.MenuVo;
 import org.springframework.web.bind.annotation.*;
 
@@ -39,7 +39,7 @@ public class MenusController {
     @PostMapping("/saveMenus")
     public Map<String, Object> saveMenus(@RequestBody Menu menu) {
         menuService.saveMenusService(menu);
-        return ResponseUtil.success("添加菜单节点成功.......");
+        return R.success("添加菜单节点成功.......");
     }
 
     /*处理菜单单个节点信息的修改请求*/
@@ -47,9 +47,9 @@ public class MenusController {
     public Map<String, Object> updateMenus(@RequestBody Menu menu) {
         boolean updated = menuService.updateById(menu);
         if (updated) {
-            return ResponseUtil.success("修改菜单节点成功.......");
+            return R.success("修改菜单节点成功.......");
         } else {
-            return ResponseUtil.error(400, "操作失败......");
+            return R.error(400, "操作失败......");
         }
     }
 
@@ -57,7 +57,7 @@ public class MenusController {
     @PostMapping("/updateMenusOrder")
     public Map<String, Object> updateMenusOrder(@RequestBody List<MenuVo> menuUpdates) {
         menuService.updateMenusOrder(menuUpdates);
-        return ResponseUtil.success("菜单顺序更新成功!");
+        return R.success("菜单顺序更新成功!");
     }
 
     /*处理菜单节点信息的删除请求*/
@@ -65,9 +65,9 @@ public class MenusController {
     public Map<String, Object> deleteMenus(@RequestParam Integer id) {
         boolean deleted = menuService.removeById(id);
         if (deleted) {
-            return ResponseUtil.success("删除菜单节点成功");
+            return R.success("删除菜单节点成功");
         } else {
-            return ResponseUtil.error(400, "操作失败");
+            return R.error(400, "操作失败");
         }
     }
 }

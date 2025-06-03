@@ -4,6 +4,8 @@ import com.baomidou.mybatisplus.extension.service.IService;
 import com.example.demo.pojo.BuyList;
 import com.example.demo.pojo.InStore;
 
+import java.util.Map;
+
 /**
  * @author skyforever
  * @description 针对表【t_in_store(入库单表(记录商品入库信息))】的数据库操作Service
@@ -13,4 +15,7 @@ public interface InStoreService extends IService<InStore> {
 
     /*实现采购采购信息入库*/
     void saveBuyOrderInStoreService(BuyList buyList);
+
+     /*实现入库单列表分页查询*/
+     Map<String,Object> queryInStoreListService(Integer pageNum, Integer pageSize);
 }

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mapper.OutStoreMapper">
+
+    <resultMap id="BaseResultMap" type="com.example.demo.pojo.OutStore">
+            <id property="outsId" column="outs_id" />
+            <result property="productId" column="product_id" />
+            <result property="storeId" column="store_id" />
+            <result property="tallyId" column="tally_id" />
+            <result property="outPrice" column="out_price" />
+            <result property="outNum" column="out_num" />
+            <result property="createBy" column="create_by" />
+            <result property="createTime" column="create_time" />
+            <result property="isOut" column="is_out" />
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        outs_id,product_id,store_id,tally_id,out_price,out_num,
+        create_by,create_time,is_out
+    </sql>
+</mapper>

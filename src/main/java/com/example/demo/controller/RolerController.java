@@ -4,7 +4,7 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.example.demo.pojo.Roler;
 import com.example.demo.service.RoleMenuService;
 import com.example.demo.service.RolerService;
-import com.example.demo.util.ResponseUtil;
+import com.example.demo.util.R;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -49,9 +49,9 @@ public class RolerController {
     @PostMapping("/grantRoleMenus")
     public Map<String, Object> grantRoleMenus(@RequestBody Integer[] ids) {
         if (roleMenuService.grantRoleMenus(ids)) {
-            return ResponseUtil.success("授权成功.......");
+            return R.success("授权成功.......");
         } else {
-            return ResponseUtil.error(400, "授权失败......");
+            return R.error(400, "授权失败......");
         }
     }
 
@@ -60,9 +60,9 @@ public class RolerController {
     public Map<String, Object> updateRoler(@RequestBody Roler roler) {
         boolean success = rolerService.updateById(roler);
         if (success) {
-            return ResponseUtil.success("更新角色信息成功");
+            return R.success("更新角色信息成功");
         } else {
-            return ResponseUtil.error(400, "操作失败");
+            return R.error(400, "操作失败");
         }
     }
 
@@ -70,13 +70,13 @@ public class RolerController {
     @PostMapping("/saveRoler")
     public Map<String, Object> saveRoler(@RequestBody Roler roler) {
         rolerService.save(roler);
-        return ResponseUtil.success("保存角色信息成功");
+        return R.success("保存角色信息成功");
     }
 
     /*处理角色信息删除的请求*/
     @PostMapping("/deleteRoler")
     public Map<String, Object> deleteRoler(@RequestBody Roler roler) {
         rolerService.deleteRolerAndMenus(roler.getId());
-        return ResponseUtil.success("删除角色信息成功......");
+        return R.success("删除角色信息成功......");
     }
 }

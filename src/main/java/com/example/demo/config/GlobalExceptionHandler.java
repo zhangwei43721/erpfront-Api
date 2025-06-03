@@ -1,6 +1,6 @@
 package com.example.demo.config;
 
-import com.example.demo.util.ResponseUtil;
+import com.example.demo.util.R;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -18,6 +18,6 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(Exception.class)
     public Map<String, Object> handleGlobalException(Exception e) {
         logger.error("发生未捕获异常: ", e); // 记录日志
-        return ResponseUtil.error(500, "服务器内部错误，请稍后再试或联系管理员");
+        return R.error(500, "服务器内部错误，请稍后再试或联系管理员");
     }
 }

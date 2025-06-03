@@ -2,7 +2,7 @@ package com.example.demo.controller;
 
 import com.example.demo.pojo.SellJh;
 import com.example.demo.service.SellJhService;
-import com.example.demo.util.ResponseUtil;
+import com.example.demo.util.R;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
@@ -21,7 +21,7 @@ public class SellJhController {
     @PostMapping("/saveSellJh")
     public Map<String, Object> saveSellJh(@RequestBody SellJh sellJh) {
         sellJhService.save(sellJh);
-        return ResponseUtil.success("添加成功");
+        return R.success("添加成功");
     }
 
     /*处理销售计划分页查询请求*/
@@ -36,13 +36,13 @@ public class SellJhController {
     @DeleteMapping("/deleteSellJh/{id}")
     public Map<String, Object> deleteSellJh(@PathVariable Integer id) {
         sellJhService.removeById(id);
-        return ResponseUtil.success("删除成功");
+        return R.success("删除成功");
     }
 
     /*修改销售计划*/
     @PutMapping("/updateSellJh")
     public Map<String, Object> updateSellJh(@RequestBody SellJh sellJh) {
         sellJhService.updateById(sellJh);
-        return ResponseUtil.success("修改成功");
+        return R.success("修改成功");
     }
 }

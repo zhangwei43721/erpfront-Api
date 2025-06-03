@@ -2,7 +2,7 @@ package com.example.demo.controller;
 
 import com.example.demo.pojo.BuyList;
 import com.example.demo.service.BuyListService;
-import com.example.demo.util.ResponseUtil;
+import com.example.demo.util.R;
 import org.apache.commons.io.output.ByteArrayOutputStream;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.http.HttpHeaders;
@@ -39,7 +39,7 @@ public class BuyListController {
         buyList.setBuyTime(new Date());
         buyList.setIsIn("0");
         buyList.setFactBuyNum(0);
-        return buyListService.save(buyList) ? ResponseUtil.success("保存成功") : ResponseUtil.error("保存失败");
+        return buyListService.save(buyList) ? R.success("保存成功") : R.error("保存失败");
     }
 
     /*处理采购单分页查询请求*/
@@ -53,13 +53,13 @@ public class BuyListController {
     /*处理采购单修改请求*/
     @PostMapping("/updateBuyList")
     public Map<String, Object> updateBuyList(@RequestBody BuyList buyList) {
-        return buyListService.updateById(buyList) ? ResponseUtil.success("修改成功") : ResponseUtil.error("修改失败");
+        return buyListService.updateById(buyList) ? R.success("修改成功") : R.error("修改失败");
     }
 
     /*处理采购单删除请求*/
     @PostMapping("/deleteBuy/{id}")
     public Map<String, Object> deleteBuy(@PathVariable Integer id) {
-        return buyListService.removeById(id) ? ResponseUtil.success("删除成功") : ResponseUtil.error("删除失败");
+        return buyListService.removeById(id) ? R.success("删除成功") : R.error("删除失败");
     }
 
     /*处理数据导出excel请求，下载excel文件*/

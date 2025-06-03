@@ -2,7 +2,7 @@ package com.example.demo.controller;
 
 import com.example.demo.pojo.Replay;
 import com.example.demo.service.ReplayService;
-import com.example.demo.util.ResponseUtil;
+import com.example.demo.util.R;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
@@ -23,7 +23,7 @@ public class ReplayController {
     @PostMapping("/saveReplay")
     public Map<String, Object> saveReplay(@RequestBody Replay replay) {
         replayService.saveReplayWithLogic(replay);
-        return ResponseUtil.success("处理投诉回复成功......");
+        return R.success("处理投诉回复成功......");
     }
 
     /*处理回复列表分页查询请求*/

@@ -2,7 +2,7 @@ package com.example.demo.controller;
 
 import com.example.demo.pojo.Customer;
 import com.example.demo.service.CustomerService;
-import com.example.demo.util.ResponseUtil;
+import com.example.demo.util.R;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -22,7 +22,7 @@ public class CustomerController {
     @PostMapping("/saveCust")
     public Map<String, Object> saveCustomer(@RequestBody Customer customer) {
         customerService.save(customer);
-        return ResponseUtil.success("添加客户成功");
+        return R.success("添加客户成功");
     }
 
     /*处理客户信息分页查询请求*/
@@ -38,9 +38,9 @@ public class CustomerController {
     public Map<String, Object> deleteCustomer(@PathVariable Integer id) {
         boolean removed = customerService.removeById(id);
         if (removed) {
-            return ResponseUtil.success("删除成功");
+            return R.success("删除成功");
         } else {
-            return ResponseUtil.error(400, "删除失败");
+            return R.error(400, "删除失败");
         }
     }
 
@@ -49,9 +49,9 @@ public class CustomerController {
     public Map<String, Object> updateCustomer(@RequestBody Customer customer) {
         boolean updated = customerService.updateById(customer);
         if (updated) {
-            return ResponseUtil.success("修改成功");
+            return R.success("修改成功");
         } else {
-            return ResponseUtil.error(400, "修改失败");
+            return R.error(400, "修改失败");
         }
     }
 

@@ -8,9 +8,14 @@ import com.example.demo.pojo.BuyList;
 import com.example.demo.pojo.InStore;
 import com.example.demo.pojo.Item;
 import com.example.demo.service.InStoreService;
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * @author skyforever
@@ -61,6 +66,18 @@ public class InStoreServiceImpl extends ServiceImpl<InStoreMapper, InStore>
         inStore.setCreateTime(new Date());
         inStore.setIsIn("1");
         inStoreMapper.insert(inStore);
+    }
+
+      @Override
+    public Map<String, Object> queryInStoreListService(Integer pageNum, Integer pageSize) {
+
+        //指定分页查询参数
+        Page<Object> page = PageHelper.startPage(pageNum, pageSize);
+        List<InStore> inStores = inStoreMapper.queryInStoreListMapper();
+        Map<String,Object> result=new HashMap<>();
+        result.put("total",page.getTotal());
+        result.put("inStores",inStores);
+        return result;
     }
 }
 

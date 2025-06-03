@@ -2,7 +2,7 @@ package com.example.demo.controller;
 
 import com.example.demo.pojo.Order;
 import com.example.demo.service.OrderService;
-import com.example.demo.util.ResponseUtil;
+import com.example.demo.util.R;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
@@ -27,7 +27,7 @@ public class OrderController {
     @PostMapping("/saveOrder")
     public Map<String, Object> saveOrder(@RequestBody Order order) {
         orderService.save(order);
-        return ResponseUtil.success("添加成功");
+        return R.success("添加成功");
     }
 
     /* 删除订单 */
@@ -35,9 +35,9 @@ public class OrderController {
     public Map<String, Object> deleteOrder(@PathVariable Integer id) {
         boolean removed = orderService.removeById(id);
         if (removed) {
-            return ResponseUtil.success("删除成功");
+            return R.success("删除成功");
         } else {
-            return ResponseUtil.error(400, "删除失败");
+            return R.error(400, "删除失败");
         }
     }
 
@@ -46,9 +46,9 @@ public class OrderController {
     public Map<String, Object> updateOrder(@RequestBody Order order) {
         boolean updated = orderService.updateById(order);
         if (updated) {
-            return ResponseUtil.success("修改成功");
+            return R.success("修改成功");
         } else {
-            return ResponseUtil.error(400, "修改失败");
+            return R.error(400, "修改失败");
         }
     }
 }

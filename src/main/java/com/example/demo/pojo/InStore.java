@@ -1,10 +1,14 @@
 package com.example.demo.pojo;
 
 import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 
+import java.io.Serial;
+import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -14,7 +18,7 @@ import java.util.Date;
  */
 @TableName(value = "t_in_store")
 @Data
-public class InStore {
+public class InStore implements Serializable {
     /**
      * 入库单ID
      */
@@ -44,10 +48,21 @@ public class InStore {
     /**
      * 创建时间
      */
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date createTime;
 
     /**
      * 入库状态(0-未入库，1-已入库)
      */
     private String isIn;
+
+    @Serial
+    @TableField(exist = false)
+    private static final long serialVersionUID = 1L;
+
+    @TableField(exist = false)
+    private String storeName;
+
+    @TableField(exist = false)
+    private String itemName;
 }

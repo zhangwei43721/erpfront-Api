@@ -25,17 +25,11 @@ import java.util.Map;
 public class UserServiceImpl extends ServiceImpl<UserMapper, User>
         implements UserService {
 
+    @Autowired
     private UserMapper userMapper;
-    private final UserRoleMapper userRoleMapper;
-
-    public UserServiceImpl(UserRoleMapper userRoleMapper) {
-        this.userRoleMapper = userRoleMapper;
-    }
 
     @Autowired
-    public UserServiceImpl(UserMapper userMapper) {
-        this.userMapper = userMapper;
-    }
+    private UserRoleMapper userRoleMapper;
 
     @Override
     public Map<String, Object> queryUserListService(Integer pageNum, Integer pageSize) {

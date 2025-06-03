@@ -3,7 +3,7 @@ package com.example.demo.controller;
 import com.example.demo.pojo.Item;
 import com.example.demo.service.ItemService;
 import com.example.demo.util.CodeUtils;
-import com.example.demo.util.ResponseUtil;
+import com.example.demo.util.R;
 import com.example.demo.vo.ItemCond;
 import org.springframework.web.bind.annotation.*;
 
@@ -29,7 +29,7 @@ public class itemController {
     @PostMapping("/saveItem")
     public Map<String, Object> saveItem(@RequestBody Item item) {
         itemService.save(item);
-        return ResponseUtil.success("添加商品成功");
+        return R.success("添加商品成功");
     }
 
     /*处理商品信息分页查询请求*/
@@ -43,9 +43,9 @@ public class itemController {
     public Map<String, Object> deleteItem(@PathVariable Integer id) {
         boolean removed = itemService.removeById(id);
         if (removed) {
-            return ResponseUtil.success("删除成功");
+            return R.success("删除成功");
         } else {
-            return ResponseUtil.error(400, "删除失败");
+            return R.error(400, "删除失败");
         }
     }
 
@@ -54,9 +54,9 @@ public class itemController {
     public Map<String, Object> updateItem(@RequestBody Item item) {
         boolean updated = itemService.updateById(item);
         if (updated) {
-            return ResponseUtil.success("修改成功");
+            return R.success("修改成功");
         } else {
-            return ResponseUtil.error(400, "修改失败");
+            return R.error(400, "修改失败");
         }
     }
 
@@ -68,9 +68,9 @@ public class itemController {
         item.setStatue(1); // 1表示已下架状态
         boolean updated = itemService.updateById(item);
         if (updated) {
-            return ResponseUtil.success("商品下架成功");
+            return R.success("商品下架成功");
         } else {
-            return ResponseUtil.error(400, "操作失败，请重试");
+            return R.error(400, "操作失败，请重试");
         }
     }
 
@@ -82,9 +82,9 @@ public class itemController {
         item.setStatue(0); // 0表示已上架状态
         boolean updated = itemService.updateById(item);
         if (updated) {
-            return ResponseUtil.success("商品上架成功");
+            return R.success("商品上架成功");
         } else {
-            return ResponseUtil.error(400, "操作失败，请重试");
+            return R.error(400, "操作失败，请重试");
         }
     }
 

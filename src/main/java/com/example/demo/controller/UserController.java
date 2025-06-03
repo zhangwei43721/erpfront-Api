@@ -4,7 +4,7 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.example.demo.pojo.User;
 import com.example.demo.service.UserRoleService;
 import com.example.demo.service.UserService;
-import com.example.demo.util.ResponseUtil;
+import com.example.demo.util.R;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -35,7 +35,7 @@ public class UserController {
     @PostMapping("/saveUser")
     public Map<String, Object> saveUser(@RequestBody User user) {
         userService.saveUserRolerService(user);
-        return ResponseUtil.success("保存用户信息成功");
+        return R.success("保存用户信息成功");
     }
 
     /*根据用户id查询某个用户的所有角色id*/
@@ -51,13 +51,13 @@ public class UserController {
     @PostMapping("/updateUser")
     public Map<String, Object> updateUser(@RequestBody User user) {
         userService.updateUserRoleService(user);
-        return ResponseUtil.success("修改用户信息成功");
+        return R.success("修改用户信息成功");
     }
 
     /*处理用户信息删除请求*/
     @PostMapping("/deleteUser")
     public Map<String, Object> deleteUser(@RequestBody User user) {
         userService.deleteUserRoleService(user.getId());
-        return ResponseUtil.success("删除用户信息成功");
+        return R.success("删除用户信息成功");
     }
 }

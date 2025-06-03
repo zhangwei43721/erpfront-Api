@@ -2,7 +2,7 @@ package com.example.demo.controller;
 
 import com.example.demo.pojo.Category;
 import com.example.demo.service.CategoryService;
-import com.example.demo.util.ResponseUtil;
+import com.example.demo.util.R;
 import com.example.demo.vo.TreeVo;
 import org.springframework.web.bind.annotation.*;
 
@@ -29,7 +29,7 @@ public class CategoryController {
     @PostMapping("/saveCategory")
     public Map<String, Object> saveCategory(@RequestBody Category category) {
         categoryService.save(category);
-        return ResponseUtil.success("添加商品类别成功");
+        return R.success("添加商品类别成功");
     }
 
     /*处理商品分类回显的请求*/
@@ -42,13 +42,13 @@ public class CategoryController {
     @PostMapping("/updateCategory")
     public Map<String, Object> updateCategory(@RequestBody Category category) {
         categoryService.updateById(category);
-        return ResponseUtil.success("更新商品类别成功");
+        return R.success("更新商品类别成功");
     }
 
     /*处理商品类目删除请求*/
     @GetMapping("/deleteCategory/{id}")
     public Map<String, Object> deleteCategory(@PathVariable Integer id) {
         categoryService.removeById(id);
-        return ResponseUtil.success("删除商品类别成功");
+        return R.success("删除商品类别成功");
     }
 }

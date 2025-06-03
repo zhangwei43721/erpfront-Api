@@ -3,7 +3,7 @@ package com.example.demo.util;
 import java.util.HashMap;
 import java.util.Map;
 
-public class ResponseUtil {
+public class R {
 
     private static final String KEY_CODE = "code";
     private static final String KEY_MESSAGE = "message";
