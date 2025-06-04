@@ -19,12 +19,12 @@
         ,store_id,product_id,in_num,create_by,create_time,
         is_in
     </sql>
-      <!--实现入库单列表查询-->
+    <!--实现入库单列表查询-->
     <select id="queryInStoreListMapper" resultType="com.example.demo.pojo.InStore">
 
-        select inst.*,store.store_name,item.item_name
+        select inst.*, store.store_name, item.item_name
         from t_in_store inst
-        inner join t_item item  on item.id=inst.product_id
-        inner join t_store store on store.store_id=inst.store_id
+                 inner join t_item item on item.id = inst.product_id
+                 inner join t_store store on store.store_id = inst.store_id
     </select>
 </mapper>

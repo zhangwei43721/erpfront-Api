@@ -16,29 +16,31 @@ public class OutStoreController {
 
     /*处理商品信息出库请求*/
     @PostMapping("/doItemOutStore")
-    public Map<String,Object> doItemOutStore(@RequestBody OutStore outStore){
-        if (outStoreService.saveOutStoreService(outStore)){
+    public Map<String, Object> doItemOutStore(@RequestBody OutStore outStore) {
+        if (outStoreService.saveOutStoreService(outStore)) {
             return R.success("商品出库成功");
-        }else{
+        } else {
             return R.error("商品出库失败");
         }
     }
-     /*处理出库单分页查询请求*/
+
+    /*处理出库单分页查询请求*/
     @GetMapping("/outStoreList")
-    public Map<String,Object> outStoreList(
+    public Map<String, Object> outStoreList(
             @RequestParam(defaultValue = "1") Integer pageNum
-            ,@RequestParam(defaultValue = "3") Integer pageSize){
-        return outStoreService.queryOutStoreListMapper(pageNum,pageSize);
+            , @RequestParam(defaultValue = "3") Integer pageSize) {
+        return outStoreService.queryOutStoreListMapper(pageNum, pageSize);
     }
-        /*处理出库单确认请求*/
+
+    /*处理出库单确认请求*/
     @GetMapping("/updateOutStore")
-    public Map<String,Object> updateOutStore(Integer id){
-        OutStore os=new OutStore();
+    public Map<String, Object> updateOutStore(Integer id) {
+        OutStore os = new OutStore();
         os.setOutsId(id);
         os.setIsOut("1");
-        if(outStoreService.updateById(os)){
+        if (outStoreService.updateById(os)) {
             return R.success("确认成功");
-        }else{
+        } else {
             return R.error("确认失败");
         }
     }

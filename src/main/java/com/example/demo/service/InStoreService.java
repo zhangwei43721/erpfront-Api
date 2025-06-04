@@ -16,6 +16,6 @@ public interface InStoreService extends IService<InStore> {
     /*实现采购采购信息入库*/
     void saveBuyOrderInStoreService(BuyList buyList);
 
-     /*实现入库单列表分页查询*/
-     Map<String,Object> queryInStoreListService(Integer pageNum, Integer pageSize);
+    /*实现入库单列表分页查询*/
+    Map<String, Object> queryInStoreListService(Integer pageNum, Integer pageSize);
 }

@@ -68,15 +68,15 @@ public class InStoreServiceImpl extends ServiceImpl<InStoreMapper, InStore>
         inStoreMapper.insert(inStore);
     }
 
-      @Override
+    @Override
     public Map<String, Object> queryInStoreListService(Integer pageNum, Integer pageSize) {
 
         //指定分页查询参数
         Page<Object> page = PageHelper.startPage(pageNum, pageSize);
         List<InStore> inStores = inStoreMapper.queryInStoreListMapper();
-        Map<String,Object> result=new HashMap<>();
-        result.put("total",page.getTotal());
-        result.put("inStores",inStores);
+        Map<String, Object> result = new HashMap<>();
+        result.put("total", page.getTotal());
+        result.put("inStores", inStores);
         return result;
     }
 }

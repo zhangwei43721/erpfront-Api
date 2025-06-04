@@ -19,47 +19,39 @@ import java.util.Date;
 @TableName(value = "t_in_store")
 @Data
 public class InStore implements Serializable {
+    @Serial
+    @TableField(exist = false)
+    private static final long serialVersionUID = 1L;
     /**
      * 入库单ID
      */
     @TableId(type = IdType.AUTO)
     private Integer insId;
-
     /**
      * 仓库ID(关联仓库表)
      */
     private Integer storeId;
-
     /**
      * 商品ID(关联商品表)
      */
     private Integer productId;
-
     /**
      * 入库数量
      */
     private Integer inNum;
-
     /**
      * 创建人ID(关联用户表)
      */
     private Integer createBy;
-
     /**
      * 创建时间
      */
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date createTime;
-
     /**
      * 入库状态(0-未入库，1-已入库)
      */
     private String isIn;
-
-    @Serial
-    @TableField(exist = false)
-    private static final long serialVersionUID = 1L;
-
     @TableField(exist = false)
     private String storeName;
 

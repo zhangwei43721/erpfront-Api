@@ -6,7 +6,6 @@ import com.example.demo.pojo.AfterSales;
 import com.example.demo.service.AfterSalesService;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;

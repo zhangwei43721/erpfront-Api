@@ -12,9 +12,10 @@ import java.util.Date;
 
 /**
  * 出库单
+ *
  * @TableName t_out_store
  */
-@TableName(value ="t_out_store")
+@TableName(value = "t_out_store")
 @Data
 public class OutStore {
     /**

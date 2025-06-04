@@ -18,13 +18,13 @@ import java.util.List;
 import java.util.Map;
 
 /**
-* @author skyforever
-* @description 针对表【t_out_store(出库单)】的数据库操作Service实现
-* @createDate 2025-06-03 11:52:56
-*/
+ * @author skyforever
+ * @description 针对表【t_out_store(出库单)】的数据库操作Service实现
+ * @createDate 2025-06-03 11:52:56
+ */
 @Service
 public class OutStoreServiceImpl extends ServiceImpl<OutStoreMapper, OutStore>
-    implements OutStoreService{
+        implements OutStoreService {
 
     private final ItemMapper itemMapper;
     private final OutStoreMapper outStoreMapper;
@@ -41,9 +41,9 @@ public class OutStoreServiceImpl extends ServiceImpl<OutStoreMapper, OutStore>
         //根据商品查询对应商品的库存
         Item product = itemMapper.selectById(outStore.getProductId());
 
-        Item item =new Item();
+        Item item = new Item();
         item.setId(outStore.getProductId());
-        item.setStore(product.getStore()-outStore.getOutNum());
+        item.setStore(product.getStore() - outStore.getOutNum());
         //实现商品信息的更新
         itemMapper.updateById(item);
 
@@ -63,14 +63,14 @@ public class OutStoreServiceImpl extends ServiceImpl<OutStoreMapper, OutStore>
     @Override
     public Map<String, Object> queryOutStoreListMapper(Integer pageNum, Integer pageSize) {
         //创建Map
-        Map<String,Object> result=new HashMap<>();
+        Map<String, Object> result = new HashMap<>();
         Page<Object> page = PageHelper.startPage(pageNum, pageSize);
 
         //查询数据库
         List<OutStore> outStoreList = outStoreMapper.queryOutStorListeMapper();
 
-        result.put("total",page.getTotal());
-        result.put("outStoreList",outStoreList);
+        result.put("total", page.getTotal());
+        result.put("outStoreList", outStoreList);
         return result;
     }
 }
