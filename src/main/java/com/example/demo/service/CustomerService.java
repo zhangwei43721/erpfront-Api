@@ -1,6 +1,7 @@
 package com.example.demo.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.example.demo.dto.CountResult;
 import com.example.demo.pojo.Customer;
 
 import java.util.List;
@@ -23,4 +24,6 @@ public interface CustomerService extends IService<Customer> {
 
     /*查询所有客户Id和姓名*/
     List<Customer> queryCustIdNameListService();
+     /*实现客户地区分布统计*/
+     List<CountResult> countCustService();
 }

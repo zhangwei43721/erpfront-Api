@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import com.example.demo.dto.CountResult;
 import com.example.demo.pojo.Customer;
 import com.example.demo.service.CustomerService;
 import com.example.demo.util.R;
@@ -59,5 +60,11 @@ public class CustomerController {
     @GetMapping("/listAllCust")
     public List<Customer> listAllCust() {
         return customerService.queryCustIdNameListService();
+    }
+
+    /*处理客户地区分布统计请求*/
+    @GetMapping("/countCust")
+    public List<CountResult> countCust(){
+        return customerService.countCustService();
     }
 }

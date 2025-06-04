@@ -19,4 +19,9 @@
         ,cust_name,address,phone,cust_type,grade,
         his_total
     </sql>
+
+    <!--实现客户地区分布统计-->
+    <select id="countCustomerAreaMapper" resultType="com.example.demo.dto.CountResult">
+        select address as name, count(0) as value from t_customer group by address
+    </select>
 </mapper>

@@ -3,6 +3,7 @@ package com.example.demo.service.impl;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.example.demo.dto.CountResult;
 import com.example.demo.dto.HisData;
 import com.example.demo.mapper.CustomerMapper;
 import com.example.demo.mapper.OrderMapper;
@@ -65,6 +66,12 @@ public class CustomerServiceImpl extends ServiceImpl<CustomerMapper, Customer> i
         //指定列的投影，指定select id,cust_name
         wrapper.select("id", "cust_name");
         return customerMapper.selectList(wrapper);
+    }
+
+    // 查询客户地区统计
+    @Override
+    public List<CountResult> countCustService() {
+        return customerMapper.countCustomerAreaMapper();
     }
 }
 
