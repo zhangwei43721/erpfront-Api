@@ -1,7 +1,9 @@
 package com.example.demo.mapper;
 
-import com.example.demo.pojo.OutStore;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.example.demo.pojo.OutStore;
+
+import java.util.List;
 
 /**
 * @author skyforever
@@ -11,6 +13,8 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 */
 public interface OutStoreMapper extends BaseMapper<OutStore> {
 
+        /*实现入库单信息分页查询*/
+        List<OutStore> queryOutStorListeMapper();
 }
 
 

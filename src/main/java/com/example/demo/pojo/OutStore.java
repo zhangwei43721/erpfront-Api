@@ -1,8 +1,10 @@
 package com.example.demo.pojo;
 
 import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 
 import java.math.BigDecimal;
@@ -54,10 +56,18 @@ public class OutStore {
     /**
      * 创建时间
      */
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date createTime;
 
     /**
      * 是否出库：0 否，1 是
      */
     private String isOut;
+
+    @TableField(exist = false)
+    private String itemName;
+
+    @TableField(exist = false)
+    private String storeName;
+
 }

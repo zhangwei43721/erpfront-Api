@@ -20,4 +20,9 @@
         outs_id,product_id,store_id,tally_id,out_price,out_num,
         create_by,create_time,is_out
     </sql>
+        <select id="queryOutStorListeMapper" resultType="com.example.demo.pojo.OutStore">
+        select ose.*,item.item_name,store.store_name from t_out_store ose
+      inner join t_item item on ose.product_id = item.id
+      inner join t_store store on ose.store_id = store.store_id
+</select>
 </mapper>

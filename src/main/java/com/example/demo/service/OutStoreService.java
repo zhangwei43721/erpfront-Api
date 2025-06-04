@@ -1,7 +1,9 @@
 package com.example.demo.service;
 
-import com.example.demo.pojo.OutStore;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.example.demo.pojo.OutStore;
+
+import java.util.Map;
 
 /**
 * @author skyforever
@@ -12,4 +14,7 @@ public interface OutStoreService extends IService<OutStore> {
 
     /*实现商品出库*/
     boolean saveOutStoreService(OutStore outStore);
+
+    /*实现入库单列表分页查询*/
+    Map<String,Object> queryOutStoreListMapper(Integer pageNum, Integer pageSize);
 }

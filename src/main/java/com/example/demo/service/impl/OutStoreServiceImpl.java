@@ -6,11 +6,16 @@ import com.example.demo.mapper.OutStoreMapper;
 import com.example.demo.pojo.Item;
 import com.example.demo.pojo.OutStore;
 import com.example.demo.service.OutStoreService;
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
 * @author skyforever
@@ -53,6 +58,20 @@ public class OutStoreServiceImpl extends ServiceImpl<OutStoreMapper, OutStore>
         outStoreMapper.insert(outStore);
 
         return false;
+    }
+
+    @Override
+    public Map<String, Object> queryOutStoreListMapper(Integer pageNum, Integer pageSize) {
+        //创建Map
+        Map<String,Object> result=new HashMap<>();
+        Page<Object> page = PageHelper.startPage(pageNum, pageSize);
+
+        //查询数据库
+        List<OutStore> outStoreList = outStoreMapper.queryOutStorListeMapper();
+
+        result.put("total",page.getTotal());
+        result.put("outStoreList",outStoreList);
+        return result;
     }
 }
 
