@@ -1,6 +1,7 @@
 package com.example.demo.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.example.demo.dto.SellResult;
 import com.example.demo.mapper.OrderMapper;
 import com.example.demo.pojo.Order;
 import com.example.demo.service.OrderService;
@@ -53,6 +54,32 @@ public class OrderServiceImpl extends ServiceImpl<OrderMapper, Order>
             list.add(result);
         }
         return list;
+    }
+
+      @Override
+    public Map<String, Object> queryYearMonthService(String year) {
+        List<SellResult> sellResults = orderMapper.countSellMonthMapper(year);
+        Map<String, Object> result=new HashMap<>();
+        //创建封装月份数据集合
+        List<String> mths=new ArrayList<>();
+        //封装月份销售额数据集合
+        List<Double> mnys=new ArrayList<>();
+        for(int m=1;m<=12;m++){
+            mths.add(m+"月");
+            mnys.add(0.0);
+        }
+        for(SellResult sr:sellResults){
+            System.out.println("sr====="+sr);
+           if(sr!=null){
+               System.out.println(sr.getMth()-1+"------"+sr.getMny());
+               Integer mth = sr.getMth();
+               mnys.set(mth-1,sr.getMny()); //如果某个月份存在数据，覆盖默认值0.0
+           }
+
+        }
+        result.put("xdata",mths);
+        result.put("ydata",mnys);
+        return result;
     }
 }
 

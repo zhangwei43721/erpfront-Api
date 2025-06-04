@@ -49,4 +49,13 @@
     <select id="querySellYearMapper" resultType="java.lang.Integer">
         select distinct year(order_date) from t_order
     </select>
+
+    <!--统计某年12个月销售额-->
+    <select id="countSellMonthMapper" resultType="com.example.demo.dto.SellResult"
+            parameterType="java.lang.String">
+        select month(order_date) mth ,sum(pay_money) mny  from t_order
+        where year(order_date) =#{year}
+        group by mth
+        order by mth
+    </select>
 </mapper>
