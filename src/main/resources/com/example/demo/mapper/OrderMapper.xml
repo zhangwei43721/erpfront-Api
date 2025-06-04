@@ -45,4 +45,8 @@
             </if>
         </where>
     </select>
+    <!--定义sql统计年份-->
+    <select id="querySellYearMapper" resultType="java.lang.Integer">
+        select distinct year(order_date) from t_order
+    </select>
 </mapper>

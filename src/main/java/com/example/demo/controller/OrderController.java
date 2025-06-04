@@ -5,6 +5,7 @@ import com.example.demo.service.OrderService;
 import com.example.demo.util.R;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -50,5 +51,10 @@ public class OrderController {
         } else {
             return R.error(400, "修改失败");
         }
+    }
+     /*处理加载销售数据年份请求*/
+    @GetMapping("/queryYear")
+    public List<Map<String, Object>> queryYear(){
+        return orderService.querySellYearService();
     }
 }
