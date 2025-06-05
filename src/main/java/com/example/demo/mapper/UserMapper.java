@@ -1,7 +1,10 @@
 package com.example.demo.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.example.demo.dto.CountResult;
 import com.example.demo.pojo.User;
+
+import java.util.List;
 
 /**
  * @author skyforever
@@ -13,6 +16,10 @@ public interface UserMapper extends BaseMapper<User> {
 
     /*保存用户信息*/
     void saveUserMapper(User user);
+       /*实现员工按照年龄段分布统计*/
+    List<CountResult> countEmployeeAageMapper();
+ /*实现员工按照学统计*/
+     List<CountResult> countEmployeeEduMapper();
 }
 
 

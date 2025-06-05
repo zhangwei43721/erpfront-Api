@@ -30,5 +30,25 @@
         values (null, #{uname}, #{upwd}, #{phone},
                 #{edu}, #{age}, #{title})
     </insert>
+    <!--实现员工年龄段分布统计-->
+    <select id="countEmployeeAageMapper" resultType="com.example.demo.dto.CountResult">
+
+        select count(id) 'value',
+                CASE
+                    WHEN age between   18 and  25 THEN '[18 TO 25]'
+                    WHEN age between   26 and  30 THEN '[26 TO 30]'
+                    WHEN age between   31 and  35 THEN '[31 TO 35]'
+                    WHEN age between   36 and  40 THEN '[36 TO 40]'
+                    WHEN age between   41 and  45 THEN '[41 TO 45]'
+                    ELSE
+                        '[56 TO 100]'
+                    END 'name'
+        from t_user
+        group by name
+    </select>
+    <!--定义sql统计员工学历分布-->
+    <select id="countEmployeeEduMapper" resultType="com.example.demo.dto.CountResult">
+        select edu name,count(id) value from t_user group by edu
+    </select>
 
 </mapper>
