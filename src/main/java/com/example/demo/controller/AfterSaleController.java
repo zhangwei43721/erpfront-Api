@@ -1,12 +1,11 @@
 package com.example.demo.controller;
 
+import com.example.demo.dto.CountResult;
 import com.example.demo.pojo.AfterSales;
 import com.example.demo.service.AfterSalesService;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -25,4 +24,15 @@ public class AfterSaleController {
         return afterSalesService.queryAfterSaleListService(afterSales);
     }
 
+    /*处理投诉问题类型统计请求*/
+    @GetMapping("/countQuestionType")
+    public List<CountResult> countQuestionType() {
+        return afterSalesService.countQuestionTypeService();
+    }
+
+    /*处理投诉问题按照处理状态进行统计的请求*/
+    @GetMapping("/countQuestionState")
+    public List<CountResult> countQuestionState() {
+        return afterSalesService.countQuestionStateService();
+    }
 }

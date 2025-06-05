@@ -1,8 +1,10 @@
 package com.example.demo.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.example.demo.dto.CountResult;
 import com.example.demo.pojo.AfterSales;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -14,5 +16,10 @@ public interface AfterSalesService extends IService<AfterSales> {
     /*实现客户投诉信息分页查询*/
     Map<String, Object> queryAfterSaleListService(AfterSales afterSales);
 
+    /*实现投诉按照类型统计*/
+    List<CountResult> countQuestionTypeService();
+
+    /*实现投诉按照处理状态统计*/
+    List<CountResult> countQuestionStateService();
 
 }

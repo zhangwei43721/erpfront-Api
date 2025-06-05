@@ -1,6 +1,7 @@
 package com.example.demo.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.example.demo.dto.CountResult;
 import com.example.demo.mapper.AfterSalesMapper;
 import com.example.demo.pojo.AfterSales;
 import com.example.demo.service.AfterSalesService;
@@ -38,6 +39,16 @@ public class AfterSalesServiceImpl extends ServiceImpl<AfterSalesMapper, AfterSa
         result.put("afterSalesList", afterSalesList);
         result.put("total", page.getTotal());
         return result;
+    }
+
+    @Override
+    public List<CountResult> countQuestionTypeService() {
+        return afterSalesMapper.countQuestionTypeMapper();
+    }
+
+    @Override
+    public List<CountResult> countQuestionStateService() {
+        return afterSalesMapper.countQuestionStateMapper();
     }
 
 }
