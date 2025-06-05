@@ -25,10 +25,15 @@ public interface OrderMapper extends BaseMapper<Order> {
      * order:封装动态where条件
      * */
     List<Order> queryOrderListMapper(Order order);
+
     /*统计查询销售数据的年份*/
     List<Integer> querySellYearMapper();
-     /*统计查询某个年份12个月销售额*/
-     List<SellResult> countSellMonthMapper(String year);
+
+    /*统计查询某个年份12个月销售额*/
+    List<SellResult> countSellMonthMapper(String year);
+
+    /*实现年12个月销售商品数量的统计*/
+    List<SellResult> countSellNumMapper(String year);
 }
 
 

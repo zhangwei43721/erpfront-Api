@@ -52,15 +52,22 @@ public class OrderController {
             return R.error(400, "修改失败");
         }
     }
-     /*处理加载销售数据年份请求*/
+
+    /*处理加载销售数据年份请求*/
     @GetMapping("/queryYear")
-    public List<Map<String, Object>> queryYear(){
+    public List<Map<String, Object>> queryYear() {
         return orderService.querySellYearService();
     }
 
     /*处理某年12个月销售额的请求*/
     @GetMapping("/countSell")
-    public Map<String,Object> countYearSell(String year){
+    public Map<String, Object> countYearSell(String year) {
         return orderService.queryYearMonthService(year);
+    }
+
+    /*处理年12个月，每个月销售数量统计的请求*/
+    @GetMapping("/countNum")
+    public Map<String, Object> countNum(String year) {
+        return orderService.querySellNumService(year);
     }
 }

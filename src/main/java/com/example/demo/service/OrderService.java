@@ -19,6 +19,9 @@ public interface OrderService extends IService<Order> {
     /*统计销售数据年份*/
     List<Map<String, Object>> querySellYearService();
 
-    Map<String,Object> queryYearMonthService(String  year);
+    Map<String, Object> queryYearMonthService(String year);
+
+    /*统计年每个月销售商品的数量*/
+    Map<String, Object> querySellNumService(String year);
 
 }

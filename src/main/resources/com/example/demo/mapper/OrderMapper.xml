@@ -47,14 +47,24 @@
     </select>
     <!--定义sql统计年份-->
     <select id="querySellYearMapper" resultType="java.lang.Integer">
-        select distinct year(order_date) from t_order
+        select distinct year(order_date)
+        from t_order
     </select>
 
     <!--统计某年12个月销售额-->
     <select id="countSellMonthMapper" resultType="com.example.demo.dto.SellResult"
             parameterType="java.lang.String">
-        select month(order_date) mth ,sum(pay_money) mny  from t_order
-        where year(order_date) =#{year}
+        select month(order_date) mth, sum(pay_money) mny
+        from t_order
+        where year(order_date) = #{year}
+        group by mth
+        order by mth
+    </select>
+    <!--实现某年12个月，每个月销售量的统计-->
+    <select id="countSellNumMapper" resultType="com.example.demo.dto.SellResult">
+        select month(order_date) mth, sum(num) mny
+        from t_order
+        where year(order_date) = #{year}
         group by mth
         order by mth
     </select>
