@@ -36,24 +36,17 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryMapper, Category>
     // 声明方法，递归遍历categories集合，将该集合转化为List<TreeVo>
     private List<TreeVo> toListTreeVo(List<Category> categories, Integer id) {
         List<TreeVo> result = new ArrayList<>();
-        System.out.println("转换开始 - 当前父ID: " + id + ", 总记录数: " + categories.size());
 
         for (Category category : categories) {
-            System.out.println("处理节点: " + category.getCateName() + ", PID: " + (category.getPid() != null ? category.getPid().toString() : "null") + ", 当前ID: " + category.getId());
-
             if (Objects.equals(category.getPid(), id)) {  // 使用Objects.equals()避免空指针异常
-                System.out.println("匹配到子节点: " + category.getCateName() + ", PID: " + id);
                 TreeVo treeVo = new TreeVo();
                 treeVo.setId(category.getId());
                 treeVo.setLabel(category.getCateName());
                 treeVo.setChildren(toListTreeVo(categories, category.getId()));
                 result.add(treeVo);
-            } else {
-                System.out.println("未匹配节点: " + category.getCateName() + ", PID: " + category.getPid() + ", 需要: " + id);
             }
         }
 
-        System.out.println("转换结束 - 结果数量: " + result.size() + ", 父ID: " + id);
         return result;
     }
 }

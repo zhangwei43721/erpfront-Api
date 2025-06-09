@@ -24,6 +24,7 @@ public interface CustomerService extends IService<Customer> {
 
     /*查询所有客户Id和姓名*/
     List<Customer> queryCustIdNameListService();
-     /*实现客户地区分布统计*/
-     List<CountResult> countCustService();
+
+    /*实现客户地区分布统计*/
+    List<CountResult> countCustService();
 }

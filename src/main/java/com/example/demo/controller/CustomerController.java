@@ -64,7 +64,7 @@ public class CustomerController {
 
     /*处理客户地区分布统计请求*/
     @GetMapping("/countCust")
-    public List<CountResult> countCust(){
+    public List<CountResult> countCust() {
         return customerService.countCustService();
     }
 }

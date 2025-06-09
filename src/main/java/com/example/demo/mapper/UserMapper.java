@@ -16,10 +16,12 @@ public interface UserMapper extends BaseMapper<User> {
 
     /*保存用户信息*/
     void saveUserMapper(User user);
-       /*实现员工按照年龄段分布统计*/
+
+    /*实现员工按照年龄段分布统计*/
     List<CountResult> countEmployeeAageMapper();
- /*实现员工按照学统计*/
-     List<CountResult> countEmployeeEduMapper();
+
+    /*实现员工按照学统计*/
+    List<CountResult> countEmployeeEduMapper();
 }
 
 

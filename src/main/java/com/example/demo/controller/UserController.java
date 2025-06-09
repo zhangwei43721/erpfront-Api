@@ -61,15 +61,16 @@ public class UserController {
         userService.deleteUserRoleService(user.getId());
         return R.success("删除用户信息成功");
     }
-      /*处理员工年龄分部统计请求*/
+
+    /*处理员工年龄分部统计请求*/
     @GetMapping("/countEmpAge")
-    public List<CountResult> countEmpAge(){
+    public List<CountResult> countEmpAge() {
         return userService.countEmployeeAageService();
     }
 
-     /*处理员工学历分布统计的请求*/
+    /*处理员工学历分布统计的请求*/
     @GetMapping("/countEmpEdu")
-    public List<CountResult> countEmpEdu(){
+    public List<CountResult> countEmpEdu() {
         return userService.countEmployeeEduService();
     }
 }

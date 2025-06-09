@@ -100,11 +100,13 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User>
         //删除用户角色信息
         userRoleMapper.delete(wrapper);
     }
-     @Override
+
+    @Override
     public List<CountResult> countEmployeeAageService() {
         return userMapper.countEmployeeAageMapper();
     }
-      @Override
+
+    @Override
     public List<CountResult> countEmployeeEduService() {
         return userMapper.countEmployeeEduMapper();
     }
