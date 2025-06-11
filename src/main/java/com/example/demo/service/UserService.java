@@ -24,7 +24,7 @@ public interface UserService extends IService<User> {
     void updateUserRoleService(User user);
 
     /*实现用户信息的删除*/
-    void deleteUserRoleService(Integer id);
+    void deleteUserRoleService(Long id);
 
     /*实现员工按照年龄段分布统计*/
     List<CountResult> countEmployeeAageService();

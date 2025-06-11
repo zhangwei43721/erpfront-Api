@@ -1,6 +1,5 @@
 package com.example.demo.controller;
 
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.example.demo.dto.CountResult;
 import com.example.demo.pojo.User;
 import com.example.demo.service.UserRoleService;
@@ -40,11 +39,8 @@ public class UserController {
 
     /*根据用户id查询某个用户的所有角色id*/
     @GetMapping("/queryUserRids/{id}")
-    public List<Integer> queryUserRids(@PathVariable Integer id) {
-        QueryWrapper wrapper = new QueryWrapper();
-        wrapper.eq("uid", id);
-        wrapper.select("rid");
-        return userRoleService.listObjs(wrapper);
+    public List<Integer> queryUserRids(@PathVariable Long id) {
+        return userRoleService.listRoleIdsByUserId(id);
     }
 
     /*处理用户信息修改请求*/
@@ -57,8 +53,11 @@ public class UserController {
     /*处理用户信息删除请求*/
     @PostMapping("/deleteUser")
     public Map<String, Object> deleteUser(@RequestBody User user) {
-        userService.deleteUserRoleService(user.getId());
-        return R.success("删除用户信息成功");
+        if (user.getId() != null) {
+            userService.deleteUserRoleService(user.getId());
+            return R.success("删除用户信息成功");
+        }
+        return R.error("用户ID不能为空");
     }
 
     /*处理员工年龄分部统计请求*/

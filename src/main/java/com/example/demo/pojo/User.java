@@ -19,7 +19,7 @@ public class User {
      * 用户ID (主键)
      */
     @TableId(type = IdType.AUTO)
-    private Integer id;
+    private Long id;
 
     /**
      * 用户名

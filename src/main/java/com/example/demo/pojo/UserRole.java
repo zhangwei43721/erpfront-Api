@@ -22,7 +22,7 @@ public class UserRole {
     /**
      * 用户ID (关联t_user.id)
      */
-    private Integer uid;
+    private Long uid;
 
     /**
      * 角色ID (关联t_roler.id)
