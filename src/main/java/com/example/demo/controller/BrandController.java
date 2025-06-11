@@ -3,6 +3,7 @@ package com.example.demo.controller;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.example.demo.pojo.Brand;
 import com.example.demo.service.BrandService;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -18,6 +19,7 @@ public class BrandController {
     }
 
     @GetMapping("/brandList")
+    @Cacheable(cacheNames = "brand_cache",key = "#root.methodName")
     public List<Brand> queryBrandList() {
         QueryWrapper<Brand> wrapper = new QueryWrapper<>();
         wrapper.select("brand_id", "brand_name");
