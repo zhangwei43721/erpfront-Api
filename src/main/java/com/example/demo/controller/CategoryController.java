@@ -10,7 +10,6 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-@CrossOrigin
 public class CategoryController {
 
     private final CategoryService categoryService;

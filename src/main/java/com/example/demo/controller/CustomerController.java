@@ -10,7 +10,6 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-@CrossOrigin // 如果全局配置了，可以移除
 public class CustomerController {
 
     private final CustomerService customerService;

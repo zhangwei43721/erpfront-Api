@@ -3,14 +3,12 @@ package com.example.demo.controller;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.example.demo.pojo.Place;
 import com.example.demo.service.PlaceService;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
 @RestController
-@CrossOrigin
 public class PlaceController {
 
 

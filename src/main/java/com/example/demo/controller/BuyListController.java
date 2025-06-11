@@ -18,7 +18,6 @@ import java.util.Date;
 import java.util.Map;
 
 @RestController
-@CrossOrigin
 public class BuyListController {
 
     private final BuyListService buyListService;

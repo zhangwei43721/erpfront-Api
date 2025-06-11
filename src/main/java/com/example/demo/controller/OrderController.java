@@ -9,7 +9,6 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-@CrossOrigin
 public class OrderController {
 
     private final OrderService orderService;
