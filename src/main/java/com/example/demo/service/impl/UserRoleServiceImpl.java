@@ -25,16 +25,16 @@ public class UserRoleServiceImpl extends ServiceImpl<UserRoleMapper, UserRole>
         if (userId == null) {
             return Collections.emptyList();
         }
-        
+
         List<UserRole> userRoles = this.lambdaQuery()
                 .select(UserRole::getRid)
                 .eq(UserRole::getUid, userId)
                 .list();
-                
+
         if (CollectionUtils.isEmpty(userRoles)) {
             return Collections.emptyList();
         }
-        
+
         return userRoles.stream()
                 .map(UserRole::getRid)
                 .collect(Collectors.toList());

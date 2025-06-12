@@ -19,7 +19,7 @@ public class BrandController {
     }
 
     @GetMapping("/brandList")
-    @Cacheable(cacheNames = "brand_cache",key = "#root.methodName")
+    @Cacheable(cacheNames = "brand_cache", key = "#root.methodName")
     public List<Brand> queryBrandList() {
         QueryWrapper<Brand> wrapper = new QueryWrapper<>();
         wrapper.select("brand_id", "brand_name");

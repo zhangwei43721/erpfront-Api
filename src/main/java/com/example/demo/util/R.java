@@ -28,14 +28,14 @@ public class R extends HashMap<String, Object> {
         return result;
     }
 
+    // 默认错误
+    public static Map<String, Object> error(String message) {
+        return error(400, message);
+    }
+
     @Override
     public R put(String key, Object value) {
         super.put(key, value);
         return this;
-    }
-
-    // 默认错误
-    public static Map<String, Object> error(String message) {
-        return error(400, message);
     }
 }

@@ -53,11 +53,12 @@
         group by edu
     </select>
 
-     <select id="queryUserMenusMapper" resultType="com.example.demo.pojo.Menu">
-        select distinct menu.* from t_menu menu
-        inner join t_role_menu rm on menu.id=rm.mid
-        inner join t_user_role ur on rm.rid=ur.rid
-        where ur.uid=#{uid}
+    <select id="queryUserMenusMapper" resultType="com.example.demo.pojo.Menu">
+        select distinct menu.*
+        from t_menu menu
+                 inner join t_role_menu rm on menu.id = rm.mid
+                 inner join t_user_role ur on rm.rid = ur.rid
+        where ur.uid = #{uid}
     </select>
 
 </mapper>

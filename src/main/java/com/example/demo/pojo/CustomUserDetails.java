@@ -47,6 +47,9 @@ public class CustomUserDetails implements UserDetails {
     }
 
     // 其他 isAccountNonExpired 等方法可以根据需要实现，默认为 true
-    @Override public boolean isAccountNonExpired() { return true; }
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
 
 }

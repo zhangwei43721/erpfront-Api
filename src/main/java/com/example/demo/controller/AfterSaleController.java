@@ -3,7 +3,10 @@ package com.example.demo.controller;
 import com.example.demo.dto.CountResult;
 import com.example.demo.pojo.AfterSales;
 import com.example.demo.service.AfterSalesService;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 import java.util.Map;

@@ -11,16 +11,18 @@ import java.util.List;
  * @createDate 2025-05-22 09:43:40
  */
 public interface UserRoleService extends IService<UserRole> {
-    
+
     /**
      * 根据用户ID查询角色ID列表
+     *
      * @param userId 用户ID
      * @return 角色ID列表
      */
     List<Integer> listRoleIdsByUserId(Long userId);
-    
+
     /**
      * 根据用户ID删除用户角色关联
+     *
      * @param userId 用户ID
      * @return 是否删除成功
      */

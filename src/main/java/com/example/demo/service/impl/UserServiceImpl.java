@@ -39,7 +39,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User>
     @Override
     public User findByUsername(String username) {
         return userMapper.selectOne(new LambdaQueryWrapper<User>()
-            .eq(User::getUname, username));
+                .eq(User::getUname, username));
     }
 
     @Override
@@ -59,7 +59,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User>
     public void saveUserRolerService(User user) {
         // 保存用户基本信息后需要获得数据库自增产生的用户id
         userMapper.saveUserMapper(user);
-        
+
         // 获得当前用户分配的角色id的集合,从前台提交
         Integer[] rids = user.getRids();
         if (rids != null) {
@@ -68,7 +68,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User>
                 UserRole ur = new UserRole();
                 ur.setUid(user.getId()); // 用户id赋值
                 ur.setRid(rid); // 角色id赋值
-userRoleService.save(ur);
+                userRoleService.save(ur);
             }
         }
     }
@@ -113,25 +113,26 @@ userRoleService.save(ur);
     public List<CountResult> countEmployeeEduService() {
         return userMapper.countEmployeeEduMapper();
     }
-     @Override
+
+    @Override
     public List<MenuVo> queryUserMenusListService(Long uid) {
         List<Menu> menus = userMapper.queryUserMenusMapper(uid);
-        return doListMenus(menus,0);
+        return doListMenus(menus, 0);
     }
 
-    private List<MenuVo> doListMenus(List<Menu> menus,Integer id){
+    private List<MenuVo> doListMenus(List<Menu> menus, Integer id) {
 
         //创建集合对象保存返回值
-        List<MenuVo> result=new ArrayList<>();
+        List<MenuVo> result = new ArrayList<>();
         //遍历menus集合获得每个菜单节点对象，m每个菜单节点对象
-        for(Menu m:menus){
+        for (Menu m : menus) {
             //m菜单节点对象的父节点id，是否和传入id相等，如果相等说明当前遍历的节点m，是id对应的菜单节点的子节点
-            if(m.getPid().equals(id)){
+            if (m.getPid().equals(id)) {
 
-                MenuVo menusVo=new MenuVo();
-                BeanUtils.copyProperties(m,menusVo);
+                MenuVo menusVo = new MenuVo();
+                BeanUtils.copyProperties(m, menusVo);
                 //进行递归遍历
-                menusVo.setSubMenu(doListMenus(menus,m.getId()));
+                menusVo.setSubMenu(doListMenus(menus, m.getId()));
                 result.add(menusVo);
             }
         }

@@ -1,6 +1,9 @@
 package com.example.demo.util;
 
-import io.jsonwebtoken.*;
+import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.JwtException;
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.security.Keys;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -69,15 +72,15 @@ public class JwtUtil {
     }
 
     // 验证token
-public Boolean validateToken(String token) {
-    try {
-        getAllClaimsFromToken(token); // 解析成功即签名有效
-        return !isTokenExpired(token); // 检查是否过期
-    } catch (JwtException | IllegalArgumentException e) {
-        // 可以记录日志，例如：logger.error("Invalid JWT token: {}", e.getMessage());
-        return false;
+    public Boolean validateToken(String token) {
+        try {
+            getAllClaimsFromToken(token); // 解析成功即签名有效
+            return !isTokenExpired(token); // 检查是否过期
+        } catch (JwtException | IllegalArgumentException e) {
+            // 可以记录日志，例如：logger.error("Invalid JWT token: {}", e.getMessage());
+            return false;
+        }
     }
-}
 
     // 获取签名密钥
     private Key getSigningKey() {

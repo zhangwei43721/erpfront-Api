@@ -20,11 +20,11 @@ public class RedisCacheConfig {
 
     /*创建CacheManager对象*/
     @Bean
-    public CacheManager cacheManager(){
+    public CacheManager cacheManager() {
         //创建封装redis缓存配置的对象
         RedisCacheConfiguration cfg = RedisCacheConfiguration.defaultCacheConfig();
 
-        cfg=cfg.serializeValuesWith(RedisSerializationContext
+        cfg = cfg.serializeValuesWith(RedisSerializationContext
                 .SerializationPair.fromSerializer(RedisSerializer.json()));
 
         return RedisCacheManager.builder(redisConnectionFactory).cacheDefaults(cfg).build();

@@ -25,7 +25,7 @@ public interface UserMapper extends BaseMapper<User> {
     List<CountResult> countEmployeeEduMapper();
 
     /*加载当前登录用户菜单信息*/
-    public List<Menu> queryUserMenusMapper(Long uid);
+    List<Menu> queryUserMenusMapper(Long uid);
 }
 
 
