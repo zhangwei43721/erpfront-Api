@@ -1,17 +1,17 @@
 /*
  Navicat Premium Dump SQL
 
- Source Server         : localhost_3306
+ Source Server         : 120.55.192.74_3306
  Source Server Type    : MySQL
- Source Server Version : 80042 (8.0.42-0ubuntu0.24.04.1)
- Source Host           : localhost:3306
+ Source Server Version : 50744 (5.7.44)
+ Source Host           : 120.55.192.74:3306
  Source Schema         : erp
 
  Target Server Type    : MySQL
- Target Server Version : 80042 (8.0.42-0ubuntu0.24.04.1)
+ Target Server Version : 50744 (5.7.44)
  File Encoding         : 65001
 
- Date: 06/06/2025 09:45:31
+ Date: 12/06/2025 14:19:35
 */
 
 SET NAMES utf8mb4;
@@ -22,14 +22,14 @@ SET FOREIGN_KEY_CHECKS = 0;
 -- ----------------------------
 DROP TABLE IF EXISTS `t_after_sales`;
 CREATE TABLE `t_after_sales` (
-  `id` int NOT NULL AUTO_INCREMENT COMMENT '售后服务ID (主键, 自增)',
-  `cust_id` int DEFAULT NULL COMMENT '客户ID (外键, 关联 t_customer.id)',
-  `question` varchar(50) DEFAULT NULL COMMENT '问题描述',
-  `state` varchar(50) DEFAULT NULL COMMENT '处理状态 (例如: 待处理, 处理中, 已解决)',
-  `record` varchar(200) DEFAULT NULL COMMENT '处理记录/沟通纪要',
-  `level` int DEFAULT NULL COMMENT '问题级别 (例如: 1-普通, 2-重要, 3-紧急)',
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '售后服务ID (主键, 自增)',
+  `cust_id` int(11) DEFAULT NULL COMMENT '客户ID (外键, 关联 t_customer.id)',
+  `question` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '问题描述',
+  `state` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '处理状态 (例如: 待处理, 处理中, 已解决)',
+  `record` varchar(200) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '处理记录/沟通纪要',
+  `level` int(11) DEFAULT NULL COMMENT '问题级别 (例如: 1-普通, 2-重要, 3-紧急)',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC COMMENT='售后服务表';
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC COMMENT='售后服务表';
 
 -- ----------------------------
 -- Records of t_after_sales
@@ -46,12 +46,12 @@ COMMIT;
 -- ----------------------------
 DROP TABLE IF EXISTS `t_brand`;
 CREATE TABLE `t_brand` (
-  `brand_id` int NOT NULL AUTO_INCREMENT COMMENT '品牌ID',
-  `brand_name` varchar(100) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL COMMENT '品牌名称',
-  `brand_leter` char(1) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL COMMENT '品牌首字母',
-  `brand_desc` varchar(1000) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL COMMENT '品牌描述',
+  `brand_id` int(11) NOT NULL AUTO_INCREMENT COMMENT '品牌ID',
+  `brand_name` varchar(100) DEFAULT NULL COMMENT '品牌名称',
+  `brand_leter` char(1) DEFAULT NULL COMMENT '品牌首字母',
+  `brand_desc` varchar(1000) DEFAULT NULL COMMENT '品牌描述',
   PRIMARY KEY (`brand_id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb3 ROW_FORMAT=DYNAMIC COMMENT='品牌表';
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='品牌表';
 
 -- ----------------------------
 -- Records of t_brand
@@ -71,19 +71,19 @@ COMMIT;
 -- ----------------------------
 DROP TABLE IF EXISTS `t_buy_list`;
 CREATE TABLE `t_buy_list` (
-  `buy_id` int NOT NULL AUTO_INCREMENT COMMENT '采购单ID (主键, 自增)',
-  `product_id` int DEFAULT NULL COMMENT '商品ID (外键, 关联 t_item.id)',
-  `store_id` int DEFAULT NULL COMMENT '目标仓库ID (外键, 关联 t_store.store_id)',
-  `buy_num` int DEFAULT NULL COMMENT '计划采购数量',
-  `fact_buy_num` int DEFAULT NULL COMMENT '实际采购数量',
+  `buy_id` int(11) NOT NULL AUTO_INCREMENT COMMENT '采购单ID (主键, 自增)',
+  `product_id` int(11) DEFAULT NULL COMMENT '商品ID (外键, 关联 t_item.id)',
+  `store_id` int(11) DEFAULT NULL COMMENT '目标仓库ID (外键, 关联 t_store.store_id)',
+  `buy_num` int(11) DEFAULT NULL COMMENT '计划采购数量',
+  `fact_buy_num` int(11) DEFAULT NULL COMMENT '实际采购数量',
   `buy_time` datetime DEFAULT NULL COMMENT '采购时间',
-  `supply_id` int DEFAULT NULL COMMENT '供应商ID (外键, 关联 t_supply.supply_id)',
-  `place_id` int DEFAULT NULL COMMENT '产地ID (外键, 关联 t_place.place_id)',
+  `supply_id` int(11) DEFAULT NULL COMMENT '供应商ID (外键, 关联 t_supply.supply_id)',
+  `place_id` int(11) DEFAULT NULL COMMENT '产地ID (外键, 关联 t_place.place_id)',
   `buy_user` varchar(20) DEFAULT NULL COMMENT '采购员/申请人',
   `phone` varchar(20) DEFAULT NULL COMMENT '联系电话',
-  `is_in` char(1) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL COMMENT '0 否 1 是',
+  `is_in` char(1) DEFAULT NULL COMMENT '0 否 1 是',
   PRIMARY KEY (`buy_id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=54 DEFAULT CHARSET=utf8mb3 ROW_FORMAT=DYNAMIC COMMENT='采购单';
+) ENGINE=InnoDB AUTO_INCREMENT=54 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='采购单';
 
 -- ----------------------------
 -- Records of t_buy_list
@@ -101,13 +101,13 @@ COMMIT;
 -- ----------------------------
 DROP TABLE IF EXISTS `t_category`;
 CREATE TABLE `t_category` (
-  `id` int NOT NULL COMMENT '分类ID (主键)',
-  `isbn` varchar(255) NOT NULL COMMENT '国际标准书号或分类编码',
-  `cate_name` varchar(255) DEFAULT NULL COMMENT '分类名称',
-  `remark` varchar(255) DEFAULT NULL COMMENT '备注',
-  `pid` int DEFAULT NULL COMMENT '父分类ID (用于层级分类, 0或NULL表示顶级)',
+  `id` int(11) NOT NULL COMMENT '分类ID (主键)',
+  `isbn` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '国际标准书号或分类编码',
+  `cate_name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '分类名称',
+  `remark` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '备注',
+  `pid` int(11) DEFAULT NULL COMMENT '父分类ID (用于层级分类, 0或NULL表示顶级)',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC COMMENT='商品分类表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC COMMENT='商品分类表';
 
 -- ----------------------------
 -- Records of t_category
@@ -133,15 +133,15 @@ COMMIT;
 -- ----------------------------
 DROP TABLE IF EXISTS `t_customer`;
 CREATE TABLE `t_customer` (
-  `id` int NOT NULL AUTO_INCREMENT COMMENT '客户ID (主键, 自增)',
-  `cust_name` varchar(50) DEFAULT NULL COMMENT '客户名称',
-  `address` varchar(100) DEFAULT NULL COMMENT '客户地址',
-  `phone` varchar(11) DEFAULT NULL COMMENT '联系电话',
-  `cust_type` varchar(50) DEFAULT NULL COMMENT '客户类型 (例如: 个人, 企业)',
-  `grade` int DEFAULT NULL COMMENT '客户等级/积分',
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '客户ID (主键, 自增)',
+  `cust_name` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '客户名称',
+  `address` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '客户地址',
+  `phone` varchar(11) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '联系电话',
+  `cust_type` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '客户类型 (例如: 个人, 企业)',
+  `grade` int(11) DEFAULT NULL COMMENT '客户等级/积分',
   `his_total` double DEFAULT NULL COMMENT '历史消费总额',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC COMMENT='客户信息表';
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC COMMENT='客户信息表';
 
 -- ----------------------------
 -- Records of t_customer
@@ -160,15 +160,15 @@ COMMIT;
 -- ----------------------------
 DROP TABLE IF EXISTS `t_in_store`;
 CREATE TABLE `t_in_store` (
-  `ins_id` int NOT NULL AUTO_INCREMENT COMMENT '入库记录ID (主键, 自增)',
-  `store_id` int DEFAULT NULL COMMENT '仓库ID (外键, 关联 t_store.store_id)',
-  `product_id` int DEFAULT NULL COMMENT '商品ID (外键, 关联 t_item.id)',
-  `in_num` int DEFAULT NULL COMMENT '入库数量',
-  `create_by` int DEFAULT NULL COMMENT '操作员ID/创建人ID (可能关联员工表或用户表)',
+  `ins_id` int(11) NOT NULL AUTO_INCREMENT COMMENT '入库记录ID (主键, 自增)',
+  `store_id` int(11) DEFAULT NULL COMMENT '仓库ID (外键, 关联 t_store.store_id)',
+  `product_id` int(11) DEFAULT NULL COMMENT '商品ID (外键, 关联 t_item.id)',
+  `in_num` int(11) DEFAULT NULL COMMENT '入库数量',
+  `create_by` int(11) DEFAULT NULL COMMENT '操作员ID/创建人ID (可能关联员工表或用户表)',
   `create_time` datetime DEFAULT NULL COMMENT '入库时间/创建时间',
-  `is_in` char(1) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL COMMENT '0 否 1 是',
+  `is_in` char(1) CHARACTER SET utf8 DEFAULT NULL COMMENT '0 否 1 是',
   PRIMARY KEY (`ins_id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC COMMENT='入库记录表';
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC COMMENT='入库记录表';
 
 -- ----------------------------
 -- Records of t_in_store
@@ -185,29 +185,29 @@ COMMIT;
 -- ----------------------------
 DROP TABLE IF EXISTS `t_item`;
 CREATE TABLE `t_item` (
-  `id` int NOT NULL AUTO_INCREMENT COMMENT '商品ID，主键，自动递增',
-  `item_num` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '商品编号',
-  `item_name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '商品名称',
-  `type_id` int DEFAULT NULL COMMENT '商品类型ID (外键, 关联 t_categrory.id)',
-  `store` int DEFAULT NULL COMMENT '库存数量',
-  `brand_id` int DEFAULT NULL COMMENT '品牌ID (外键, 关联 t_brand.brand_id)',
-  `store_id` int DEFAULT NULL COMMENT '门店ID (可能关联门店表, 非库存字段)',
-  `supply_id` int DEFAULT NULL COMMENT '供应商ID (外键, 关联 t_supply.supply_id)',
-  `place_id` int DEFAULT NULL COMMENT '产地ID (外键, 关联 t_place.place_id)',
-  `unit_id` int DEFAULT NULL COMMENT '单位ID (外键, 关联 t_unit.unit_id)',
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '商品ID，主键，自动递增',
+  `item_num` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '商品编号',
+  `item_name` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '商品名称',
+  `type_id` int(11) DEFAULT NULL COMMENT '商品类型ID (外键, 关联 t_categrory.id)',
+  `store` int(11) DEFAULT NULL COMMENT '库存数量',
+  `brand_id` int(11) DEFAULT NULL COMMENT '品牌ID (外键, 关联 t_brand.brand_id)',
+  `store_id` int(11) DEFAULT NULL COMMENT '门店ID (可能关联门店表, 非库存字段)',
+  `supply_id` int(11) DEFAULT NULL COMMENT '供应商ID (外键, 关联 t_supply.supply_id)',
+  `place_id` int(11) DEFAULT NULL COMMENT '产地ID (外键, 关联 t_place.place_id)',
+  `unit_id` int(11) DEFAULT NULL COMMENT '单位ID (外键, 关联 t_unit.unit_id)',
   `price` double DEFAULT NULL COMMENT '进货价格',
   `sell_price` double DEFAULT NULL COMMENT '销售价格',
   `vip_price` double DEFAULT NULL COMMENT '会员价格',
-  `item_desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci COMMENT '商品描述',
+  `item_desc` text COLLATE utf8mb4_unicode_ci COMMENT '商品描述',
   `item_date` date DEFAULT NULL COMMENT '生产日期 (YYYY-MM-DD)',
   `end_date` date DEFAULT NULL COMMENT '到期日期 (YYYY-MM-DD)',
-  `hot_title` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '促销标题',
-  `facturer` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '制造商',
-  `statue` int DEFAULT NULL COMMENT '商品状态 (例如: 0-下架, 1-上架, 2-预售)',
-  `imgs` text COMMENT '商品图片路径列表 (JSON格式的字符串)',
-  `create_by` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '创建者',
+  `hot_title` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '促销标题',
+  `facturer` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '制造商',
+  `statue` int(11) DEFAULT NULL COMMENT '商品状态 (例如: 0-下架, 1-上架, 2-预售)',
+  `imgs` text COLLATE utf8mb4_unicode_ci COMMENT '商品图片路径列表 (JSON格式的字符串)',
+  `create_by` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '创建者',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC COMMENT='商品信息表';
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC COMMENT='商品信息表';
 
 -- ----------------------------
 -- Records of t_item
@@ -235,14 +235,14 @@ COMMIT;
 -- ----------------------------
 DROP TABLE IF EXISTS `t_menu`;
 CREATE TABLE `t_menu` (
-  `id` int NOT NULL AUTO_INCREMENT COMMENT 'ID (主键)',
-  `label` varchar(255) DEFAULT NULL COMMENT '导航名称',
-  `component` int DEFAULT NULL COMMENT '子 ID',
-  `pid` int DEFAULT NULL COMMENT '父 ID',
-  `sort_order` int DEFAULT NULL COMMENT '排序',
-  `icon_name` varchar(255) DEFAULT NULL COMMENT '图标名称',
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ID (主键)',
+  `label` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '导航名称',
+  `component` int(11) DEFAULT NULL COMMENT '子 ID',
+  `pid` int(11) DEFAULT NULL COMMENT '父 ID',
+  `sort_order` int(11) DEFAULT NULL COMMENT '排序',
+  `icon_name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '图标名称',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=43 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='前端菜单表';
+) ENGINE=InnoDB AUTO_INCREMENT=43 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='前端菜单表';
 
 -- ----------------------------
 -- Records of t_menu
@@ -254,7 +254,7 @@ INSERT INTO `t_menu` (`id`, `label`, `component`, `pid`, `sort_order`, `icon_nam
 INSERT INTO `t_menu` (`id`, `label`, `component`, `pid`, `sort_order`, `icon_name`) VALUES (4, '售后服务', 2, 1, 2, 'Service');
 INSERT INTO `t_menu` (`id`, `label`, `component`, `pid`, `sort_order`, `icon_name`) VALUES (5, '客户订单', 3, 1, 3, 'Document');
 INSERT INTO `t_menu` (`id`, `label`, `component`, `pid`, `sort_order`, `icon_name`) VALUES (6, '销售过程', 4, 1, 4, 'TrendCharts');
-INSERT INTO `t_menu` (`id`, `label`, `component`, `pid`, `sort_order`, `icon_name`) VALUES (7, '数据统计', NULL, 0, 1, 'DataLine');
+INSERT INTO `t_menu` (`id`, `label`, `component`, `pid`, `sort_order`, `icon_name`) VALUES (7, '数据统计', NULL, 0, 2, 'DataLine');
 INSERT INTO `t_menu` (`id`, `label`, `component`, `pid`, `sort_order`, `icon_name`) VALUES (8, '客户统计', 5, 7, 0, 'UserFilled');
 INSERT INTO `t_menu` (`id`, `label`, `component`, `pid`, `sort_order`, `icon_name`) VALUES (9, '库存统计', 6, 7, 1, 'Box');
 INSERT INTO `t_menu` (`id`, `label`, `component`, `pid`, `sort_order`, `icon_name`) VALUES (10, '销售过程列表', 7, 1, 5, 'List');
@@ -262,7 +262,7 @@ INSERT INTO `t_menu` (`id`, `label`, `component`, `pid`, `sort_order`, `icon_nam
 INSERT INTO `t_menu` (`id`, `label`, `component`, `pid`, `sort_order`, `icon_name`) VALUES (25, '添加菜单', 8, 11, 0, 'Menu');
 INSERT INTO `t_menu` (`id`, `label`, `component`, `pid`, `sort_order`, `icon_name`) VALUES (26, '用户管理', 9, 11, 1, 'Avatar');
 INSERT INTO `t_menu` (`id`, `label`, `component`, `pid`, `sort_order`, `icon_name`) VALUES (27, '角色管理', 10, 11, 2, 'User');
-INSERT INTO `t_menu` (`id`, `label`, `component`, `pid`, `sort_order`, `icon_name`) VALUES (33, '商品管理', NULL, 0, 2, 'Goods');
+INSERT INTO `t_menu` (`id`, `label`, `component`, `pid`, `sort_order`, `icon_name`) VALUES (33, '商品管理', NULL, 0, 1, 'Goods');
 INSERT INTO `t_menu` (`id`, `label`, `component`, `pid`, `sort_order`, `icon_name`) VALUES (34, '商品分类', 14, 33, 0, 'Grid');
 INSERT INTO `t_menu` (`id`, `label`, `component`, `pid`, `sort_order`, `icon_name`) VALUES (35, '信息管理', 15, 33, 1, 'InfoFilled');
 INSERT INTO `t_menu` (`id`, `label`, `component`, `pid`, `sort_order`, `icon_name`) VALUES (36, '商品出库', 16, 33, 4, 'Download');
@@ -279,16 +279,16 @@ COMMIT;
 -- ----------------------------
 DROP TABLE IF EXISTS `t_order`;
 CREATE TABLE `t_order` (
-  `id` int NOT NULL AUTO_INCREMENT COMMENT '订单ID (主键, 自增)',
-  `cust_id` int DEFAULT NULL COMMENT '客户ID (外键, 关联 t_customer.id)',
-  `item_id` int DEFAULT NULL COMMENT '商品ID (外键, 关联 t_item.id) - 注意: 如果一个订单可含多个商品, 此处可能代表主要商品或需要订单详情表',
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '订单ID (主键, 自增)',
+  `cust_id` int(11) DEFAULT NULL COMMENT '客户ID (外键, 关联 t_customer.id)',
+  `item_id` int(11) DEFAULT NULL COMMENT '商品ID (外键, 关联 t_item.id) - 注意: 如果一个订单可含多个商品, 此处可能代表主要商品或需要订单详情表',
   `order_date` datetime DEFAULT NULL COMMENT '下单日期时间',
-  `state` varchar(50) DEFAULT NULL COMMENT '订单状态 (例如: 待支付, 已支付, 已发货, 已完成, 已取消)',
-  `pay` varchar(50) DEFAULT NULL COMMENT '支付方式 (例如: 支付宝, 微信, 银行卡)',
+  `state` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '订单状态 (例如: 待支付, 已支付, 已发货, 已完成, 已取消)',
+  `pay` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '支付方式 (例如: 支付宝, 微信, 银行卡)',
   `pay_money` double DEFAULT NULL COMMENT '支付金额',
-  `num` int DEFAULT NULL COMMENT '购买数量',
+  `num` int(11) DEFAULT NULL COMMENT '购买数量',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC COMMENT='订单表';
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC COMMENT='订单表';
 
 -- ----------------------------
 -- Records of t_order
@@ -307,17 +307,17 @@ COMMIT;
 -- ----------------------------
 DROP TABLE IF EXISTS `t_out_store`;
 CREATE TABLE `t_out_store` (
-  `outs_id` int NOT NULL AUTO_INCREMENT COMMENT '出库单ID，主键，自增',
-  `product_id` int DEFAULT NULL COMMENT '产品ID',
-  `store_id` int DEFAULT NULL COMMENT '仓库ID',
-  `tally_id` int DEFAULT NULL COMMENT '理货ID',
+  `outs_id` int(11) NOT NULL AUTO_INCREMENT COMMENT '出库单ID，主键，自增',
+  `product_id` int(11) DEFAULT NULL COMMENT '产品ID',
+  `store_id` int(11) DEFAULT NULL COMMENT '仓库ID',
+  `tally_id` int(11) DEFAULT NULL COMMENT '理货ID',
   `out_price` decimal(8,2) DEFAULT NULL COMMENT '出库单价',
-  `out_num` int DEFAULT NULL COMMENT '出库数量',
-  `create_by` int DEFAULT NULL COMMENT '创建人ID',
+  `out_num` int(11) DEFAULT NULL COMMENT '出库数量',
+  `create_by` int(11) DEFAULT NULL COMMENT '创建人ID',
   `create_time` datetime DEFAULT NULL COMMENT '创建时间',
   `is_out` char(1) DEFAULT NULL COMMENT '是否出库：0 否，1 是',
   PRIMARY KEY (`outs_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8mb3 COMMENT='出库单';
+) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8 COMMENT='出库单';
 
 -- ----------------------------
 -- Records of t_out_store
@@ -334,13 +334,13 @@ COMMIT;
 -- ----------------------------
 DROP TABLE IF EXISTS `t_place`;
 CREATE TABLE `t_place` (
-  `place_id` int NOT NULL AUTO_INCREMENT COMMENT '产地ID',
-  `place_name` varchar(200) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL COMMENT '产地名称',
-  `place_num` varchar(20) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL COMMENT '产地编号',
-  `introduce` varchar(300) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL COMMENT '产地介绍',
-  `is_delete` char(1) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT '0' COMMENT '逻辑删除标记(0:可用  1:不可用)',
+  `place_id` int(11) NOT NULL AUTO_INCREMENT COMMENT '产地ID',
+  `place_name` varchar(200) DEFAULT NULL COMMENT '产地名称',
+  `place_num` varchar(20) DEFAULT NULL COMMENT '产地编号',
+  `introduce` varchar(300) DEFAULT NULL COMMENT '产地介绍',
+  `is_delete` char(1) DEFAULT '0' COMMENT '逻辑删除标记(0:可用  1:不可用)',
   PRIMARY KEY (`place_id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb3 ROW_FORMAT=DYNAMIC COMMENT='产地表';
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='产地表';
 
 -- ----------------------------
 -- Records of t_place
@@ -360,11 +360,11 @@ COMMIT;
 -- ----------------------------
 DROP TABLE IF EXISTS `t_replay`;
 CREATE TABLE `t_replay` (
-  `id` int NOT NULL COMMENT '反馈/评价ID (主键)',
-  `content` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '反馈或评价内容',
+  `id` int(11) NOT NULL COMMENT '反馈/评价ID (主键)',
+  `content` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '反馈或评价内容',
   `redate` datetime DEFAULT NULL COMMENT '反馈或评价日期时间',
-  `score` int DEFAULT NULL COMMENT '评分 (如：1-5分)',
-  `ques_id` int DEFAULT NULL COMMENT '问题ID，对应after_sales表',
+  `score` int(11) DEFAULT NULL COMMENT '评分 (如：1-5分)',
+  `ques_id` int(11) DEFAULT NULL COMMENT '问题ID，对应after_sales表',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='用户反馈/评价表';
 
@@ -383,11 +383,11 @@ COMMIT;
 -- ----------------------------
 DROP TABLE IF EXISTS `t_role_menu`;
 CREATE TABLE `t_role_menu` (
-  `id` int NOT NULL AUTO_INCREMENT COMMENT '关联ID (主键, 自增)',
-  `rid` int DEFAULT NULL COMMENT '角色ID (外键, 关联 t_roler.id)',
-  `mid` int DEFAULT NULL COMMENT '菜单ID (外键, 关联 t_menu.id)',
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '关联ID (主键, 自增)',
+  `rid` int(11) DEFAULT NULL COMMENT '角色ID (外键, 关联 t_roler.id)',
+  `mid` int(11) DEFAULT NULL COMMENT '菜单ID (外键, 关联 t_menu.id)',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=52 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC COMMENT='角色菜单关联表';
+) ENGINE=InnoDB AUTO_INCREMENT=118 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC COMMENT='角色菜单关联表';
 
 -- ----------------------------
 -- Records of t_role_menu
@@ -408,29 +408,35 @@ INSERT INTO `t_role_menu` (`id`, `rid`, `mid`) VALUES (12, 2, 33);
 INSERT INTO `t_role_menu` (`id`, `rid`, `mid`) VALUES (13, 2, 34);
 INSERT INTO `t_role_menu` (`id`, `rid`, `mid`) VALUES (14, 2, 7);
 INSERT INTO `t_role_menu` (`id`, `rid`, `mid`) VALUES (15, 2, 9);
-INSERT INTO `t_role_menu` (`id`, `rid`, `mid`) VALUES (16, 6, 1);
-INSERT INTO `t_role_menu` (`id`, `rid`, `mid`) VALUES (17, 6, 2);
-INSERT INTO `t_role_menu` (`id`, `rid`, `mid`) VALUES (18, 6, 3);
-INSERT INTO `t_role_menu` (`id`, `rid`, `mid`) VALUES (19, 6, 4);
-INSERT INTO `t_role_menu` (`id`, `rid`, `mid`) VALUES (20, 6, 5);
-INSERT INTO `t_role_menu` (`id`, `rid`, `mid`) VALUES (21, 6, 6);
-INSERT INTO `t_role_menu` (`id`, `rid`, `mid`) VALUES (22, 6, 7);
-INSERT INTO `t_role_menu` (`id`, `rid`, `mid`) VALUES (23, 6, 8);
-INSERT INTO `t_role_menu` (`id`, `rid`, `mid`) VALUES (24, 6, 9);
-INSERT INTO `t_role_menu` (`id`, `rid`, `mid`) VALUES (25, 6, 10);
-INSERT INTO `t_role_menu` (`id`, `rid`, `mid`) VALUES (26, 6, 11);
-INSERT INTO `t_role_menu` (`id`, `rid`, `mid`) VALUES (27, 6, 25);
-INSERT INTO `t_role_menu` (`id`, `rid`, `mid`) VALUES (28, 6, 26);
-INSERT INTO `t_role_menu` (`id`, `rid`, `mid`) VALUES (29, 6, 27);
-INSERT INTO `t_role_menu` (`id`, `rid`, `mid`) VALUES (30, 6, 33);
-INSERT INTO `t_role_menu` (`id`, `rid`, `mid`) VALUES (31, 6, 34);
-INSERT INTO `t_role_menu` (`id`, `rid`, `mid`) VALUES (32, 6, 35);
-INSERT INTO `t_role_menu` (`id`, `rid`, `mid`) VALUES (33, 6, 36);
 INSERT INTO `t_role_menu` (`id`, `rid`, `mid`) VALUES (47, 7, 33);
 INSERT INTO `t_role_menu` (`id`, `rid`, `mid`) VALUES (48, 7, 35);
 INSERT INTO `t_role_menu` (`id`, `rid`, `mid`) VALUES (49, 7, 36);
 INSERT INTO `t_role_menu` (`id`, `rid`, `mid`) VALUES (50, 7, 7);
 INSERT INTO `t_role_menu` (`id`, `rid`, `mid`) VALUES (51, 7, 9);
+INSERT INTO `t_role_menu` (`id`, `rid`, `mid`) VALUES (94, 6, 1);
+INSERT INTO `t_role_menu` (`id`, `rid`, `mid`) VALUES (95, 6, 2);
+INSERT INTO `t_role_menu` (`id`, `rid`, `mid`) VALUES (96, 6, 3);
+INSERT INTO `t_role_menu` (`id`, `rid`, `mid`) VALUES (97, 6, 4);
+INSERT INTO `t_role_menu` (`id`, `rid`, `mid`) VALUES (98, 6, 5);
+INSERT INTO `t_role_menu` (`id`, `rid`, `mid`) VALUES (99, 6, 6);
+INSERT INTO `t_role_menu` (`id`, `rid`, `mid`) VALUES (100, 6, 10);
+INSERT INTO `t_role_menu` (`id`, `rid`, `mid`) VALUES (101, 6, 7);
+INSERT INTO `t_role_menu` (`id`, `rid`, `mid`) VALUES (102, 6, 8);
+INSERT INTO `t_role_menu` (`id`, `rid`, `mid`) VALUES (103, 6, 9);
+INSERT INTO `t_role_menu` (`id`, `rid`, `mid`) VALUES (104, 6, 40);
+INSERT INTO `t_role_menu` (`id`, `rid`, `mid`) VALUES (105, 6, 41);
+INSERT INTO `t_role_menu` (`id`, `rid`, `mid`) VALUES (106, 6, 42);
+INSERT INTO `t_role_menu` (`id`, `rid`, `mid`) VALUES (107, 6, 33);
+INSERT INTO `t_role_menu` (`id`, `rid`, `mid`) VALUES (108, 6, 34);
+INSERT INTO `t_role_menu` (`id`, `rid`, `mid`) VALUES (109, 6, 35);
+INSERT INTO `t_role_menu` (`id`, `rid`, `mid`) VALUES (110, 6, 37);
+INSERT INTO `t_role_menu` (`id`, `rid`, `mid`) VALUES (111, 6, 38);
+INSERT INTO `t_role_menu` (`id`, `rid`, `mid`) VALUES (112, 6, 36);
+INSERT INTO `t_role_menu` (`id`, `rid`, `mid`) VALUES (113, 6, 39);
+INSERT INTO `t_role_menu` (`id`, `rid`, `mid`) VALUES (114, 6, 11);
+INSERT INTO `t_role_menu` (`id`, `rid`, `mid`) VALUES (115, 6, 25);
+INSERT INTO `t_role_menu` (`id`, `rid`, `mid`) VALUES (116, 6, 26);
+INSERT INTO `t_role_menu` (`id`, `rid`, `mid`) VALUES (117, 6, 27);
 COMMIT;
 
 -- ----------------------------
@@ -438,11 +444,11 @@ COMMIT;
 -- ----------------------------
 DROP TABLE IF EXISTS `t_roler`;
 CREATE TABLE `t_roler` (
-  `id` int NOT NULL AUTO_INCREMENT COMMENT '角色ID (主键, 自增)',
-  `rname` varchar(50) DEFAULT NULL COMMENT '角色名称',
-  `rdesc` varchar(255) DEFAULT NULL COMMENT '角色描述',
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '角色ID (主键, 自增)',
+  `rname` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '角色名称',
+  `rdesc` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '角色描述',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC COMMENT='角色表';
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC COMMENT='角色表';
 
 -- ----------------------------
 -- Records of t_roler
@@ -461,14 +467,14 @@ COMMIT;
 -- ----------------------------
 DROP TABLE IF EXISTS `t_sell_jh`;
 CREATE TABLE `t_sell_jh` (
-  `id` int NOT NULL AUTO_INCREMENT COMMENT '销售机会/计划ID (主键, 自增)',
-  `custid` int DEFAULT NULL COMMENT '客户ID (外键, 关联 t_customer.id)',
-  `channel_id` int DEFAULT NULL COMMENT '渠道ID (可能关联渠道表)',
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '销售机会/计划ID (主键, 自增)',
+  `custid` int(11) DEFAULT NULL COMMENT '客户ID (外键, 关联 t_customer.id)',
+  `channel_id` int(11) DEFAULT NULL COMMENT '渠道ID (可能关联渠道表)',
   `money` double DEFAULT NULL COMMENT '预计金额/成交金额',
-  `now_step` varchar(50) DEFAULT NULL COMMENT '当前阶段/步骤',
-  `emp_id` int DEFAULT NULL COMMENT '负责人ID/员工ID',
+  `now_step` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '当前阶段/步骤',
+  `emp_id` int(11) DEFAULT NULL COMMENT '负责人ID/员工ID',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC COMMENT='销售机会/计划表';
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC COMMENT='销售机会/计划表';
 
 -- ----------------------------
 -- Records of t_sell_jh
@@ -485,14 +491,14 @@ COMMIT;
 -- ----------------------------
 DROP TABLE IF EXISTS `t_store`;
 CREATE TABLE `t_store` (
-  `store_id` int NOT NULL AUTO_INCREMENT COMMENT '仓库ID',
-  `store_name` varchar(100) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL COMMENT '仓库名称',
-  `store_num` varchar(20) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL COMMENT '仓库编号',
-  `store_address` varchar(100) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL COMMENT '仓库地址',
-  `concat` varchar(50) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL COMMENT '联系人',
-  `phone` varchar(20) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL COMMENT '联系电话',
+  `store_id` int(11) NOT NULL AUTO_INCREMENT COMMENT '仓库ID',
+  `store_name` varchar(100) DEFAULT NULL COMMENT '仓库名称',
+  `store_num` varchar(20) DEFAULT NULL COMMENT '仓库编号',
+  `store_address` varchar(100) DEFAULT NULL COMMENT '仓库地址',
+  `concat` varchar(50) DEFAULT NULL COMMENT '联系人',
+  `phone` varchar(20) DEFAULT NULL COMMENT '联系电话',
   PRIMARY KEY (`store_id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb3 ROW_FORMAT=DYNAMIC COMMENT='仓库表';
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='仓库表';
 
 -- ----------------------------
 -- Records of t_store
@@ -508,16 +514,16 @@ COMMIT;
 -- ----------------------------
 DROP TABLE IF EXISTS `t_supply`;
 CREATE TABLE `t_supply` (
-  `supply_id` int NOT NULL AUTO_INCREMENT COMMENT '供应商ID',
-  `supply_num` varchar(20) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL COMMENT '供应商编号',
-  `supply_name` varchar(100) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL COMMENT '供应商名称',
-  `supply_introduce` longtext CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci COMMENT '供应商介绍',
-  `concat` varchar(50) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL COMMENT '联系人',
-  `phone` varchar(20) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL COMMENT '联系电话',
-  `address` varchar(100) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL COMMENT '供应商地址',
-  `is_delete` char(1) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT '0' COMMENT '逻辑删除标记(0:可用  1:不可用)',
+  `supply_id` int(11) NOT NULL AUTO_INCREMENT COMMENT '供应商ID',
+  `supply_num` varchar(20) DEFAULT NULL COMMENT '供应商编号',
+  `supply_name` varchar(100) DEFAULT NULL COMMENT '供应商名称',
+  `supply_introduce` longtext COMMENT '供应商介绍',
+  `concat` varchar(50) DEFAULT NULL COMMENT '联系人',
+  `phone` varchar(20) DEFAULT NULL COMMENT '联系电话',
+  `address` varchar(100) DEFAULT NULL COMMENT '供应商地址',
+  `is_delete` char(1) DEFAULT '0' COMMENT '逻辑删除标记(0:可用  1:不可用)',
   PRIMARY KEY (`supply_id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb3 ROW_FORMAT=DYNAMIC COMMENT='供货商表';
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='供货商表';
 
 -- ----------------------------
 -- Records of t_supply
@@ -536,11 +542,11 @@ COMMIT;
 -- ----------------------------
 DROP TABLE IF EXISTS `t_tree_test`;
 CREATE TABLE `t_tree_test` (
-  `id` int NOT NULL COMMENT '节点ID (主键)',
-  `tname` varchar(50) DEFAULT NULL COMMENT '节点名称',
-  `pid` int DEFAULT NULL COMMENT '父节点ID (用于构建树形结构)',
+  `id` int(11) NOT NULL COMMENT '节点ID (主键)',
+  `tname` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '节点名称',
+  `pid` int(11) DEFAULT NULL COMMENT '父节点ID (用于构建树形结构)',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC COMMENT='树形结构测试表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC COMMENT='树形结构测试表';
 
 -- ----------------------------
 -- Records of t_tree_test
@@ -560,11 +566,11 @@ COMMIT;
 -- ----------------------------
 DROP TABLE IF EXISTS `t_unit`;
 CREATE TABLE `t_unit` (
-  `unit_id` int NOT NULL AUTO_INCREMENT COMMENT '单位ID',
-  `unit_name` varchar(20) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL COMMENT '单位名称',
-  `unit_desc` varchar(20) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL COMMENT '单位描述',
+  `unit_id` int(11) NOT NULL AUTO_INCREMENT COMMENT '单位ID',
+  `unit_name` varchar(20) DEFAULT NULL COMMENT '单位名称',
+  `unit_desc` varchar(20) DEFAULT NULL COMMENT '单位描述',
   PRIMARY KEY (`unit_id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb3 ROW_FORMAT=DYNAMIC COMMENT='规格单位表';
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='规格单位表';
 
 -- ----------------------------
 -- Records of t_unit
@@ -583,15 +589,15 @@ COMMIT;
 -- ----------------------------
 DROP TABLE IF EXISTS `t_user`;
 CREATE TABLE `t_user` (
-  `id` int NOT NULL AUTO_INCREMENT COMMENT '用户ID (主键, 自增)',
-  `uname` varchar(255) DEFAULT NULL COMMENT '用户名/登录名',
-  `upwd` varchar(255) DEFAULT NULL COMMENT '用户密码 (建议加密存储)',
-  `phone` varchar(11) DEFAULT NULL COMMENT '手机号码',
-  `edu` varchar(20) DEFAULT NULL COMMENT '学历',
-  `age` int DEFAULT NULL COMMENT '年龄',
-  `title` varchar(255) DEFAULT NULL COMMENT '职称/头衔',
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '用户ID (主键, 自增)',
+  `uname` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '用户名/登录名',
+  `upwd` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '用户密码 (建议加密存储)',
+  `phone` varchar(11) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '手机号码',
+  `edu` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '学历',
+  `age` int(11) DEFAULT NULL COMMENT '年龄',
+  `title` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '职称/头衔',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC COMMENT='用户表';
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC COMMENT='用户表';
 
 -- ----------------------------
 -- Records of t_user
@@ -601,6 +607,7 @@ INSERT INTO `t_user` (`id`, `uname`, `upwd`, `phone`, `edu`, `age`, `title`) VAL
 INSERT INTO `t_user` (`id`, `uname`, `upwd`, `phone`, `edu`, `age`, `title`) VALUES (2, 'sales01', 'sales123', '13900139000', '大专', 25, '销售代表');
 INSERT INTO `t_user` (`id`, `uname`, `upwd`, `phone`, `edu`, `age`, `title`) VALUES (3, 'stock_manager', 'stock123', '13700137000', '高中', 35, '仓库主管');
 INSERT INTO `t_user` (`id`, `uname`, `upwd`, `phone`, `edu`, `age`, `title`) VALUES (4, 'testuser', 'test123', '13600136000', '硕士', 28, '测试工程师');
+INSERT INTO `t_user` (`id`, `uname`, `upwd`, `phone`, `edu`, `age`, `title`) VALUES (6, 'admin2', '$2a$10$Cb1T2.Lc5aa87Yt9omUvmeXlu/zz9LoaTQzHWAoUgTJgB9e.FuWZS', '15527517520', '酒吧舞', 23, '233');
 COMMIT;
 
 -- ----------------------------
@@ -608,11 +615,11 @@ COMMIT;
 -- ----------------------------
 DROP TABLE IF EXISTS `t_user_role`;
 CREATE TABLE `t_user_role` (
-  `id` int NOT NULL AUTO_INCREMENT COMMENT '关联ID (主键, 自增)',
-  `uid` int DEFAULT NULL COMMENT '用户ID (外键, 关联 t_user.id)',
-  `rid` int DEFAULT NULL COMMENT '角色ID (外键, 关联 t_roler.id)',
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '关联ID (主键, 自增)',
+  `uid` int(11) DEFAULT NULL COMMENT '用户ID (外键, 关联 t_user.id)',
+  `rid` int(11) DEFAULT NULL COMMENT '角色ID (外键, 关联 t_roler.id)',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC COMMENT='用户角色关联表';
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC COMMENT='用户角色关联表';
 
 -- ----------------------------
 -- Records of t_user_role
@@ -622,6 +629,7 @@ INSERT INTO `t_user_role` (`id`, `uid`, `rid`) VALUES (1, 1, 6);
 INSERT INTO `t_user_role` (`id`, `uid`, `rid`) VALUES (2, 2, 1);
 INSERT INTO `t_user_role` (`id`, `uid`, `rid`) VALUES (3, 3, 7);
 INSERT INTO `t_user_role` (`id`, `uid`, `rid`) VALUES (4, 3, 1);
+INSERT INTO `t_user_role` (`id`, `uid`, `rid`) VALUES (5, 6, 6);
 COMMIT;
 
 SET FOREIGN_KEY_CHECKS = 1;
