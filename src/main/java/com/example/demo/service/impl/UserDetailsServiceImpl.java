@@ -1,6 +1,7 @@
 package com.example.demo.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.example.demo.pojo.CustomUserDetails;
 import com.example.demo.pojo.User;
 import com.example.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,11 +29,8 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         if (user == null) {
             throw new UsernameNotFoundException("User not found with username: " + username);
         }
-
-        return new org.springframework.security.core.userdetails.User(
-                user.getUname(),
-                user.getUpwd(),
-                getAuthorities(user));
+        // 返回自定义的 UserDetails 对象
+        return CustomUserDetails.build(user, getAuthorities(user));
     }
 
     private Collection<? extends GrantedAuthority> getAuthorities(User user) {
