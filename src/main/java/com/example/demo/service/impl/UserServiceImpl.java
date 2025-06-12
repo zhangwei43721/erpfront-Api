@@ -1,17 +1,22 @@
 package com.example.demo.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.example.demo.dto.CountResult;
 import com.example.demo.mapper.UserMapper;
+import com.example.demo.pojo.Menu;
 import com.example.demo.pojo.User;
 import com.example.demo.pojo.UserRole;
 import com.example.demo.service.UserRoleService;
 import com.example.demo.service.UserService;
+import com.example.demo.vo.MenuVo;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -30,6 +35,12 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User>
 
     @Autowired
     private UserRoleService userRoleService;
+
+    @Override
+    public User findByUsername(String username) {
+        return userMapper.selectOne(new LambdaQueryWrapper<User>()
+            .eq(User::getUname, username));
+    }
 
     @Override
     public Map<String, Object> queryUserListService(Integer pageNum, Integer pageSize) {
@@ -101,6 +112,30 @@ userRoleService.save(ur);
     @Override
     public List<CountResult> countEmployeeEduService() {
         return userMapper.countEmployeeEduMapper();
+    }
+     @Override
+    public List<MenuVo> queryUserMenusListService(Long uid) {
+        List<Menu> menus = userMapper.queryUserMenusMapper(uid);
+        return doListMenus(menus,0);
+    }
+
+    private List<MenuVo> doListMenus(List<Menu> menus,Integer id){
+
+        //创建集合对象保存返回值
+        List<MenuVo> result=new ArrayList<>();
+        //遍历menus集合获得每个菜单节点对象，m每个菜单节点对象
+        for(Menu m:menus){
+            //m菜单节点对象的父节点id，是否和传入id相等，如果相等说明当前遍历的节点m，是id对应的菜单节点的子节点
+            if(m.getPid().equals(id)){
+
+                MenuVo menusVo=new MenuVo();
+                BeanUtils.copyProperties(m,menusVo);
+                //进行递归遍历
+                menusVo.setSubMenu(doListMenus(menus,m.getId()));
+                result.add(menusVo);
+            }
+        }
+        return result;
     }
 }
 

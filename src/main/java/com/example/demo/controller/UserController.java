@@ -5,6 +5,10 @@ import com.example.demo.pojo.User;
 import com.example.demo.service.UserRoleService;
 import com.example.demo.service.UserService;
 import com.example.demo.util.R;
+import com.example.demo.vo.MenuVo;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -70,5 +74,18 @@ public class UserController {
     @GetMapping("/countEmpEdu")
     public List<CountResult> countEmpEdu() {
         return userService.countEmployeeEduService();
+    }
+
+    /* 处理加载当前登录用户菜单的请求 */
+    @GetMapping("/queryUserMenus")
+    public List<MenuVo> queryUserMenus() {
+        // 从 SecurityContextHolder 获取当前登录用户
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (authentication != null && authentication.getPrincipal() instanceof UserDetails userDetails) {
+            // 假设 UserService 提供方法根据 username 获取用户
+            User user = userService.findByUsername(userDetails.getUsername());
+            return userService.queryUserMenusListService(user.getId());
+        }
+        throw new IllegalArgumentException("用户未登录");
     }
 }

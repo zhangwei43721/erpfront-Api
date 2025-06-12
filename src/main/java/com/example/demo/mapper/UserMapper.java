@@ -2,6 +2,7 @@ package com.example.demo.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.example.demo.dto.CountResult;
+import com.example.demo.pojo.Menu;
 import com.example.demo.pojo.User;
 
 import java.util.List;
@@ -22,6 +23,9 @@ public interface UserMapper extends BaseMapper<User> {
 
     /*实现员工按照学统计*/
     List<CountResult> countEmployeeEduMapper();
+
+    /*加载当前登录用户菜单信息*/
+    public List<Menu> queryUserMenusMapper(Long uid);
 }
 
 
